@@ -1,0 +1,421 @@
+@extends('layouts.app')
+@section('title', 'Djibo Service – Agriculture Durable au Mali')
+
+@push('styles')
+<style>
+/* ===== HERO ===== */
+.dj-hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(160deg, #0d3318 0%, #1A6B2E 55%, #2e5e1a 100%);
+}
+
+/* SVG champs de mil animé */
+.dj-hero-svg-field {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 280px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.dj-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(13,51,24,0.75) 40%, transparent 100%);
+    z-index: 2;
+}
+
+.dj-hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 80px 0 160px;
+}
+
+.dj-hero-badge {
+    display: inline-block;
+    background: rgba(200,134,10,0.2);
+    border: 1px solid var(--ocre);
+    color: var(--ocre);
+    padding: 6px 16px;
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.dj-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 22px;
+}
+
+.dj-hero-title em {
+    font-style: italic;
+    color: var(--ocre);
+}
+
+.dj-hero-desc {
+    font-size: 18px;
+    color: rgba(255,255,255,0.82);
+    max-width: 540px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+}
+
+.dj-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* floating whatsapp btn */
+.dj-float-wa {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 999;
+    background: #25d366;
+    color: #fff;
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+    animation: floatWa 2.5s ease-in-out infinite;
+    text-decoration: none;
+}
+@keyframes floatWa { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+/* ===== STATS BAR ===== */
+.dj-stats-bar {
+    background: var(--brun);
+    padding: 28px 0;
+}
+.dj-stat-item { text-align: center; }
+.dj-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 800;
+    color: var(--ocre);
+    display: block;
+}
+.dj-stat-label { font-size: 12px; color: rgba(250,246,239,0.6); letter-spacing: 1px; text-transform: uppercase; }
+
+/* ===== SERVICE CARDS ===== */
+.dj-service-card {
+    background: var(--blanc);
+    border: 1px solid var(--bordure);
+    border-top: 4px solid var(--vert);
+    border-radius: 12px;
+    padding: 32px 28px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+}
+.dj-service-card:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(44,26,14,0.1); }
+.dj-service-icon { font-size: 36px; color: var(--vert); margin-bottom: 18px; }
+.dj-service-card h3 { font-size: 22px; margin-bottom: 12px; color: var(--brun); }
+.dj-service-card p { color: #6b5e50; font-size: 15px; }
+
+/* ===== PRODUIT VEDETTE ===== */
+.dj-product-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 16px; border-radius: 20px;
+    margin-bottom: 16px;
+}
+.dj-benefit-list { list-style: none; padding: 0; margin: 0 0 24px; }
+.dj-benefit-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0e8db;
+    font-size: 15px; color: #5a4535;
+}
+.dj-benefit-list li::before { content: "✓ "; color: var(--vert); font-weight: 700; }
+
+/* ===== REALISATION CARDS ===== */
+.dj-real-card { border-radius: 14px; overflow: hidden; background: var(--blanc); border: 1px solid var(--bordure); height: 100%; }
+.dj-real-card img { width: 100%; height: 220px; object-fit: cover; }
+.dj-real-card-body { padding: 24px; }
+.dj-real-impact { color: var(--vert); font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+.dj-real-card h4 { font-size: 20px; color: var(--brun); margin-bottom: 10px; }
+
+/* ===== TESTIMONIALS ===== */
+.dj-testi-card {
+    background: var(--blanc);
+    border-left: 5px solid var(--ocre);
+    border-radius: 0 12px 12px 0;
+    padding: 28px;
+    box-shadow: 0 8px 24px rgba(44,26,14,0.06);
+    height: 100%;
+}
+.dj-testi-quote { font-size: 17px; font-style: italic; color: var(--brun); margin-bottom: 20px; line-height: 1.65; }
+.dj-testi-badge-before { background: #fff0eb; color: var(--orange); font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
+.dj-testi-badge-after  { background: #e8f5e9; color: var(--vert); font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
+
+/* ===== NEWS CARDS ===== */
+.dj-news-card { background: var(--blanc); border: 1px solid var(--bordure); border-radius: 12px; overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+.dj-news-card img { width: 100%; height: 190px; object-fit: cover; }
+.dj-news-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+.dj-news-date { font-size: 12px; color: var(--orange); font-weight: 600; margin-bottom: 8px; }
+.dj-news-body h5 { font-size: 18px; margin-bottom: 10px; flex: 1; }
+</style>
+@endpush
+
+@section('content')
+
+<!-- ===== HERO ===== -->
+<section class="dj-hero">
+    <!-- SVG Champs de mil/sorgho animé -->
+    <svg class="dj-hero-svg-field" viewBox="0 0 1440 280" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+            <style>
+                .stalk { transform-origin: bottom center; animation: sway 3.5s ease-in-out infinite alternate; }
+                .stalk:nth-child(2n)   { animation-duration: 4.1s; animation-delay: 0.3s; }
+                .stalk:nth-child(3n)   { animation-duration: 3.8s; animation-delay: 0.7s; }
+                .stalk:nth-child(4n)   { animation-duration: 4.5s; animation-delay: 1.1s; }
+                .stalk:nth-child(5n)   { animation-duration: 3.2s; animation-delay: 0.5s; }
+                @keyframes sway { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+            </style>
+        </defs>
+        <!-- Ground -->
+        <rect x="0" y="240" width="1440" height="40" fill="rgba(13,51,24,0.6)"/>
+        <!-- Repeated stalk pattern -->
+        @php $positions = [30,70,110,150,190,230,270,310,350,390,430,470,510,550,590,630,670,710,750,790,830,870,910,950,990,1030,1070,1110,1150,1190,1230,1270,1310,1360,1400,1440]; @endphp
+        @foreach($positions as $i => $x)
+            @php $h = rand(120, 200); $w = rand(6,10); $color = ($i%3===0) ? '#2d8b45' : ($i%3===1 ? '#1A6B2E' : '#3aa055'); @endphp
+            <g class="stalk" style="transform-origin: {{ $x }}px 240px">
+                <!-- Tige -->
+                <rect x="{{ $x - $w/2 }}" y="{{ 240 - $h }}" width="{{ $w }}" height="{{ $h }}" rx="3" fill="{{ $color }}" fill-opacity="0.7"/>
+                <!-- Épi de mil (ellipse allongée au sommet) -->
+                <ellipse cx="{{ $x }}" cy="{{ 240 - $h - 18 }}" rx="{{ $w * 1.8 }}" ry="22" fill="{{ ($i%2===0) ? '#C8860A' : '#a06a08' }}" fill-opacity="0.85"/>
+                <!-- Feuilles -->
+                <ellipse cx="{{ $x - 12 }}" cy="{{ 240 - $h*0.65 }}" rx="14" ry="5" fill="{{ $color }}" fill-opacity="0.5" transform="rotate(-25 {{ $x }} {{ 240 - $h*0.65 }})"/>
+                <ellipse cx="{{ $x + 12 }}" cy="{{ 240 - $h*0.45 }}" rx="14" ry="5" fill="{{ $color }}" fill-opacity="0.5" transform="rotate(25 {{ $x }} {{ 240 - $h*0.45 }})"/>
+            </g>
+        @endforeach
+    </svg>
+
+    <div class="dj-hero-overlay"></div>
+
+    <div class="container dj-hero-content">
+        <div class="row">
+            <div class="col-lg-7">
+                <span class="dj-hero-badge" data-animate>🌾 Agriculture Durable au Mali</span>
+                <h1 class="dj-hero-title" data-animate>
+                    Pour des récoltes<br><em>abondantes</em> et écologiques
+                </h1>
+                <p class="dj-hero-desc" data-animate>
+                    Intrants biologiques, formation agronomique et suivi terrain — Djibo Service régénère vos sols et sécurise vos récoltes.
+                </p>
+                <div class="dj-hero-actions" data-animate>
+                    <a href="{{ route('products') }}" class="btn-dj-primary">Voir nos produits</a>
+                    <a href="{{ route('contact') }}" class="btn-dj-primary btn-dj-outline">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bouton WhatsApp flottant -->
+<a href="https://wa.me/22376543210" target="_blank" class="dj-float-wa" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ===== STATS BAR ===== -->
+<div class="dj-stats-bar">
+    <div class="container">
+        <div class="row g-3">
+            @foreach([['500+','Producteurs formés'],['150+','Hectares régénérés'],['50+','Fermes accompagnées'],['10+','Années d\'expérience']] as $stat)
+            <div class="col-6 col-md-3 dj-stat-item">
+                <span class="dj-stat-num">{{ $stat[0] }}</span>
+                <span class="dj-stat-label">{{ $stat[1] }}</span>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+<!-- ===== NOS SERVICES ===== -->
+<section class="section-blanc section-pad">
+    <div class="container">
+        <div class="section-heading" data-animate>
+            <span class="section-label">Notre Expertise</span>
+            <h2>Ce que nous faisons pour vous</h2>
+        </div>
+        <div class="row g-4">
+            @foreach($services as $i => $service)
+            <div class="col-lg-4 col-md-6" data-animate>
+                <div class="dj-service-card">
+                    <div class="dj-service-icon"><i class="fas {{ $service['icon'] }}"></i></div>
+                    <h3>{{ $service['title'] }}</h3>
+                    <p>{{ $service['short_description'] }}</p>
+                    <a href="{{ route('services') }}" style="color:var(--vert);font-weight:700;font-size:14px;display:inline-block;margin-top:16px;">
+                        En savoir plus →
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRODUIT EN VEDETTE ===== -->
+@if($featured_product)
+<section class="section-creme section-pad">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5" data-animate>
+                <img src="{{ asset($featured_product['image']) }}" alt="{{ $featured_product['name'] }}"
+                     style="border-radius:16px;border:3px solid var(--bordure);width:100%;max-height:420px;object-fit:cover;">
+            </div>
+            <div class="col-lg-7" data-animate>
+                <span class="dj-product-badge">🔥 Produit Phare</span>
+                <h2 style="margin-bottom:8px;">{{ $featured_product['name'] }}</h2>
+                <p style="color:var(--vert);font-size:20px;font-weight:700;margin-bottom:16px;">{{ $featured_product['price'] }}</p>
+                <p style="color:#6b5e50;margin-bottom:24px;">{{ $featured_product['description'] }}</p>
+                <ul class="dj-benefit-list">
+                    @foreach($featured_product['benefits'] as $b)
+                    <li>{{ $b }}</li>
+                    @endforeach
+                </ul>
+                <div class="dj-hero-actions">
+                    <a href="{{ route('products') }}" class="btn-dj-primary">Voir le catalogue</a>
+                    <a href="https://wa.me/22376543210?text=Je%20veux%20commander%20le%20BioActivateur%20Sol-Plus" target="_blank"
+                       class="btn-dj-primary" style="background:#25d366;">
+                        <i class="fab fa-whatsapp"></i> Commander
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
+<!-- ===== RÉALISATIONS ===== -->
+<section class="section-blanc section-pad">
+    <div class="container">
+        <div class="section-heading" data-animate>
+            <span class="section-label">Impact Terrain</span>
+            <h2>Nos Grandes Réalisations</h2>
+        </div>
+        <div class="row g-4">
+            @foreach($realisations as $r)
+            <div class="col-lg-4 col-md-6" data-animate>
+                <div class="dj-real-card">
+                    <img src="{{ asset($r['image']) }}" alt="{{ $r['title'] }}">
+                    <div class="dj-real-card-body">
+                        <p class="dj-real-impact"><i class="fas fa-map-marker-alt"></i> {{ $r['location'] }} &nbsp;|&nbsp; {{ $r['impact'] }}</p>
+                        <h4>{{ $r['title'] }}</h4>
+                        <p style="color:#6b5e50;font-size:14px;">{{ Str::limit($r['description'], 120) }}</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="text-center" style="margin-top:40px;" data-animate>
+            <a href="{{ route('realisations') }}" class="btn-dj-primary" style="background:transparent;border:2px solid var(--vert);color:var(--vert);">
+                Toutes les réalisations →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TÉMOIGNAGES ===== -->
+<section class="section-creme section-pad">
+    <div class="container">
+        <div class="section-heading" data-animate>
+            <span class="section-label">Avis Clients</span>
+            <h2>Ce que disent nos producteurs</h2>
+        </div>
+        <div class="row g-4">
+            @foreach($testimonials as $t)
+            <div class="col-md-6" data-animate>
+                <div class="dj-testi-card">
+                    <p class="dj-testi-quote">" {{ $t['quote'] }} "</p>
+                    <div style="background:#faf6ef;border-radius:8px;padding:14px;margin-bottom:18px;">
+                        <div style="margin-bottom:8px;">
+                            <span class="dj-testi-badge-before">Avant</span>
+                            <p style="font-size:13px;color:#6b5e50;margin:4px 0 0;">{{ $t['before_after']['before'] }}</p>
+                        </div>
+                        <div>
+                            <span class="dj-testi-badge-after">Après</span>
+                            <p style="font-size:13px;color:var(--vert);font-weight:600;margin:4px 0 0;">{{ $t['before_after']['after'] }}</p>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <img src="{{ asset($t['image']) }}" alt="{{ $t['name'] }}"
+                             style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:3px solid var(--bordure);">
+                        <div>
+                            <strong style="color:var(--brun);">{{ $t['name'] }}</strong>
+                            <span style="display:block;font-size:13px;color:#8b7355;">{{ $t['role'] }} – {{ $t['location'] }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- ===== ACTUALITÉS ===== -->
+<section class="section-blanc section-pad">
+    <div class="container">
+        <div class="section-heading" data-animate>
+            <span class="section-label">Actualités & Conseils</span>
+            <h2>Nos Dernières Publications</h2>
+        </div>
+        <div class="row g-4">
+            @foreach($news as $article)
+            <div class="col-lg-4 col-md-6" data-animate>
+                <div class="dj-news-card">
+                    <img src="{{ asset($article['image']) }}" alt="{{ $article['title'] }}">
+                    <div class="dj-news-body">
+                        <p class="dj-news-date"><i class="far fa-calendar-alt"></i> {{ $article['date'] }}</p>
+                        <h5>{{ $article['title'] }}</h5>
+                        <p style="color:#6b5e50;font-size:14px;margin-bottom:16px;">{{ $article['excerpt'] }}</p>
+                        <a href="{{ route('contact') }}" style="color:var(--vert);font-weight:700;font-size:14px;">Lire plus →</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section style="background:linear-gradient(135deg, var(--brun) 0%, #1A6B2E 100%); padding:72px 0; text-align:center;">
+    <div class="container">
+        <h2 style="color:#fff;margin-bottom:16px;" data-animate>Prêt à transformer votre exploitation ?</h2>
+        <p style="color:rgba(255,255,255,0.75);font-size:18px;max-width:560px;margin:0 auto 32px;" data-animate>
+            Nos experts se déplacent sur votre parcelle pour un diagnostic gratuit.
+        </p>
+        <div class="dj-hero-actions" style="justify-content:center;" data-animate>
+            <a href="{{ route('contact') }}" class="btn-dj-primary btn-dj-orange">Demander un diagnostic</a>
+            <a href="https://wa.me/22376543210" target="_blank" class="btn-dj-primary" style="background:#25d366;">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+@endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Hero slider scroll indicator
+    const hero = document.querySelector('.dj-hero');
+    if (hero) {
+        hero.addEventListener('click', () => {
+            const next = hero.nextElementSibling;
+            if (next) next.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+});
+</script>
+@endpush
