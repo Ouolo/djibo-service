@@ -33,9 +33,9 @@
 
                 @foreach([
                     ['fas fa-map-marker-alt','Notre Adresse','Route de Ségou, Sébougou, Ségou, Mali'],
-                    ['fas fa-phone-alt','Téléphone','(+223) 76 54 32 10'],
+                    ['fas fa-phone-alt','Téléphone','(+223) +223 92 69 24 48'],
                     ['fab fa-whatsapp','WhatsApp','<a href="https://wa.me/22376543210" target="_blank" style="color:var(--vert);font-weight:700;">Cliquer ici pour discuter</a>'],
-                    ['fas fa-envelope','E-mail','contact@djiboservice.com'],
+                    ['fas fa-envelope','E-mail','djiboservices@gmail.com'],
                     ['fas fa-clock','Horaires','Lun-Ven: 08h00-17h00 · Sam: 09h00-13h00'],
                 ] as $info)
                 <div style="display:flex;gap:16px;margin-bottom:28px;" data-animate>

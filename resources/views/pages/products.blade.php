@@ -8,7 +8,12 @@
     <div class="breadcrumb-area bg-color-primary py-5 text-center text-white" style="background-image: linear-gradient(135deg, #1b5e3a, #10251e);">
         <div class="container">
             <h1 class="font-weight-bold text-white mb-2">🌱 Notre Catalogue Produits</h1>
-            <p class="lead text-warning m-0">Des solutions écologiques éprouvées pour revitaliser vos cultures</p>
+            <p class="lead text-warning m-0">
+                L’activateur de compost est un produit 100% naturel à base de jus stomacal des ruminants, permettant aux agriculteurs de produire du compost de haute qualité en seulement 10 jours, augmentant ainsi leurs rendements et réduisant leur dépendance aux engrais chimiques.</br>
+                Nous sommes la première entreprise à mettre sur place un tel produit (Activateur Bio) sur le marché Ouest Africain.</br> </br>
+                Notre technologie permet aux agriculteurs d’obtenir du compost de qualité en seulement 10 jours contrairement aux autres systèmes traditionnels qui nécessitent 45 jours à 90 jours voir plus, ce qui décourage les producteurs dans la production bio. Notre technique permet à nos agriculteurs de maintenir la production durable, biologique et la qualité des produits agricoles. 
+                Le compost activateur permet également aux agriculteurs d’utiliser seulement 5 à 10 tonnes de compost pour un hectare au lieu de 15 à 30 tonnes de compost préparé avec les méthodes habituelles.
+            </p>
         </div>
     </div>
 
@@ -59,6 +64,7 @@
 
                             <a href="https://wa.me/22376543210?text=Bonjour,%20je%20souhaite%20commander%20le%20BioActivateur%20Sol-Plus" target="_blank" class="ht-btn ht-btn-md">
                                 <i class="fab fa-whatsapp me-2"></i> Commander via WhatsApp
+       
                             </a>
                         </div>
                     </div>

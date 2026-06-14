@@ -16,22 +16,34 @@
     <div class="bg-white py-5 border-bottom">
         <div class="container">
             <div class="row text-center">
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0 wow animate__fadeInUp" data-wow-delay="0.1s">
-                    <h2 class="font-weight-bold text-success mb-1" style="font-size: 2.5rem;">500+</h2>
+                <div class="col-md-2 col-sm-6 mb-4 mb-md-0 wow animate__fadeInUp" data-wow-delay="0.1s">
+                    <h2 class="font-weight-bold text-success mb-1" style="font-size: 2.5rem;">10 000 +</h2>
                     <p class="text-muted small m-0 uppercase font-weight-bold">Producteurs formés</p>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0 wow animate__fadeInUp" data-wow-delay="0.2s">
-                    <h2 class="font-weight-bold text-success mb-1" style="font-size: 2.5rem;">150+</h2>
-                    <p class="text-muted small m-0 uppercase font-weight-bold">Hectares régénérés</p>
+                <div class="col-md-2 col-sm-6 wow animate__fadeInUp" data-wow-delay="0.4s">
+                    <h2 class="font-weight-bold text-success mb-1" style="font-size: 2.5rem;">611 168  +</h2>
+                    <p class="text-muted small m-0 uppercase font-weight-bold">personnes atteints indirectement  </p>
                 </div>
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0 wow animate__fadeInUp" data-wow-delay="0.3s">
+                <div class="col-md-2 col-sm-6 mb-4 mb-md-0 wow animate__fadeInUp" data-wow-delay="0.2s">
+                    <h2 class="font-weight-bold text-success mb-1" style="font-size: 2.5rem;">3 200 +</h2>
+                    <p class="text-muted small m-0 uppercase font-weight-bold">coopératives touchées</p>
+                </div>
+                <div class="col-md-2 col-sm-6 mb-4 mb-md-0 wow animate__fadeInUp" data-wow-delay="0.3s">
                     <h2 class="font-weight-bold text-success mb-1" style="font-size: 2.5rem;">50+</h2>
                     <p class="text-muted small m-0 uppercase font-weight-bold">Fermes accompagnées</p>
                 </div>
-                <div class="col-md-3 col-sm-6 wow animate__fadeInUp" data-wow-delay="0.4s">
+                <div class="col-md-2 col-sm-6 wow animate__fadeInUp" data-wow-delay="0.4s">
                     <h2 class="font-weight-bold text-success mb-1" style="font-size: 2.5rem;">1500+</h2>
                     <p class="text-muted small m-0 uppercase font-weight-bold">Litres d'activateur vendus</p>
                 </div>
+                
+                 <div class="col-md-2 col-sm-6 wow animate__fadeInUp" data-wow-delay="0.4s">
+                    <h2 class="font-weight-bold text-success mb-1" style="font-size: 2.5rem;">30 +</h2>
+                    <p class="text-muted small m-0 uppercase font-weight-bold">stagiaires Encadrer </p>
+                </div>
+            </div>
+                
+
             </div>
         </div>
     </div>

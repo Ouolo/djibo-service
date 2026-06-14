@@ -6,7 +6,10 @@
 <div class="dj-breadcrumb">
     <div class="container">
         <h1>🌾 Nos Services Agricoles</h1>
-        <p>Accompagnement, formation et appui-conseil pour sécuriser vos parcelles</p>
+        <p>
+           <strong> DJIBO SERVICES</strong> accompagne les producteurs, coopératives, organisations paysannes,<strong>ONG </strong> et projets de développement à travers une offre complète de services et de solutions innovantes pour une agriculture durable et résiliente.
+        
+        </p>
     </div>
 </div>
 

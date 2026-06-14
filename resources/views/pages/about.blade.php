@@ -22,18 +22,18 @@
                 <div class="col-lg-6 wow animate__fadeInRight" data-wow-delay="0.4s">
                     <div class="ps-lg-4">
                         <h6 class="text-color-primary font-weight-bold mb-3 uppercase">NOTRE HISTOIRE</h6>
-                        <h2 class="font-weight-bold mb-4">Depuis plus de 10 ans au service de la terre</h2>
+                        <h2 class="font-weight-bold mb-4">Depuis plus de 4 ans au service de la terre</h2>
                         <p class="text-muted mb-4">
-                            Fondé à Ségou par des passionnés d'agronomie, <strong>Djibo Service</strong> est né du constat alarmant de la dégradation rapide des sols arables au Mali sous l'effet du changement climatique et de l'usage abusif d'intrants chimiques.
+                            <STRong>DJIBO SERVICES</STRong>  est une entreprise verte malienne créée en 2022 dans le but de promouvoir une agriculture durable, productive et respectueuse de l’environnement. Née de la volonté de transformer les résultats de la recherche en solutions concrètes pour les producteurs, l’entreprise a développé des innovations locales dans le domaine des biofertilisants et des biopesticides afin de répondre aux défis de la dégradation des sols, de la baisse des rendements agricoles et de la dépendance aux intrants chimiques. Notre innovation phare est un activateur biologique permettant d’accélérer le processus de compostage et de produire un compost de qualité en seulement dix jours.
                         </p>
                         <p class="text-muted mb-4">
-                            Nous avons démarré comme un simple bureau de conseil. Très vite, pour répondre concrètement aux défis des producteurs, nous avons développé nos propres formules d'activateurs biologiques de compostage et d'intrants organiques pour offrir des alternatives crédibles, économiques et respectueuses de l'environnement.
+                            Depuis sa création,<STRong>DJIBO SERVICES</STRong> accompagne les producteurs, coopératives, PME/PMI et organisations paysannes de développement à travers des services de formation, de suivi-accompagnement, d'appui-conseil et de planification pour renforcer les systèmes alimentaires locaux et améliorer durablement les conditions de vie des communautés rurales.
                         </p>
                         
                         <div class="p-3 bg-light rounded-lg border-left border-success border-3">
                             <h5 class="font-weight-bold text-dark mb-2">Notre Mission</h5>
                             <p class="text-muted m-0">
-                                Démocratiser les techniques agroécologiques au Mali en fournissant des intrants biologiques de haute qualité, des formations pratiques et un accompagnement agronomique continu pour garantir la sécurité alimentaire et l'autosuffisance des producteurs.
+                                Développer et promouvoir des solutions agricoles innovantes, accessibles et durables permettant d'améliorer la fertilité des sols, d'accroître la productivité agricole et de renforcer la résilience des producteurs face aux défis climatiques et environnementaux.
                             </p>
                         </div>
                     </div>
@@ -54,30 +54,61 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4 wow animate__fadeInUp" data-wow-delay="0.2s">
+                <div class="col-md-6 mb-4 wow animate__fadeInUp" data-wow-delay="0.2s">
                     <div class="card h-100 p-4 border-0 shadow-sm text-center">
                         <div class="card-body">
                             <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-seedling"></i></div>
-                            <h5 class="font-weight-bold mb-3">Responsabilité Écologique</h5>
-                            <p class="text-muted m-0">Toutes nos actions et produits visent à régénérer la terre et préserver la biodiversité sahélienne.</p>
+                            <h5 class="font-weight-bold mb-3">Innovation</h5>
+                            <p class="text-muted m-0">
+                                Nous développons des solutions locales et innovantes répondant aux besoins réels des producteurs.        
+                          </p>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 mb-4 wow animate__fadeInUp" data-wow-delay="0.4s">
+                    <div class="card h-100 p-4 border-0 shadow-sm text-center">
+                        <div class="card-body">
+                            <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-handshake"></i></div>
+                            <h5 class="font-weight-bold mb-3">Durabilité</h5>
+                            <p class="text-muted m-0">
+                                Nous promouvons des pratiques agricoles respectueuses de l’environnement et favorables à la fertilité des sols.    
+                              </p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-4 mb-4 wow animate__fadeInUp" data-wow-delay="0.4s">
                     <div class="card h-100 p-4 border-0 shadow-sm text-center">
                         <div class="card-body">
                             <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-handshake"></i></div>
-                            <h5 class="font-weight-bold mb-3">Proximité & Engagement</h5>
-                            <p class="text-muted m-0">Nous croyons en un accompagnement direct sur le terrain, main dans la main avec le producteur agricole.</p>
+                            <h5 class="font-weight-bold mb-3">Integrité</h5>
+                            <p class="text-muted m-0">
+                                Nous agissons avec honnêteté, transparence et responsabilité envers nos partenaires et bénéficiaires.
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4 wow animate__fadeInUp" data-wow-delay="0.6s">
+
+                <div class="col-md-4 mb-4 wow animate__fadeInUp" data-wow-delay="0.4s">
                     <div class="card h-100 p-4 border-0 shadow-sm text-center">
                         <div class="card-body">
-                            <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-microscope"></i></div>
-                            <h5 class="font-weight-bold mb-3">Innovation Agricole</h5>
-                            <p class="text-muted m-0">Rechercher et formuler sans cesse des solutions biologiques innovantes adaptées aux sols locaux.</p>
+                            <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-handshake"></i></div>
+                            <h5 class="font-weight-bold mb-3">Engagement Communautaire</h5>
+                            <p class="text-muted m-0">
+                                Nous plaçons les producteurs et les communautés rurales au cœur de nos actions pour un développement inclusif.          
+                           </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4 wow animate__fadeInUp" data-wow-delay="0.4s">
+                    <div class="card h-100 p-4 border-0 shadow-sm text-center">
+                        <div class="card-body">
+                            <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-handshake"></i></div>
+                            <h5 class="font-weight-bold mb-3">Esprit de Partenariat</h5>
+                            <p class="text-muted m-0">
+                                Nous privilégions la collaboration avec les institutions publiques, les organisations de développement, les coopératives et le secteur privé pour maximiser notre impact.               
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -97,14 +128,14 @@
                         <h6 class="text-color-primary font-weight-bold mb-3 uppercase">PRÈS DE CHEZ VOUS</h6>
                         <h2 class="font-weight-bold mb-4">Notre Zone d'Intervention</h2>
                         <p class="text-muted mb-4">
-                            Basés principalement à Ségou, nous couvrons activement l'ensemble de la 4ème région du Mali. Nos techniciens interviennent régulièrement sur site dans les secteurs suivants :
+                            Basés principalement dans la region de Mopti, nous couvrons activement l'ensemble de la 5ème région du Mali et 5 autres region  du Mali à savoir Douentza, Bandiagara, Koutiala, Koulikoro, Sikasso, Bougouni, Ségou, Kita. Nos techniciens interviennent régulièrement sur site dans les secteurs suivants :
                         </p>
-                        <ul class="list-unstyled mb-4">
+                        <!-- <ul class="list-unstyled mb-4">
                             <li class="mb-3 text-muted"><i class="fas fa-map-marker-alt text-success me-2"></i> <strong>Ségou & Sébougou :</strong> Notre quartier général et notre ferme vitrine.</li>
                             <li class="mb-3 text-muted"><i class="fas fa-map-marker-alt text-success me-2"></i> <strong>Cercle de Bla :</strong> Zone à forte production céréalière et cotonnière.</li>
                             <li class="mb-3 text-muted"><i class="fas fa-map-marker-alt text-success me-2"></i> <strong>Cercle de San :</strong> Suivi des producteurs maraîchers et riziculteurs.</li>
                             <li class="mb-3 text-muted"><i class="fas fa-map-marker-alt text-success me-2"></i> <strong>Markala :</strong> Appui aux coopératives le long du fleuve Niger.</li>
-                        </ul>
+                        </ul> -->
                         <p class="text-muted m-0">
                             Grâce à notre réseau de distributeurs agréés, nos produits sont également expédiés et disponibles dans d'autres régions du Mali.
                         </p>
