@@ -22,19 +22,32 @@
 
     <style>
         /* ============================================
-           DESIGN SYSTEM – DJIBO SERVICE (Palette Sahel)
+           DESIGN SYSTEM – DJIBO SERVICE (Palette Vert Nature)
         ============================================ */
         :root {
-            --vert:       #1A6B2E;   /* Vert profond principal */
-            --vert-dark:  #124820;   /* Vert très sombre (navbar) */
-            --vert-light: #e8f5e9;   /* Fond vert très clair */
-            --orange:     #E65100;   /* Orange-Sahel accent */
-            --ocre:       #C8860A;   /* Terre ocre secondaire */
-            --creme:      #FAF6EF;   /* Crème sable fond */
-            --brun:       #2C1A0E;   /* Brun foncé texte */
-            --blanc:      #FFFFFF;
-            --gris-clair: #f1ede5;
-            --bordure:    #d4b896;   /* Bordure terre */
+            /* Couleurs principales */
+            --vert:             #2E7D32;   /* Vert Nature - logo, boutons principaux, titres */
+            --vert-dark:        #1B5E20;   /* Vert sombre pour navbar, footer sombre */
+            --vert-clair:       #66BB6A;   /* Vert Clair - icônes, cartes de services, arrière-plans légers */
+            --vert-light-bg:    #E8F5E9;   /* Version très claire du vert clair pour arrière-plans doux */
+            
+            /* Couleurs secondaires */
+            --brun-terre:       #8D6E63;   /* Brun Terre - rappels agricoles, compost & fertilité */
+            --jaune-agri:       #F9A825;   /* Jaune Agriculture - statistiques, chiffres clés, boutons d'action */
+            --bleu-confiance:   #1565C0;   /* Bleu Confiance - liens, éléments institutionnels, formations */
+            
+            /* Couleurs neutres */
+            --blanc:            #FFFFFF;   /* Blanc */
+            --gris-fonce:       #263238;   /* Gris foncé - texte principal */
+            --gris-clair:       #F5F7F8;   /* Gris clair - arrière-plans, bordures */
+            --bordure:          #E0E4E6;   /* Bordure neutre */
+
+            /* Mappage de compatibilité pour conserver le style sans casser le HTML existant */
+            --brun:             var(--gris-fonce);
+            --creme:            var(--gris-clair);
+            --orange:           var(--jaune-agri);
+            --ocre:             var(--brun-terre);
+            --vert-light:       var(--vert-light-bg);
         }
 
         /* ---- BASE ---- */
@@ -44,22 +57,22 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--brun);
-            background: var(--creme);
+            color: var(--gris-fonce);
+            background: var(--gris-clair);
             font-size: 16px;
             line-height: 1.7;
         }
 
         h1, h2, h3, h4, h5 {
             font-family: 'Playfair Display', serif;
-            color: var(--brun);
+            color: var(--vert); /* Vert Nature pour les titres */
             line-height: 1.25;
         }
 
         h6 { font-family: 'Inter', sans-serif; }
 
-        a { color: var(--vert); text-decoration: none; transition: color 0.25s; }
-        a:hover { color: var(--orange); }
+        a { color: var(--bleu-confiance); text-decoration: none; transition: color 0.25s; }
+        a:hover { color: var(--vert); }
 
         img { max-width: 100%; display: block; }
 
@@ -69,7 +82,7 @@
             top: 0; left: 0; right: 0;
             z-index: 1000;
             background: var(--vert-dark);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
             transition: background 0.3s;
         }
 
@@ -112,7 +125,7 @@
         .dj-brand-sub {
             font-size: 10px;
             font-weight: 600;
-            color: var(--ocre);
+            color: var(--jaune-agri);
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
@@ -141,21 +154,24 @@
         }
 
         .dj-nav-links li.active > a {
-            color: var(--ocre);
+            color: var(--jaune-agri) !important;
             font-weight: 700;
         }
 
         .dj-nav-cta {
-            background: var(--orange) !important;
-            color: #fff !important;
+            background: var(--jaune-agri) !important;
+            color: var(--gris-fonce) !important;
             border-radius: 24px !important;
             padding: 8px 20px !important;
             font-weight: 700 !important;
+            box-shadow: 0 4px 10px rgba(249, 168, 37, 0.2);
+            transition: all 0.3s !important;
         }
 
         .dj-nav-cta:hover {
-            background: #bf360c !important;
-            color: #fff !important;
+            background: var(--blanc) !important;
+            color: var(--vert-dark) !important;
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
         }
 
         /* Mobile hamburger */
@@ -195,17 +211,30 @@
             font-size: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        .dj-mobile-menu a:hover { color: var(--ocre); }
+        .dj-mobile-menu a:hover { color: var(--jaune-agri); }
 
         /* ---- MAIN CONTENT OFFSET ---- */
         .dj-page-body { padding-top: 68px; }
 
         /* ---- SECTION UTILITIES ---- */
-        .section-creme { background: var(--creme); }
+        .section-creme { background: var(--gris-clair); }
         .section-blanc { background: var(--blanc); }
-        .section-vert-pale { background: var(--vert-light); }
-        .section-brun { background: var(--brun); color: var(--creme); }
-        .section-brun h1, .section-brun h2, .section-brun h3 { color: var(--creme); }
+        .section-vert-pale { background: var(--vert-light-bg); }
+        .section-brun { background: var(--gris-fonce); color: var(--gris-clair); }
+        .section-brun h1, .section-brun h2, .section-brun h3 { color: var(--gris-clair); }
+
+        /* Custom section themes */
+        .section-compost-sols {
+            background-color: rgba(141, 110, 99, 0.08) !important; /* 8% opacity of Brun Terre */
+            border-top: 4px solid var(--brun-terre);
+            border-bottom: 4px solid var(--brun-terre);
+        }
+
+        .section-formations {
+            background-color: rgba(21, 101, 192, 0.05) !important; /* 5% opacity of Bleu Confiance */
+            border-top: 4px solid var(--bleu-confiance);
+            border-bottom: 4px solid var(--bleu-confiance);
+        }
 
         .section-pad { padding: 80px 0; }
         .section-pad-sm { padding: 48px 0; }
@@ -220,21 +249,108 @@
             font-weight: 700;
             letter-spacing: 2.5px;
             text-transform: uppercase;
-            color: var(--orange);
+            color: var(--vert-clair);
             display: block;
             margin-bottom: 10px;
         }
 
         .section-heading h2 {
             font-size: clamp(28px, 4vw, 42px);
-            color: var(--brun);
+            color: var(--vert); /* Vert Nature pour les titres de section */
         }
 
         .section-heading p {
             font-size: 17px;
-            color: #6b5e50;
+            color: var(--gris-fonce);
+            opacity: 0.8;
             max-width: 620px;
             margin: 16px auto 0;
+        }
+
+        /* ---- NEWS CARDS ---- */
+        .dj-news-card {
+            background: var(--blanc);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .dj-news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(46, 125, 50, 0.18);
+        }
+        .dj-news-card__img-wrap {
+            position: relative;
+            overflow: hidden;
+            height: 210px;
+        }
+        .dj-news-card__img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .dj-news-card:hover .dj-news-card__img-wrap img {
+            transform: scale(1.06);
+        }
+        .dj-news-card__date-badge {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            background: var(--jaune-agri);
+            color: var(--gris-fonce);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .dj-news-card__body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .dj-news-card__tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--vert-clair);
+            margin-bottom: 10px;
+        }
+        .dj-news-card__title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--gris-fonce);
+            margin-bottom: 10px;
+            line-height: 1.45;
+        }
+        .dj-news-card__excerpt {
+            font-size: 14px;
+            color: #6b5e50;
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 18px;
+        }
+        .dj-news-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--bleu-confiance);
+            text-decoration: none;
+            transition: gap 0.2s ease, color 0.2s ease;
+        }
+        .dj-news-card__link:hover {
+            color: var(--vert);
+            gap: 10px;
         }
 
         /* ---- BREADCRUMB ---- */
@@ -267,7 +383,7 @@
         }
 
         .dj-breadcrumb p {
-            color: var(--ocre);
+            color: var(--jaune-agri);
             font-size: 16px;
             margin-top: 10px;
             position: relative;
@@ -279,8 +395,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: var(--vert);
-            color: #fff;
+            background: var(--vert); /* Vert Nature */
+            color: #fff !important;
             padding: 14px 32px;
             border-radius: 40px;
             font-weight: 700;
@@ -288,38 +404,40 @@
             border: none;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 20px rgba(26, 107, 46, 0.25);
+            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.25);
             text-decoration: none;
         }
 
         .btn-dj-primary:hover {
             background: var(--vert-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(26, 107, 46, 0.35);
-            color: #fff;
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.35);
+            color: #fff !important;
         }
 
         .btn-dj-orange {
-            background: var(--orange);
-            box-shadow: 0 4px 20px rgba(230, 81, 0, 0.25);
+            background: var(--jaune-agri); /* Jaune Agriculture */
+            color: var(--gris-fonce) !important;
+            box-shadow: 0 4px 20px rgba(249, 168, 37, 0.25);
         }
 
         .btn-dj-orange:hover {
-            background: #bf360c;
-            box-shadow: 0 8px 30px rgba(230, 81, 0, 0.35);
+            background: var(--vert);
+            color: #fff !important;
+            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.35);
         }
 
         .btn-dj-outline {
             background: transparent;
             border: 2px solid rgba(255,255,255,0.6);
-            color: #fff;
+            color: #fff !important;
             box-shadow: none;
         }
 
         .btn-dj-outline:hover {
             background: rgba(255,255,255,0.12);
             border-color: #fff;
-            color: #fff;
+            color: #fff !important;
             box-shadow: none;
         }
 
@@ -334,54 +452,55 @@
 
         .dj-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(44, 26, 14, 0.12);
+            box-shadow: 0 20px 50px rgba(38, 50, 56, 0.1);
         }
 
         .dj-card-body { padding: 28px; }
 
         .dj-card-icon {
             width: 56px; height: 56px;
-            background: var(--vert-light);
+            background: var(--vert-light-bg);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 22px;
-            color: var(--vert);
+            color: var(--vert-clair); /* Vert Clair */
             margin-bottom: 18px;
         }
 
         /* ---- FOOTER ---- */
         .dj-footer {
-            background: var(--brun);
-            color: rgba(250, 246, 239, 0.8);
+            background: var(--gris-fonce); /* Gris Foncé */
+            color: rgba(255, 255, 255, 0.75);
             padding: 64px 0 0;
+            border-top: 5px solid var(--vert);
         }
 
         .dj-footer h4 {
-            color: var(--creme);
+            color: var(--blanc);
             font-size: 16px;
             font-weight: 700;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--ocre);
+            border-bottom: 2px solid var(--jaune-agri);
             display: inline-block;
         }
 
         .dj-footer ul { list-style: none; padding: 0; }
         .dj-footer ul li { margin-bottom: 10px; font-size: 14px; }
-        .dj-footer ul li a { color: rgba(250,246,239,0.75); font-size: 14px; }
-        .dj-footer ul li a:hover { color: var(--ocre); }
+        .dj-footer ul li a { color: rgba(255,255,255,0.75); font-size: 14px; }
+        .dj-footer ul li a:hover { color: var(--jaune-agri); }
 
         .dj-footer-bottom {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
             padding: 18px 0;
             margin-top: 48px;
             font-size: 13px;
-            color: rgba(250,246,239,0.5);
+            color: rgba(255,255,255,0.5);
         }
 
-        .dj-footer-bottom a { color: var(--ocre); }
+        .dj-footer-bottom a { color: var(--jaune-agri); }
 
         /* ---- ANIMATIONS ---- */
         @keyframes fadeUp {
@@ -417,9 +536,9 @@
             <!-- Logo -->
             <a href="{{ route('home') }}" class="dj-brand">
                 <svg class="dj-brand-leaf" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="40" cy="40" r="38" fill="#1A6B2E"/>
-                    <path d="M40 66 C40 66 40 40 28 32 C16 24 20 12 36 24 C36 24 38 28 40 34 C42 28 44 24 44 24 C60 12 64 24 52 32 C40 40 40 66 40 66Z" fill="#C8860A"/>
-                    <path d="M40 66 C40 66 40 44 36 38 C32 32 24 32 32 42 C32 42 36 45 38 50 C39 46 42 40 42 40 C52 34 54 42 46 46 C38 50 40 66 40 66Z" fill="#E8F5E9"/>
+                    <circle cx="40" cy="40" r="38" fill="var(--vert)"/>
+                    <path d="M40 66 C40 66 40 40 28 32 C16 24 20 12 36 24 C36 24 38 28 40 34 C42 28 44 24 44 24 C60 12 64 24 52 32 C40 40 40 66 40 66Z" fill="var(--jaune-agri)"/>
+                    <path d="M40 66 C40 66 40 44 36 38 C32 32 24 32 32 42 C32 42 36 45 38 50 C39 46 42 40 42 40 C52 34 54 42 46 46 C38 50 40 66 40 66Z" fill="var(--vert-clair)"/>
                 </svg>
                 <div class="dj-brand-text">
                     <span class="dj-brand-name">Djibo Service</span>
@@ -473,8 +592,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="mb-24" style="margin-bottom:24px">
                         <svg width="36" height="36" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-                            <circle cx="40" cy="40" r="38" fill="#1A6B2E"/>
-                            <path d="M40 66 C40 66 40 40 28 32 C16 24 20 12 36 24 C36 24 38 28 40 34 C42 28 44 24 44 24 C60 12 64 24 52 32 C40 40 40 66 40 66Z" fill="#C8860A"/>
+                            <circle cx="40" cy="40" r="38" fill="var(--vert)"/>
+                            <path d="M40 66 C40 66 40 40 28 32 C16 24 20 12 36 24 C36 24 38 28 40 34 C42 28 44 24 44 24 C60 12 64 24 52 32 C40 40 40 66 40 66Z" fill="var(--jaune-agri)"/>
                         </svg>
                     </div>
                     <p style="font-size:14px; margin-bottom:20px;">Djibo Service est votre partenaire agroécologique de confiance au Mali — intrants biologiques, formation et conseil agronomique depuis Ségou.</p>

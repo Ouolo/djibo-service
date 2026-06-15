@@ -39,7 +39,7 @@
                     ['fas fa-clock','Horaires','Lun-Ven: 08h00-17h00 · Sam: 09h00-13h00'],
                 ] as $info)
                 <div style="display:flex;gap:16px;margin-bottom:28px;" data-animate>
-                    <div style="width:48px;height:48px;background:var(--vert-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--vert);font-size:18px;flex-shrink:0;">
+                    <div style="width:48px;height:48px;background:var(--vert-light-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--vert-clair);font-size:18px;flex-shrink:0;">
                         <i class="{{ $info[0] }}"></i>
                     </div>
                     <div>

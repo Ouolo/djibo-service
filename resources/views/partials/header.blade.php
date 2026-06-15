@@ -26,10 +26,10 @@
                         <div class="header__logo">
                             <a href="{{ route('home') }}" class="d-flex align-items-center text-decoration-none">
                                 <svg class="me-2" width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="50" cy="50" r="48" fill="#1b5e3a" />
+                                    <circle cx="50" cy="50" r="48" fill="var(--vert)" />
                                     <!-- Plant Leaf Sprout -->
-                                    <path d="M50 80C50 80 50 50 35 40C20 30 25 15 45 30C45 30 48 35 50 42C52 35 55 30 55 30C75 15 80 30 65 40C50 50 50 80 50 80Z" fill="#f9a825" />
-                                    <path d="M50 80C50 80 50 55 45 48C40 41 30 40 40 52C40 52 45 56 48 62C49 58 52 50 52 50C65 42 68 52 58 58C48 64 50 80 50 80Z" fill="#a5d6a7" />
+                                    <path d="M50 80C50 80 50 50 35 40C20 30 25 15 45 30C45 30 48 35 50 42C52 35 55 30 55 30C75 15 80 30 65 40C50 50 50 80 50 80Z" fill="var(--jaune-agri)" />
+                                    <path d="M50 80C50 80 50 55 45 48C40 41 30 40 40 52C40 52 45 56 48 62C49 58 52 50 52 50C65 42 68 52 58 58C48 64 50 80 50 80Z" fill="var(--vert-clair)" />
                                 </svg>
                                 <div class="d-flex flex-column">
                                     <span class="logo-text text-dark">DJIBO SERVICE</span>

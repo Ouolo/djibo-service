@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Actualite;
+use App\Models\Produit;
+
 
 class PageController extends Controller
 {
@@ -11,73 +14,22 @@ class PageController extends Controller
      */
     private function getProducts()
     {
-        return [
-            [
-                'id' => 1,
-                'name' => 'BioActivateur Sol-Plus',
-                'category' => 'Activateurs',
-                'is_featured' => true,
-                'short_description' => 'Accélérateur biologique de compostage et régénérateur de sols fatigués.',
-                'description' => 'Le BioActivateur Sol-Plus est une formule unique à base de micro-organismes bénéfiques qui accélère la décomposition des matières organiques et restructure les sols en libérant les nutriments bloqués. Idéal pour revitaliser les sols sahéliens et booster le rendement des cultures de manière 100% écologique.',
-                'benefits' => [
-                    'Régénère la structure humique du sol',
-                    'Accélère le compostage (divise le temps par 3)',
-                    'Améliore la rétention d’eau dans le sol',
-                    'Stimule le développement racinaire'
-                ],
-                'usage' => 'Diluer 1 litre dans 100 litres d\'eau. Arroser le sol ou le tas de compost. Répéter toutes les 2 semaines.',
-                'image' => 'assets/images/box-image/blog-01-330x330.jpg',
-                'price' => '15 000 FCFA / Litre'
-            ],
-            [
-                'id' => 2,
-                'name' => 'Engrais Organique Djibo-Croissance',
-                'category' => 'Fertilisants',
-                'is_featured' => false,
-                'short_description' => 'Engrais organique complet enrichi en azote naturel et oligo-éléments.',
-                'description' => 'Spécialement formulé pour le maraîchage et les cultures céréalières, cet engrais organique assure une croissance vigoureuse sans risque de brûlure des racines ou de pollution des nappes phréatiques.',
-                'benefits' => [
-                    'Libération progressive des nutriments',
-                    'Enrichi en oligo-éléments essentiels',
-                    '100% respectueux de l\'environnement'
-                ],
-                'usage' => 'Appliquer 50g par plant au moment du repiquage ou du semis, puis incorporer légèrement au sol.',
-                'image' => 'assets/images/box-image/blog-02-330x330.jpg',
-                'price' => '8 500 FCFA / Sac de 25kg'
-            ],
-            [
-                'id' => 3,
-                'name' => 'Bioprotect Neem-Forte',
-                'category' => 'Biopesticides',
-                'is_featured' => false,
-                'short_description' => 'Insecticide et répulsif naturel à base d\'extraits de neem concentrés.',
-                'description' => 'Protégez vos cultures contre les ravageurs les plus courants (pucerons, chenilles, criquets) grâce à notre formulation naturelle biodégradable qui respecte les insectes pollinisateurs.',
-                'benefits' => [
-                    'Action systémique et de contact',
-                    'Sans résidus chimiques nocifs',
-                    'Élimine plus de 150 types de ravageurs'
-                ],
-                'usage' => 'Diluer 100ml dans 15 litres d\'eau (un pulvérisateur) et traiter les feuilles tôt le matin ou en fin de soirée.',
-                'image' => 'assets/images/box-image/blog-03-330x330.jpg',
-                'price' => '5 000 FCFA / Flacon de 500ml'
-            ],
-            [
-                'id' => 4,
-                'name' => 'Semences Maraîchères Sélectionnées',
-                'category' => 'Semences',
-                'is_featured' => false,
-                'short_description' => 'Variétés de semences à haut rendement et résistantes à la chaleur.',
-                'description' => 'Une sélection rigoureuse de semences de tomates, d\'oignons, de piments et de gombo, testées et approuvées pour leur adaptabilité au climat chaud et leur résistance aux maladies courantes.',
-                'benefits' => [
-                    'Taux de germination supérieur à 92%',
-                    'Tolérance élevée au stress hydrique',
-                    'Cycle court de production'
-                ],
-                'usage' => 'Semer en pépinière sur un substrat bien drainé et enrichi avec notre BioActivateur.',
-                'image' => 'assets/images/box-image/blog-04-330x330.jpg',
-                'price' => 'Prix variable selon la variété'
-            ]
-        ];
+        return Produit::actif()->get()->map(function ($p) {
+            return [
+                'id' => $p->id,
+                'name' => $p->nom,
+                'category' => $p->categorie,
+                'is_featured' => $p->en_vedette,
+                'short_description' => $p->description_courte,
+                'description' => $p->description,
+                'benefits' => is_array($p->avantages) ? $p->avantages : [],
+                'usage' => $p->mode_emploi,
+                'image' => empty($p->image) ? 'assets/images/box-image/blog-01-330x330.jpg' : (\Illuminate\Support\Str::startsWith($p->image, 'assets/')
+                                ? $p->image
+                                : 'storage/' . $p->image),
+                'price' => $p->prix,
+            ];
+        })->toArray();
     }
 
     private function getServices()
@@ -243,11 +195,22 @@ class PageController extends Controller
     public function home()
     {
         $featured_product = collect($this->getProducts())->firstWhere('is_featured', true);
-        $products = collect($this->getProducts())->where('is_featured', false)->take(3);
-        $services = $this->getServices();
-        $realisations = collect($this->getRealisations())->take(2);
-        $testimonials = $this->getTestimonials();
-        $news = $this->getNews();
+        $products         = collect($this->getProducts())->where('is_featured', false)->take(3);
+        $services         = $this->getServices();
+        $realisations     = collect($this->getRealisations())->take(2);
+        $testimonials     = $this->getTestimonials();
+
+        // Charger les actualités depuis la base de données
+        $news = Actualite::publie()->take(3)->get()->map(function ($a) {
+            return [
+                'title'  => $a->titre,
+                'date'   => $a->date_formattee,
+                'excerpt'=> $a->extrait,
+                'image'  => \Illuminate\Support\Str::startsWith($a->image, 'assets/')
+                                ? $a->image
+                                : 'storage/' . $a->image,
+            ];
+        });
 
         return view('home', compact('featured_product', 'products', 'services', 'realisations', 'testimonials', 'news'));
     }

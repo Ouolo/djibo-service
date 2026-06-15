@@ -5,10 +5,10 @@
 @section('content')
 
     <!-- Breadcrumb -->
-    <div class="breadcrumb-area bg-color-primary py-5 text-center text-white" style="background-image: linear-gradient(135deg, #1b5e3a, #10251e);">
+    <div class="breadcrumb-area bg-color-primary py-5 text-center text-white" style="background-image: linear-gradient(135deg, var(--vert-dark), var(--vert));">
         <div class="container">
             <h1 class="font-weight-bold text-white mb-2">🌱 Notre Catalogue Produits</h1>
-            <p class="lead text-warning m-0">
+            <p class="lead m-0" style="color: var(--jaune-agri) !important; font-weight: 700;">
                 L’activateur de compost est un produit 100% naturel à base de jus stomacal des ruminants, permettant aux agriculteurs de produire du compost de haute qualité en seulement 10 jours, augmentant ainsi leurs rendements et réduisant leur dépendance aux engrais chimiques.</br>
                 Nous sommes la première entreprise à mettre sur place un tel produit (Activateur Bio) sur le marché Ouest Africain.</br> </br>
                 Notre technologie permet aux agriculteurs d’obtenir du compost de qualité en seulement 10 jours contrairement aux autres systèmes traditionnels qui nécessitent 45 jours à 90 jours voir plus, ce qui décourage les producteurs dans la production bio. Notre technique permet à nos agriculteurs de maintenir la production durable, biologique et la qualité des produits agricoles. 
@@ -29,12 +29,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title-wrap text-center mb-5">
-                            <span class="badge bg-success py-2 px-4 rounded-pill mb-2">🔥 INNOVATION EN VEDETTE</span>
+                            <span class="badge py-2 px-4 rounded-pill mb-2" style="background-color: var(--brun-terre); color: #fff;">🔥 INNOVATION EN VEDETTE</span>
                             <h2 class="font-weight-bold">L'Activateur Biologique Révolutionnaire</h2>
                         </div>
                     </div>
                 </div>
-                <div class="row align-items-center bg-light p-4 p-md-5 rounded-lg shadow-sm">
+                <div class="row align-items-center p-4 p-md-5 rounded-lg shadow-sm" style="background-color: rgba(141, 110, 99, 0.08); border-left: 5px solid var(--brun-terre);">
                     <div class="col-lg-5 mb-4 mb-lg-0">
                         <div class="bg-white p-2 rounded shadow-sm">
                             <img src="{{ asset($featured['image']) }}" class="img-fluid rounded w-100" alt="{{ $featured['name'] }}" style="max-height: 400px; object-fit: cover;">
@@ -42,29 +42,29 @@
                     </div>
                     <div class="col-lg-7">
                         <div class="ps-lg-4">
-                            <span class="text-success font-weight-bold small uppercase d-block mb-1">{{ $featured['category'] }}</span>
+                            <span class="font-weight-bold small uppercase d-block mb-1" style="color: var(--brun-terre);">{{ $featured['category'] }}</span>
                             <h3 class="font-weight-bold text-dark mb-2">{{ $featured['name'] }}</h3>
-                            <h4 class="text-success font-weight-bold mb-4">{{ $featured['price'] }}</h4>
+                            <h4 class="font-weight-bold mb-4" style="color: var(--vert);">{{ $featured['price'] }}</h4>
                             <p class="text-muted mb-4">{{ $featured['description'] }}</p>
                             
                             <div class="row mb-4">
                                 <div class="col-md-6 mb-3">
-                                    <h5 class="font-weight-bold text-dark mb-2"><i class="fas fa-list-ul text-success me-2"></i> Avantages</h5>
+                                    <h5 class="font-weight-bold text-dark mb-2"><i class="fas fa-list-ul me-2" style="color: var(--vert-clair);"></i> Avantages</h5>
                                     <ul class="list-unstyled text-muted small">
                                         @foreach($featured['benefits'] as $benefit)
-                                            <li class="mb-1"><i class="fas fa-check text-success me-1"></i> {{ $benefit }}</li>
+                                            <li class="mb-1"><i class="fas fa-check me-1" style="color: var(--vert-clair);"></i> {{ $benefit }}</li>
                                         @endforeach
                                     </ul>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <h5 class="font-weight-bold text-dark mb-2"><i class="fas fa-info-circle text-success me-2"></i> Mode d'emploi</h5>
+                                    <h5 class="font-weight-bold text-dark mb-2"><i class="fas fa-info-circle me-2" style="color: var(--vert-clair);"></i> Mode d'emploi</h5>
                                     <p class="text-muted small m-0">{{ $featured['usage'] }}</p>
                                 </div>
                             </div>
 
-                            <a href="https://wa.me/22376543210?text=Bonjour,%20je%20souhaite%20commander%20le%20BioActivateur%20Sol-Plus" target="_blank" class="ht-btn ht-btn-md">
+                             <a href="https://wa.me/22376543210?text=Bonjour,%20je%20souhaite%20commander%20le%20BioActivateur%20Sol-Plus" target="_blank" 
+                                class="btn-dj-primary" style="background: #25d366; color: #fff;">
                                 <i class="fab fa-whatsapp me-2"></i> Commander via WhatsApp
-       
                             </a>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-wrap text-center mb-5">
-                        <h6 class="text-color-primary font-weight-bold mb-2">AUTRES INTRANTS</h6>
+                        <h6 class="font-weight-bold mb-2" style="color: var(--vert); letter-spacing: 1px;">AUTRES INTRANTS</h6>
                         <h3 class="font-weight-bold">Gamme Complète Djibo Service</h3>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                                 <div class="p-4">
                                     <span class="text-muted small uppercase d-block mb-1">{{ $product['category'] }}</span>
                                     <h5 class="font-weight-bold text-dark mb-2">{{ $product['name'] }}</h5>
-                                    <p class="text-success font-weight-bold mb-3">{{ $product['price'] }}</p>
+                                    <p class="font-weight-bold mb-3" style="color: var(--vert);">{{ $product['price'] }}</p>
                                     <p class="text-muted small mb-4">{{ $product['short_description'] }}</p>
                                     
                                     <div class="bg-light p-2 rounded mb-3">
@@ -103,7 +103,11 @@
                                 </div>
                             </div>
                             <div class="px-4 pb-4">
-                                <a href="https://wa.me/22376543210?text=Bonjour,%20je%20suis%20interesse%20par%20le%20produit%20{{ urlencode($product['name']) }}" target="_blank" class="btn btn-outline-success w-100 rounded-pill font-weight-bold">
+                                <a href="https://wa.me/22376543210?text=Bonjour,%20je%20suis%20interesse%20par%20le%20produit%20{{ urlencode($product['name']) }}" target="_blank" 
+                                   class="btn w-100 rounded-pill font-weight-bold" 
+                                   style="border: 2px solid var(--vert); color: var(--vert); background: transparent; transition: all 0.3s;"
+                                   onmouseover="this.style.background='var(--vert)'; this.style.color='#fff';"
+                                   onmouseout="this.style.background='transparent'; this.style.color='var(--vert)';">
                                     <i class="fab fa-whatsapp me-2"></i> Commander
                                 </a>
                             </div>

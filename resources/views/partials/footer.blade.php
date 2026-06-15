@@ -9,8 +9,8 @@
                     <div class="footer-widget__logo mb-30">
                         <div class="d-flex align-items-center">
                             <svg class="me-2" width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="48" fill="#1b5e3a" />
-                                <path d="M50 80C50 80 50 50 35 40C20 30 25 15 45 30C45 30 48 35 50 42C52 35 55 30 55 30C75 15 80 30 65 40C50 50 50 80 50 80Z" fill="#f9a825" />
+                                <circle cx="50" cy="50" r="48" fill="var(--vert)" />
+                                <path d="M50 80C50 80 50 50 35 40C20 30 25 15 45 30C45 30 48 35 50 42C52 35 55 30 55 30C75 15 80 30 65 40C50 50 50 80 50 80Z" fill="var(--jaune-agri)" />
                             </svg>
                             <span class="logo-text text-white">DJIBO SERVICE</span>
                         </div>
@@ -19,7 +19,7 @@
                         <li>Route de Ségou, Sébougou, Ségou, République du Mali</li>
                         <li><a href="mailto:contact@djiboservice.com" class="hover-style-link">contact@djiboservice.com</a></li>
                         <li><a href="tel:+22370001122" class="hover-style-link text-white font-weight--bold">(+223) 76 54 32 10</a></li>
-                        <li><a href="https://wa.me/22376543210" target="_blank" class="hover-style-link text-color-primary"><i class="fab fa-whatsapp me-2"></i> WhatsApp Direct</a></li>
+                        <li><a href="https://wa.me/22376543210" target="_blank" class="hover-style-link" style="color: var(--vert-clair) !important;"><i class="fab fa-whatsapp me-2"></i> WhatsApp Direct</a></li>
                     </ul>
                 </div>
 
@@ -55,7 +55,7 @@
                         <li>Samedi: 09:00 - 13:00</li>
                         <li>Dimanche: Fermé</li>
                         <li class="mt-3">
-                            <span class="badge bg-warning text-dark py-2 px-3 rounded-pill">
+                            <span class="badge py-2 px-3 rounded-pill" style="background-color: var(--jaune-agri) !important; color: var(--gris-fonce) !important;">
                                 🚜 Conseils Agronomiques Libres
                             </span>
                         </li>

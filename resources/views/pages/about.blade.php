@@ -2,180 +2,393 @@
 
 @section('title', 'À Propos – Djibo Service')
 
+@extends('layouts.app')
+
 @section('content')
 
-    <!-- Breadcrumb -->
-    <div class="breadcrumb-area bg-color-primary py-5 text-center text-white" style="background-image: linear-gradient(135deg, #1b5e3a, #10251e);">
-        <div class="container">
-            <h1 class="font-weight-bold text-white mb-2">🌿 À Propos de Nous</h1>
-            <p class="lead text-warning m-0">Histoire, Mission, Valeurs et Équipe de Djibo Service</p>
+{{-- STYLES SPÉCIFIQUES À CETTE PAGE --}}
+<style>
+    .about-hero {
+        position: relative;
+        padding: 140px 0 100px;
+        background: linear-gradient(135deg, rgba(27,94,32,0.95), rgba(46,125,50,0.85)), url('{{ asset('assets/images/universite/bati.jpg') }}') center/cover;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+    }
+    .about-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; left: 0; width: 100%; height: 60px;
+        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg"><path d="M0 120L1440 0V120H0Z" fill="%23ffffff"/></svg>') no-repeat bottom;
+        background-size: cover;
+    }
+    .about-hero h1 {
+        font-weight: 800;
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .about-hero p {
+        font-size: 1.25rem;
+        color: var(--jaune-agri);
+        font-weight: 600;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    /* Section Histoire */
+    .history-img-wrapper {
+        position: relative;
+        padding-right: 30px;
+        padding-bottom: 30px;
+    }
+    .history-img-wrapper::before {
+        content: '';
+        position: absolute;
+        bottom: 0; right: 0;
+        width: 80%; height: 80%;
+        background: var(--jaune-agri);
+        border-radius: 24px;
+        z-index: 0;
+    }
+    .history-img {
+        position: relative;
+        z-index: 1;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+    }
+    .history-badge {
+        position: absolute;
+        bottom: 40px;
+        left: -30px;
+        background: var(--vert-nature);
+        color: white;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 15px 30px rgba(46,125,50,0.3);
+        z-index: 2;
+        text-align: center;
+    }
+    .history-badge h3 { margin: 0; font-weight: 800; font-size: 2rem; color: #fff; }
+    .history-badge p { margin: 0; font-size: 0.9rem; font-weight: 600; }
+
+    /* Stats Banner */
+    .stats-banner {
+        background: var(--vert-dark);
+        padding: 80px 0;
+        color: white;
+        position: relative;
+    }
+    .stat-box {
+        text-align: center;
+        padding: 20px;
+        transition: transform 0.3s ease;
+    }
+    .stat-box:hover {
+        transform: translateY(-10px);
+    }
+    .stat-num {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--jaune-agri);
+        margin-bottom: 10px;
+        line-height: 1;
+    }
+    .stat-label {
+        font-size: 1.1rem;
+        font-weight: 500;
+        opacity: 0.9;
+    }
+
+    /* Valeurs */
+    .value-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        transition: all 0.4s ease;
+        height: 100%;
+        border: 1px solid rgba(0,0,0,0.02);
+    }
+    .value-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 40px rgba(46,125,50,0.1);
+        border-color: rgba(46,125,50,0.1);
+    }
+    .value-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(102,187,106,0.1);
+        color: var(--vert-nature);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        margin: 0 auto 24px;
+        transition: all 0.3s ease;
+    }
+    .value-card:hover .value-icon {
+        background: var(--vert-nature);
+        color: white;
+        transform: scale(1.1) rotate(5deg);
+    }
+    .value-card h5 {
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--gris-fonce);
+    }
+
+    /* Equipe */
+    .team-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+        text-align: center;
+    }
+    .team-card:hover {
+        transform: translateY(-10px);
+    }
+    .team-cover {
+        height: 140px;
+        background: linear-gradient(135deg, var(--vert-nature), var(--vert-clair));
+    }
+    .team-avatar {
+        width: 120px;
+        height: 120px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: -60px auto 20px;
+        border: 4px solid white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        color: var(--vert-nature);
+        font-size: 40px;
+    }
+</style>
+
+<!-- ===== HERO ===== -->
+<div class="about-hero" data-animate>
+    <div class="container">
+        <h1 style="color: white;">À Propos de Nous</h1>
+        <p>Découvrez l'histoire, la mission et les valeurs qui animent Djibo Service au quotidien pour une agriculture plus verte.</p>
+    </div>
+</div>
+
+<!-- ===== HISTOIRE & MISSION ===== -->
+<section class="section-pad bg-white">
+    <div class="container">
+        <div class="row align-items-center">
+            
+            <div class="col-lg-6 mb-5 mb-lg-0" data-animate>
+                <div class="history-img-wrapper">
+                    <img src="{{ asset('assets/images/universite/bati.jpg') }}" class="history-img" alt="Djibo Service">
+                    <div class="history-badge">
+                        <h3>2022</h3>
+                        <p>Année de création</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 ps-lg-5" data-animate>
+                <div class="section-heading mb-4 text-start">
+                    <span class="section-label">Notre Histoire</span>
+                    <h2 style="font-size: 2.5rem; line-height: 1.2;">Au service de la terre et des producteurs</h2>
+                </div>
+                <p class="text-muted mb-4" style="font-size: 1.1rem; line-height: 1.7;">
+                    <strong>DJIBO SERVICES</strong> est une entreprise verte malienne créée dans le but de promouvoir une agriculture durable, productive et respectueuse de l’environnement. Née de la volonté de transformer les résultats de la recherche en solutions concrètes, nous avons développé des innovations locales pour répondre à la dégradation des sols et à la dépendance aux intrants chimiques.
+                </p>
+                
+                <div class="p-4 mt-4" style="background: rgba(102,187,106,0.08); border-left: 4px solid var(--vert-nature); border-radius: 0 16px 16px 0;">
+                    <h5 class="font-weight-bold mb-2" style="color: var(--vert-nature);"><i class="fas fa-bullseye me-2"></i> Notre Mission</h5>
+                    <p class="text-muted m-0">
+                        Développer et promouvoir des solutions agricoles innovantes, accessibles et durables permettant d'améliorer la fertilité des sols, d'accroître la productivité et de renforcer la résilience des producteurs face aux défis climatiques.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
+</section>
 
-    <!-- Histoire & Mission -->
-    <div class="section-space--ptb_80 bg-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0 wow animate__fadeInLeft" data-wow-delay="0.2s">
-                    <img src="{{ asset('assets/images/universite/bati.jpg') }}" class="img-fluid rounded-lg shadow-sm" alt="Ferme Djibo Service" style="max-height: 450px; width: 100%; object-fit: cover;">
+<!-- ===== CHIFFRES CLÉS ===== -->
+<section class="stats-banner" data-animate>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-6 mb-4 mb-md-0">
+                <div class="stat-box">
+                    <div class="stat-num">4+</div>
+                    <div class="stat-label">Années d'expertise</div>
                 </div>
-                <div class="col-lg-6 wow animate__fadeInRight" data-wow-delay="0.4s">
-                    <div class="ps-lg-4">
-                        <h6 class="text-color-primary font-weight-bold mb-3 uppercase">NOTRE HISTOIRE</h6>
-                        <h2 class="font-weight-bold mb-4">Depuis plus de 4 ans au service de la terre</h2>
-                        <p class="text-muted mb-4">
-                            <STRong>DJIBO SERVICES</STRong>  est une entreprise verte malienne créée en 2022 dans le but de promouvoir une agriculture durable, productive et respectueuse de l’environnement. Née de la volonté de transformer les résultats de la recherche en solutions concrètes pour les producteurs, l’entreprise a développé des innovations locales dans le domaine des biofertilisants et des biopesticides afin de répondre aux défis de la dégradation des sols, de la baisse des rendements agricoles et de la dépendance aux intrants chimiques. Notre innovation phare est un activateur biologique permettant d’accélérer le processus de compostage et de produire un compost de qualité en seulement dix jours.
+            </div>
+            <div class="col-md-3 col-6 mb-4 mb-md-0">
+                <div class="stat-box">
+                    <div class="stat-num">500+</div>
+                    <div class="stat-label">Producteurs accompagnés</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-box">
+                    <div class="stat-num">8</div>
+                    <div class="stat-label">Régions couvertes</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-box">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">Solutions locales</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VALEURS ===== -->
+<section style="background: var(--gris-clair); padding: 100px 0;">
+    <div class="container">
+        <div class="section-heading text-center" data-animate>
+            <span class="section-label">Ce qui nous guide</span>
+            <h2>Nos Valeurs Fondamentales</h2>
+            <p>Les principes qui structurent notre engagement auprès des communautés rurales.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-lg-3 col-md-6" data-animate>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h5>Innovation</h5>
+                    <p class="text-muted m-0">Solutions locales et innovantes répondant aux besoins réels des agriculteurs.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-animate>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-leaf"></i></div>
+                    <h5>Durabilité</h5>
+                    <p class="text-muted m-0">Pratiques agricoles respectueuses de l’environnement et de la fertilité des sols.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-animate>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h5>Intégrité</h5>
+                    <p class="text-muted m-0">Honnêteté, transparence et responsabilité envers nos partenaires.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-animate>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h5>Communauté</h5>
+                    <p class="text-muted m-0">Les producteurs ruraux sont placés au cœur de toutes nos actions.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== ZONE INTERVENTION ===== -->
+<section class="section-pad bg-white">
+    <div class="container">
+        <div class="row align-items-center">
+            
+            <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0" data-animate>
+                <img src="{{ asset('assets/images/universite/univ.jpg') }}" class="img-fluid rounded-lg shadow-lg" alt="Zone d'intervention" style="border-radius: 24px;">
+            </div>
+
+            <div class="col-lg-6 order-lg-1 pe-lg-5" data-animate>
+                <div class="section-heading text-start mb-4">
+                    <span class="section-label">Où nous trouver</span>
+                    <h2>Une présence nationale au Mali</h2>
+                </div>
+                <p class="text-muted mb-4" style="font-size: 1.1rem;">
+                    Basés principalement dans la région de Mopti, nous couvrons activement l'ensemble de la 5ème région du Mali et nous nous étendons sur plusieurs autres zones stratégiques :
+                </p>
+
+                <div class="row mb-4">
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Mopti</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Douentza</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Bandiagara</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Ségou</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Sikasso</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Koulikoro</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Bougouni</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Kita</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="alert alert-success" style="background: rgba(102,187,106,0.1); border: 1px dashed var(--vert-clair); color: var(--vert-dark);">
+                    <i class="fas fa-truck-fast me-2"></i> Nos produits sont expédiés partout au Mali via notre réseau de distributeurs agréés.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== EQUIPE ===== -->
+<section style="background: var(--gris-clair); padding: 100px 0;">
+    <div class="container">
+        <div class="section-heading text-center" data-animate>
+            <span class="section-label">Des experts engagés</span>
+            <h2>Notre Équipe Dirigeante</h2>
+            <p>Découvrez les visages qui propulsent l'innovation agricole chez Djibo Service.</p>
+        </div>
+
+        <div class="row justify-content-center g-4">
+            @foreach($team as $member)
+            <div class="col-lg-4 col-md-6" data-animate>
+                <div class="team-card h-100">
+                    <div class="team-cover"></div>
+                    <div class="team-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <h4 class="font-weight-bold mb-1" style="color: var(--gris-fonce);">{{ $member['name'] }}</h4>
+                        <p class="font-weight-bold mb-3" style="color: var(--vert-nature); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                            {{ $member['role'] }}
                         </p>
-                        <p class="text-muted mb-4">
-                            Depuis sa création,<STRong>DJIBO SERVICES</STRong> accompagne les producteurs, coopératives, PME/PMI et organisations paysannes de développement à travers des services de formation, de suivi-accompagnement, d'appui-conseil et de planification pour renforcer les systèmes alimentaires locaux et améliorer durablement les conditions de vie des communautés rurales.
-                        </p>
-                        
-                        <div class="p-3 bg-light rounded-lg border-left border-success border-3">
-                            <h5 class="font-weight-bold text-dark mb-2">Notre Mission</h5>
-                            <p class="text-muted m-0">
-                                Développer et promouvoir des solutions agricoles innovantes, accessibles et durables permettant d'améliorer la fertilité des sols, d'accroître la productivité agricole et de renforcer la résilience des producteurs face aux défis climatiques et environnementaux.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Valeurs -->
-    <div class="section-space--ptb_80 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-wrap text-center mb-5">
-                        <h6 class="text-color-primary font-weight-bold mb-2">CE QUI NOUS GUIDE</h6>
-                        <h3 class="font-weight-bold">Nos Valeurs Fondamentales</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-4 wow animate__fadeInUp" data-wow-delay="0.2s">
-                    <div class="card h-100 p-4 border-0 shadow-sm text-center">
-                        <div class="card-body">
-                            <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-seedling"></i></div>
-                            <h5 class="font-weight-bold mb-3">Innovation</h5>
-                            <p class="text-muted m-0">
-                                Nous développons des solutions locales et innovantes répondant aux besoins réels des producteurs.        
-                          </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4 wow animate__fadeInUp" data-wow-delay="0.4s">
-                    <div class="card h-100 p-4 border-0 shadow-sm text-center">
-                        <div class="card-body">
-                            <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-handshake"></i></div>
-                            <h5 class="font-weight-bold mb-3">Durabilité</h5>
-                            <p class="text-muted m-0">
-                                Nous promouvons des pratiques agricoles respectueuses de l’environnement et favorables à la fertilité des sols.    
-                              </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4 wow animate__fadeInUp" data-wow-delay="0.4s">
-                    <div class="card h-100 p-4 border-0 shadow-sm text-center">
-                        <div class="card-body">
-                            <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-handshake"></i></div>
-                            <h5 class="font-weight-bold mb-3">Integrité</h5>
-                            <p class="text-muted m-0">
-                                Nous agissons avec honnêteté, transparence et responsabilité envers nos partenaires et bénéficiaires.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4 wow animate__fadeInUp" data-wow-delay="0.4s">
-                    <div class="card h-100 p-4 border-0 shadow-sm text-center">
-                        <div class="card-body">
-                            <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-handshake"></i></div>
-                            <h5 class="font-weight-bold mb-3">Engagement Communautaire</h5>
-                            <p class="text-muted m-0">
-                                Nous plaçons les producteurs et les communautés rurales au cœur de nos actions pour un développement inclusif.          
-                           </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4 wow animate__fadeInUp" data-wow-delay="0.4s">
-                    <div class="card h-100 p-4 border-0 shadow-sm text-center">
-                        <div class="card-body">
-                            <div class="text-success mb-3" style="font-size: 30px;"><i class="fas fa-handshake"></i></div>
-                            <h5 class="font-weight-bold mb-3">Esprit de Partenariat</h5>
-                            <p class="text-muted m-0">
-                                Nous privilégions la collaboration avec les institutions publiques, les organisations de développement, les coopératives et le secteur privé pour maximiser notre impact.               
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Zone d'intervention -->
-    <div class="section-space--ptb_80 bg-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0 wow animate__fadeInRight" data-wow-delay="0.2s">
-                    <img src="{{ asset('assets/images/universite/univ.jpg') }}" class="img-fluid rounded-lg shadow-sm" alt="Zone intervention" style="max-height: 450px; width: 100%; object-fit: cover;">
-                </div>
-                <div class="col-lg-6 order-lg-1 wow animate__fadeInLeft" data-wow-delay="0.4s">
-                    <div class="pe-lg-4">
-                        <h6 class="text-color-primary font-weight-bold mb-3 uppercase">PRÈS DE CHEZ VOUS</h6>
-                        <h2 class="font-weight-bold mb-4">Notre Zone d'Intervention</h2>
-                        <p class="text-muted mb-4">
-                            Basés principalement dans la region de Mopti, nous couvrons activement l'ensemble de la 5ème région du Mali et 5 autres region  du Mali à savoir Douentza, Bandiagara, Koutiala, Koulikoro, Sikasso, Bougouni, Ségou, Kita. Nos techniciens interviennent régulièrement sur site dans les secteurs suivants :
-                        </p>
-                        <!-- <ul class="list-unstyled mb-4">
-                            <li class="mb-3 text-muted"><i class="fas fa-map-marker-alt text-success me-2"></i> <strong>Ségou & Sébougou :</strong> Notre quartier général et notre ferme vitrine.</li>
-                            <li class="mb-3 text-muted"><i class="fas fa-map-marker-alt text-success me-2"></i> <strong>Cercle de Bla :</strong> Zone à forte production céréalière et cotonnière.</li>
-                            <li class="mb-3 text-muted"><i class="fas fa-map-marker-alt text-success me-2"></i> <strong>Cercle de San :</strong> Suivi des producteurs maraîchers et riziculteurs.</li>
-                            <li class="mb-3 text-muted"><i class="fas fa-map-marker-alt text-success me-2"></i> <strong>Markala :</strong> Appui aux coopératives le long du fleuve Niger.</li>
-                        </ul> -->
-                        <p class="text-muted m-0">
-                            Grâce à notre réseau de distributeurs agréés, nos produits sont également expédiés et disponibles dans d'autres régions du Mali.
+                        <p class="text-muted m-0" style="font-size: 0.95rem;">
+                            {{ $member['bio'] }}
                         </p>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
+</section>
 
-    <!-- Équipe -->
-    <div class="section-space--ptb_80 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-wrap text-center mb-5">
-                        <h6 class="text-color-primary font-weight-bold mb-2">DES EXPERTS PASSIONNÉS</h6>
-                        <h3 class="font-weight-bold">Notre Équipe Dirigeante</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                @foreach($team as $member)
-                    <div class="col-lg-4 col-md-6 mb-4 wow animate__fadeInUp" data-wow-delay="0.2s">
-                        <div class="card h-100 border-0 shadow-sm overflow-hidden text-center">
-                            <!-- Placeholder image colored as fallback or real team asset -->
-                            <div class="bg-success py-4 d-flex justify-content-center align-items-center" style="height: 180px; background-image: linear-gradient(135deg, #2e7d32, #1b5e3a);">
-                                <div class="rounded-circle bg-white d-flex justify-content-center align-items-center" style="width: 110px; height: 110px; border: 4px solid rgba(255,255,255,0.4);">
-                                    <i class="fas fa-user-tie text-success" style="font-size: 50px;"></i>
-                                </div>
-                            </div>
-                            <div class="card-body p-4">
-                                <h5 class="card-title font-weight-bold text-dark m-0">{{ $member['name'] }}</h5>
-                                <p class="text-success small font-weight-bold mb-3">{{ $member['role'] }}</p>
-                                <p class="card-text text-muted small">{{ $member['bio'] }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+<!-- ===== CTA FINAL ===== -->
+<section class="section-pad text-center bg-white" data-animate>
+    <div class="container">
+        <div class="p-5" style="background: linear-gradient(135deg, var(--vert-nature), var(--vert-dark)); border-radius: 24px; color: white; box-shadow: 0 20px 40px rgba(46,125,50,0.2);">
+            <h2 class="mb-3 font-weight-bold text-white">Prêt à transformer votre agriculture ?</h2>
+            <p class="mb-4" style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">Contactez-nous pour en savoir plus sur nos produits, nos formations ou pour devenir distributeur partenaire.</p>
+            <a href="{{ route('contact') }}" class="btn-dj-primary" style="background: var(--jaune-agri); color: var(--gris-fonce); font-size: 1.1rem; padding: 15px 40px;">
+                Contactez-nous <i class="fas fa-paper-plane ms-2"></i>
+            </a>
         </div>
     </div>
+</section>
 
 @endsection
