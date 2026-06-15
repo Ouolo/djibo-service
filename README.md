@@ -37,10 +37,15 @@ resources/views/
 └── home.blade.php             # Page d'accueil (hero, stats, services, produits, témoignages)
 
 app/Http/Controllers/
-└── PageController.php         # Contrôleur unique gérant toutes les pages et les données
+├── PageController.php         # Contrôleur public (fetch depuis la BDD)
+└── Admin/
+    ├── AuthController.php     # Authentification administrateur
+    ├── DashboardController.php# Tableau de bord et statistiques
+    ├── ActualiteController.php# CRUD complet des actualités
+    └── ProduitController.php  # CRUD complet des produits
 
 routes/
-└── web.php                    # Routes GET/POST de toutes les pages
+└── web.php                    # Routes GET/POST publiques + Routes Admin (protégées)
 ```
 
 ---
@@ -116,6 +121,23 @@ color: var(--vert); letter-spacing: 1px; font-weight: 700;
 
 ---
 
+## 🔒 Espace Administration (Backoffice)
+
+Un panneau d'administration sécurisé a été développé pour gérer dynamiquement le contenu du site public.
+
+**Fonctionnalités :**
+- **Sécurité** : Protégé par un `AdminMiddleware` (accès réservé si `is_admin = true`).
+- **Tableau de bord** : Statistiques globales, raccourcis et publications récentes.
+- **Gestion des Actualités** : CRUD complet, upload d'images, toggle Publier/Brouillon.
+- **Gestion des Produits** : CRUD complet, attributs multiples (avantages, prix), gestion des produits "En vedette" et toggle Actif/Inactif.
+
+**Accès par défaut (Seeder) :**
+- URL : `/admin/login`
+- Email : `admin@djiboservice.com`
+- Mot de passe : `djibo@2026`
+
+---
+
 ## 🔄 Changelog — Refactoring Nature Palette (Juin 2026)
 
 Migration complète de l'ancienne "Sahel Palette" vers la nouvelle "Nature Palette".
@@ -147,6 +169,23 @@ Migration complète de l'ancienne "Sahel Palette" vers la nouvelle "Nature Palet
 | `bg-warning` | `background-color: var(--jaune-agri)` | Badges localisation |
 | `#E65100` | `#8D6E63` (Brun Terre) | Épi de mil SVG hero |
 | `#a5d6a7` | `var(--vert-clair)` | Feuilles SVG logo |
+
+---
+
+## 🚀 Changelog — Backoffice & UI Premium (Juin 2026)
+
+Mise à niveau majeure du site avec un panneau d'administration et une interface utilisateur repensée.
+
+### 1. Développement du Backoffice (Laravel)
+- **Base de données** : Création des migrations et modèles pour `User` (ajout de `is_admin`), `Actualite`, et `Produit`.
+- **Controllers CRUD** : Implémentation des contrôleurs dans `App\Http\Controllers\Admin`.
+- **Interface Admin** : Création d'un layout `admin/layouts/app.blade.php` ultra-moderne avec sidebar sombre, cards de statistiques, et data tables.
+- **Liaison Frontend** : Le `PageController` récupère désormais les actualités et les produits actifs depuis la base de données au lieu d'un tableau en dur.
+
+### 2. Refonte Premium UI/UX (Frontend)
+- **Page d'Accueil** : Intégration des nouvelles "News Cards" (`dj-news-card`) avec effet de zoom au survol, date-badge et styles harmonisés.
+- **Page À Propos** : Redesign complet avec un Hero majestueux, une section Histoire asymétrique, une bannière de Chiffres Clés animée, et des "Valeurs" sous forme de cartes avec effets de lévitation (`hover-lift`).
+- **Page Témoignages** : Transformation des avis clients en cartes flottantes stylisées avec des encarts "Avant/Après" distincts et des badges de rôles.
 
 ---
 
