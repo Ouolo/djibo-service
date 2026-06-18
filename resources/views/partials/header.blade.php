@@ -32,8 +32,8 @@
                                     <path d="M50 80C50 80 50 55 45 48C40 41 30 40 40 52C40 52 45 56 48 62C49 58 52 50 52 50C65 42 68 52 58 58C48 64 50 80 50 80Z" fill="var(--vert-clair)" />
                                 </svg>
                                 <div class="d-flex flex-column">
-                                    <span class="logo-text text-dark">DJIBO SERVICE</span>
-                                    <span class="logo-subtext">Agro-écologie & Conseil</span>
+                                    <span class="logo-text text-dark">DJIBO SERVICES</span>
+                                    <span class="logo-subtext">Création – Innovation - Développement</span>
                                 </div>
                             </a>
                         </div>
