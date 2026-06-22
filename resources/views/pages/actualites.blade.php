@@ -103,7 +103,7 @@
 <div class="breadcrumb-area py-5 text-center text-white"
      style="background: linear-gradient(135deg, var(--vert-dark), var(--vert));">
     <div class="container">
-        <h1 class="font-weight-bold mb-2">📰 Notre Actualité</h1>
+        <h1 class="font-weight-bold mb-2 text-white">📰 Notre Actualité</h1>
         <p class="lead m-0" style="color: var(--jaune-agri); font-weight: 700;">
             Conseils agronomiques, activités terrain et nouveautés Djibo Services
         </p>

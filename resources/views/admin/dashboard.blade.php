@@ -29,25 +29,25 @@
         </div>
         <div>
             <div class="adm-stat__num" style="color:#2E7D32;">{{ $stats['publiees'] }}</div>
-            <div class="adm-stat__label">En ligne</div>
+            <div class="adm-stat__label">Publications en ligne</div>
         </div>
     </div>
     <div class="adm-stat">
-        <div class="adm-stat__icon" style="background:#fff8e1; color:#F9A825;">
-            <i class="fas fa-pencil-alt"></i>
+        <div class="adm-stat__icon" style="background:#fef3c7; color:#d97706;">
+            <i class="fas fa-trophy"></i>
         </div>
         <div>
-            <div class="adm-stat__num" style="color:#F9A825;">{{ $stats['brouillons'] }}</div>
-            <div class="adm-stat__label">Brouillons</div>
+            <div class="adm-stat__num" style="color:#d97706;">{{ $stats['total_reals'] }}</div>
+            <div class="adm-stat__label">Réalisations totales</div>
         </div>
     </div>
     <div class="adm-stat">
         <div class="adm-stat__icon" style="background:#e3f2fd; color:#1565C0;">
-            <i class="fas fa-globe"></i>
+            <i class="fas fa-eye"></i>
         </div>
         <div>
-            <div class="adm-stat__num" style="color:#1565C0;">8</div>
-            <div class="adm-stat__label">Pages du site</div>
+            <div class="adm-stat__num" style="color:#1565C0;">{{ $stats['reals_actives'] }}</div>
+            <div class="adm-stat__label">Réalisations visibles</div>
         </div>
     </div>
 </div>
@@ -109,14 +109,24 @@
 </div>
 
 {{-- Quick actions --}}
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
+<div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:20px;">
     <div class="adm-card">
         <div class="adm-card__body" style="text-align:center; padding:28px;">
             <div style="font-size:32px; margin-bottom:12px;">📝</div>
-            <div style="font-weight:700; color:#1a2e1b; margin-bottom:6px;">Rédiger une publication</div>
-            <div style="font-size:13px; color:#7a9a7d; margin-bottom:16px;">Partagez vos actualités, conseils et nouveautés avec vos visiteurs.</div>
+            <div style="font-weight:700; color:#1a2e1b; margin-bottom:6px;">Nouvelle publication</div>
+            <div style="font-size:13px; color:#7a9a7d; margin-bottom:16px;">Partagez vos actualités et conseils agronomiques.</div>
             <a href="{{ route('admin.actualites.create') }}" class="adm-btn adm-btn-primary">
-                <i class="fas fa-plus"></i> Nouvelle publication
+                <i class="fas fa-plus"></i> Créer
+            </a>
+        </div>
+    </div>
+    <div class="adm-card">
+        <div class="adm-card__body" style="text-align:center; padding:28px;">
+            <div style="font-size:32px; margin-bottom:12px;">🏆</div>
+            <div style="font-weight:700; color:#1a2e1b; margin-bottom:6px;">Nouvelle réalisation</div>
+            <div style="font-size:13px; color:#7a9a7d; margin-bottom:16px;">Ajoutez un projet terrain à votre portfolio.</div>
+            <a href="{{ route('admin.realisations.create') }}" class="adm-btn adm-btn-jaune">
+                <i class="fas fa-plus"></i> Créer
             </a>
         </div>
     </div>
@@ -124,9 +134,9 @@
         <div class="adm-card__body" style="text-align:center; padding:28px;">
             <div style="font-size:32px; margin-bottom:12px;">🌐</div>
             <div style="font-weight:700; color:#1a2e1b; margin-bottom:6px;">Voir le site public</div>
-            <div style="font-size:13px; color:#7a9a7d; margin-bottom:16px;">Vérifiez le rendu de vos publications sur la page d'accueil.</div>
+            <div style="font-size:13px; color:#7a9a7d; margin-bottom:16px;">Vérifiez le rendu de vos contenus en ligne.</div>
             <a href="{{ route('home') }}" target="_blank" class="adm-btn adm-btn-outline">
-                <i class="fas fa-external-link-alt"></i> Ouvrir le site
+                <i class="fas fa-external-link-alt"></i> Ouvrir
             </a>
         </div>
     </div>

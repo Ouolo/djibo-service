@@ -83,7 +83,7 @@
      style="background: linear-gradient(135deg, var(--vert-dark), var(--vert));">
 
     <div class="container">
-        <h1 class="font-weight-bold mb-2">⭐ Témoignages & Références</h1>
+        <h1 class="font-weight-bold mb-2 text-white">⭐ Témoignages & Références</h1>
         <p class="lead m-0" style="color: var(--jaune-agri); font-weight: 700;">
             Expériences réelles des producteurs accompagnés par Djibo Service
         </p>
@@ -199,36 +199,37 @@
             <h3 class="font-weight-bold">Nos partenaires</h3>
         </div>
 
-        <div class="row">
+        @php
+            $logoFolder = public_path('assets/images/logo-partenaire');
+            $logos = [];
+            if (file_exists($logoFolder)) {
+                $files = glob($logoFolder . '/*.{jpg,jpeg,png,gif,webp,svg,JPG,JPEG,PNG,WEBP,SVG}', GLOB_BRACE);
+                if ($files) {
+                    foreach ($files as $file) {
+                        $logos[] = 'assets/images/logo-partenaire/' . basename($file);
+                    }
+                }
+            }
+        @endphp
 
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="partner-card">
-                    <div class="partner-icon">🌱</div>
-                    Coopérative Maraîchère de Sébougou
+        <div class="row justify-content-center align-items-center">
+            @if(count($logos) > 0)
+                @foreach($logos as $logo)
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <div class="partner-card d-flex align-items-center justify-content-center" style="min-height: 140px; padding: 15px;">
+                            <img src="{{ asset($logo) }}" alt="Partenaire" style="max-height: 90px; max-width: 100%;">
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="partner-card">
+                        <div class="partner-icon">🌱</div>
+                        Coopérative Maraîchère de Mopti
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="partner-card">
-                    <div class="partner-icon">🌾</div>
-                    Union des Producteurs Niger-Mali
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="partner-card">
-                    <div class="partner-icon">🚜</div>
-                    AgroDealer Al-Baraka Ségou
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="partner-card">
-                    <div class="partner-icon">🧪</div>
-                    Labo Microbiologie FAMA
-                </div>
-            </div>
-
+             
+            @endif
         </div>
 
     </div>

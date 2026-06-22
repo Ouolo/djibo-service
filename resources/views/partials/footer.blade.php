@@ -1,3 +1,39 @@
+<style>
+    /* Fond commun */
+.social-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease;
+}
+
+/* Couleurs officielles des icônes */
+.social-link.facebook i {
+    color: #1877F2;
+}
+
+.social-link.instagram i {
+    color: #E4405F;
+}
+
+.social-link.tiktok i {
+    color: #ffffff; /* blanc pour être visible sur le fond sombre */
+}
+
+.social-link.whatsapp i {
+    color: #25D366;
+}
+
+/* Effet au survol */
+.social-link:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.2);
+}
+</style>
 <!--====================  Footer Area ====================-->
 <div class="footer-area-wrapper bg-gray">
     <div class="footer-area section-space--ptb_80">
@@ -8,18 +44,25 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 footer-widget">
                     <div class="footer-widget__logo mb-30">
                         <div class="d-flex align-items-center">
-                            <svg class="me-2" width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="me-2" width="35" height="35" viewBox="0 0 100 100" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="50" cy="50" r="48" fill="var(--vert)" />
-                                <path d="M50 80C50 80 50 50 35 40C20 30 25 15 45 30C45 30 48 35 50 42C52 35 55 30 55 30C75 15 80 30 65 40C50 50 50 80 50 80Z" fill="var(--jaune-agri)" />
+                                <path
+                                    d="M50 80C50 80 50 50 35 40C20 30 25 15 45 30C45 30 48 35 50 42C52 35 55 30 55 30C75 15 80 30 65 40C50 50 50 80 50 80Z"
+                                    fill="var(--jaune-agri)" />
                             </svg>
                             <span class="logo-text text-white">DJIBO SERVICE</span>
                         </div>
                     </div>
                     <ul class="footer-widget__list">
                         <li>Route de Ségou, Sébougou, Ségou, République du Mali</li>
-                        <li><a href="mailto:contact@djiboservice.com" class="hover-style-link">contact@djiboservice.com</a></li>
-                        <li><a href="tel:+22370001122" class="hover-style-link text-white font-weight--bold">(+223) 76 54 32 10</a></li>
-                        <li><a href="https://wa.me/22376543210" target="_blank" class="hover-style-link" style="color: var(--vert-clair) !important;"><i class="fab fa-whatsapp me-2"></i> WhatsApp Direct</a></li>
+                        <li><a href="mailto:contact@djiboservice.com"
+                                class="hover-style-link">contact@djiboservice.com</a></li>
+                        <li><a href="tel:+22370001122" class="hover-style-link text-white font-weight--bold">(+223) 76
+                                54 32 10</a></li>
+                        <li><a href="https://wa.me/22376543210" target="_blank" class="hover-style-link"
+                                style="color: var(--vert-clair) !important;"><i class="fab fa-whatsapp me-2"></i>
+                                WhatsApp Direct</a></li>
                     </ul>
                 </div>
 
@@ -55,7 +98,8 @@
                         <li>Samedi: 09:00 - 13:00</li>
                         <li>Dimanche: Fermé</li>
                         <li class="mt-3">
-                            <span class="badge py-2 px-3 rounded-pill" style="background-color: var(--jaune-agri) !important; color: var(--gris-fonce) !important;">
+                            <span class="badge py-2 px-3 rounded-pill"
+                                style="background-color: var(--jaune-agri) !important; color: var(--gris-fonce) !important;">
                                 🚜 Conseils Agronomiques Libres
                             </span>
                         </li>
@@ -75,13 +119,33 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <ul class="list ht-social-networks solid-rounded-icon">
-                        <li class="item"><a href="#" target="_blank" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f link-icon"></i></a></li>
-                        <li class="item"><a href="https://wa.me/22376543210" target="_blank" aria-label="WhatsApp" class="social-link"><i class="fab fa-whatsapp link-icon"></i></a></li>
-                        <li class="item"><a href="#" target="_blank" aria-label="Linkedin" class="social-link"><i class="fab fa-linkedin link-icon"></i></a></li>
-                    </ul>
+    <li class="item">
+        <a href="#" target="_blank" aria-label="Facebook" class="social-link facebook">
+            <i class="fab fa-facebook-f link-icon"></i>
+        </a>
+    </li>
+
+    <li class="item">
+        <a href="#" target="_blank" aria-label="Instagram" class="social-link instagram">
+            <i class="fab fa-instagram link-icon"></i>
+        </a>
+    </li>
+
+    <li class="item">
+        <a href="#" target="_blank" aria-label="TikTok" class="social-link tiktok">
+            <i class="fab fa-tiktok link-icon"></i>
+        </a>
+    </li>
+
+    <li class="item">
+        <a href="https://wa.me/22376543210" target="_blank" aria-label="WhatsApp" class="social-link whatsapp">
+            <i class="fab fa-whatsapp link-icon"></i>
+        </a>
+    </li>
+</ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!--====================  End of Footer Area ====================-->
+<!--====================  End    of Footer Area ====================-->

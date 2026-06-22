@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Actualite;
 use App\Models\Produit;
+use App\Models\Realisation;
 
 
 class PageController extends Controller
@@ -79,6 +80,25 @@ class PageController extends Controller
 
     private function getRealisations()
     {
+        $fromDb = Realisation::actif()->get();
+
+        // Si la BDD contient des réalisations, on les utilise
+        if ($fromDb->isNotEmpty()) {
+            return $fromDb->map(function ($r) {
+                return [
+                    'id'          => $r->id,
+                    'title'       => $r->titre,
+                    'location'    => $r->localisation,
+                    'impact'      => $r->impact,
+                    'description' => $r->description,
+                    'image'       => \Illuminate\Support\Str::startsWith($r->image ?? '', 'assets/')
+                                        ? ($r->image ?? 'assets/images/realisation/formation.jpg')
+                                        : 'storage/' . ($r->image ?? ''),
+                ];
+            })->toArray();
+        }
+
+        // Fallback statique si la BDD est vide
         return [
             [
                 'id' => 1,
@@ -104,30 +124,6 @@ class PageController extends Controller
                 'description' => 'Dotation en intrants organiques et formation complète sur la production de tomates hors-saison. Le projet a permis d\'augmenter les revenus mensuels des familles bénéficiaires de près de 150%.',
                 'image' => 'assets/images/realisation/amenagement deni hectar en tomate.jpg'
             ],
-            [
-                'id' => 4,
-                'title' => 'Aménagement de Parcelles de Papayes',
-                'location' => 'Ségou (Mali)',
-                'impact' => '1 hectare de papayes planté',
-                'description' => 'Accompagnement technique de producteurs pour la mise en place d\'une plantation moderne de papayers de haute productivité avec système d\'irrigation localisé.',
-                'image' => "assets/images/realisation/amenagement d'unhectar en papaye.jpg"
-            ],
-            [
-                'id' => 5,
-                'title' => 'Encadrement Pratique des Jeunes Stagiaires',
-                'location' => 'Centre Djibo-Bio',
-                'impact' => '30+ stagiaires formés et qualifiés',
-                'description' => 'Encadrement professionnel d\'étudiants en agronomie et jeunes ruraux sur la production d\'intrants organiques et la conduite d\'exploitations agroécologiques.',
-                'image' => 'assets/images/realisation/stagaire.jpg'
-            ],
-            [
-                'id' => 6,
-                'title' => 'Réalisation de Diagnostics de Parcelles',
-                'location' => 'Région de Ségou',
-                'impact' => '100+ diagnostics de sols effectués',
-                'description' => 'Fourniture de fiches techniques personnalisées et de conseils pratiques pour optimiser la fertilisation naturelle et la protection des cultures.',
-                'image' => 'assets/images/realisation/ficheTechnique.jpg'
-            ]
         ];
     }
 
@@ -137,9 +133,9 @@ class PageController extends Controller
             [
                 'name' => 'Amadou Diallo',
                 'role' => 'Maraîcher professionnel',
-                'location' => 'Sébougou',
+                'location' => 'Mopti',
                 'quote' => 'J\'utilisais des engrais chimiques depuis des années et mon sol devenait stérile et dur comme de la pierre. Depuis que j\'applique le BioActivateur de Djibo Service, la terre est redevenue meuble et mes oignons sont de bien meilleure qualité !',
-                'image' => 'assets/images/testimonial/testimonial-01-70x70.png',
+                'image' => 'assets/images/logo-djibo.jpg',
                 'before_after' => [
                     'before' => 'Terre compacte et rendement de 8 tonnes/ha',
                     'after' => 'Terre riche et rendement de 14.5 tonnes/ha avec économie d\'eau'
@@ -148,9 +144,9 @@ class PageController extends Controller
             [
                 'name' => 'Fatoumata Traoré',
                 'role' => 'Présidente de coopérative',
-                'location' => 'Pélengana',
+                'location' => 'Badiangara',
                 'quote' => 'La formation que nous avons reçue de Djibo Service a changé notre façon de voir l\'agriculture. Nous savons maintenant fabriquer notre propre compost en un temps record et nos produits se vendent plus cher car ils sont sains.',
-                'image' => 'assets/images/testimonial/testimonial-02-70x70.png',
+                'image' => 'assets/images/logo-djibo.jpg',
                 'before_after' => [
                     'before' => 'Production aléatoire sujette aux maladies',
                     'after' => 'Contrôle biologique des ravageurs et récolte garantie stable'

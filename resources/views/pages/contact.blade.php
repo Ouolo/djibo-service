@@ -32,7 +32,7 @@
                 <p style="color:#6b5e50;margin-bottom:36px;">Appelez-nous, écrivez-nous ou passez directement à nos bureaux à Ségou.</p>
 
                 @foreach([
-                    ['fas fa-map-marker-alt','Notre Adresse','Route de Ségou, Sébougou, Ségou, Mali'],
+                    ['fas fa-map-marker-alt','Notre Adresse','Route de Mopti, Sevare, Mopti, Mali'],
                     ['fas fa-phone-alt','Téléphone','(+223) +223 92 69 24 48'],
                     ['fab fa-whatsapp','WhatsApp','<a href="https://wa.me/22376543210" target="_blank" style="color:var(--vert);font-weight:700;">Cliquer ici pour discuter</a>'],
                     ['fas fa-envelope','E-mail','djiboservices@gmail.com'],

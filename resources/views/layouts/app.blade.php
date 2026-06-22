@@ -647,7 +647,9 @@
             <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
                 <span>&copy; 2026 <a href="{{ route('home') }}">Djibo Services</a>. Tous droits réservés.</span>
                 <div class="d-flex gap-3">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/djibobio/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     <a href="https://wa.me/22376543210" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>

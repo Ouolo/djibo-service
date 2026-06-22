@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ActualiteController;
 use App\Http\Controllers\Admin\ProduitController;
+use App\Http\Controllers\Admin\RealisationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +53,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('produits', ProduitController::class);
         Route::patch('produits/{produit}/toggle', [ProduitController::class, 'toggleActif'])
             ->name('produits.toggle');
+
+        // Réalisations – CRUD complet
+        Route::resource('realisations', RealisationController::class);
+        Route::patch('realisations/{realisation}/toggle', [RealisationController::class, 'toggleActif'])
+            ->name('realisations.toggle');
     });
 });

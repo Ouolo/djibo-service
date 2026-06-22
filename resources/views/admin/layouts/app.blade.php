@@ -266,9 +266,21 @@
             @endif
         </a>
 
+        <a href="{{ route('admin.realisations.index') }}"
+           class="adm-nav__link {{ request()->routeIs('admin.realisations.*') ? 'active' : '' }}">
+            <i class="fas fa-trophy"></i> Réalisations
+            @php $totalReals = \App\Models\Realisation::count(); @endphp
+            @if($totalReals > 0)
+                <span class="adm-nav__badge">{{ $totalReals }}</span>
+            @endif
+        </a>
+
         <div class="adm-nav__label" style="margin-top:12px;">Raccourcis</div>
         <a href="{{ route('admin.actualites.create') }}" class="adm-nav__link">
             <i class="fas fa-plus-circle"></i> Nouvelle publication
+        </a>
+        <a href="{{ route('admin.realisations.create') }}" class="adm-nav__link">
+            <i class="fas fa-plus-circle"></i> Nouvelle réalisation
         </a>
         <a href="{{ route('home') }}" target="_blank" class="adm-nav__link">
             <i class="fas fa-external-link-alt"></i> Voir le site
