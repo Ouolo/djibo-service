@@ -2,7 +2,6 @@
 
 @section('title', 'À Propos – Djibo Service')
 
-@extends('layouts.app')
 
 @section('content')
 
@@ -65,7 +64,7 @@
         position: absolute;
         bottom: 40px;
         left: -30px;
-        background: var(--vert-nature);
+        background: var(--vert);
         color: white;
         padding: 20px;
         border-radius: 16px;
@@ -124,7 +123,7 @@
         width: 80px;
         height: 80px;
         background: rgba(102,187,106,0.1);
-        color: var(--vert-nature);
+        color: var(--vert);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -134,7 +133,7 @@
         transition: all 0.3s ease;
     }
     .value-card:hover .value-icon {
-        background: var(--vert-nature);
+        background: var(--vert);
         color: white;
         transform: scale(1.1) rotate(5deg);
     }
@@ -158,7 +157,7 @@
     }
     .team-cover {
         height: 140px;
-        background: linear-gradient(135deg, var(--vert-nature), var(--vert-clair));
+        background: linear-gradient(135deg, var(--vert), var(--vert-clair));
     }
     .team-avatar {
         width: 120px;
@@ -171,7 +170,7 @@
         margin: -60px auto 20px;
         border: 4px solid white;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        color: var(--vert-nature);
+        color: var(--vert);
         font-size: 40px;
     }
 </style>
@@ -191,7 +190,7 @@
             
             <div class="col-lg-6 mb-5 mb-lg-0" data-animate>
                 <div class="history-img-wrapper">
-                    <img src="{{ asset('assets/images/universite/bati.jpg') }}" class="history-img" alt="Djibo Service">
+                    <img src="{{ asset('assets/images/realisation/propos.jpg') }}" class="history-img" alt="Djibo Service">
                     <div class="history-badge">
                         <h3>2022</h3>
                         <p>Année de création</p>
@@ -208,8 +207,8 @@
                     <strong>DJIBO SERVICES</strong> est une entreprise verte malienne créée dans le but de promouvoir une agriculture durable, productive et respectueuse de l’environnement. Née de la volonté de transformer les résultats de la recherche en solutions concrètes, nous avons développé des innovations locales pour répondre à la dégradation des sols et à la dépendance aux intrants chimiques.
                 </p>
                 
-                <div class="p-4 mt-4" style="background: rgba(102,187,106,0.08); border-left: 4px solid var(--vert-nature); border-radius: 0 16px 16px 0;">
-                    <h5 class="font-weight-bold mb-2" style="color: var(--vert-nature);"><i class="fas fa-bullseye me-2"></i> Notre Mission</h5>
+                <div class="p-4 mt-4" style="background: rgba(102,187,106,0.08); border-left: 4px solid var(--vert); border-radius: 0 16px 16px 0;">
+                    <h5 class="font-weight-bold mb-2" style="color: var(--vert);"><i class="fas fa-bullseye me-2"></i> Notre Mission</h5>
                     <p class="text-muted m-0">
                         Développer et promouvoir des solutions agricoles innovantes, accessibles et durables permettant d'améliorer la fertilité des sols, d'accroître la productivité et de renforcer la résilience des producteurs face aux défis climatiques.
                     </p>
@@ -305,7 +304,7 @@
         <div class="row align-items-center">
             
             <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0" data-animate>
-                <img src="{{ asset('assets/images/universite/univ.jpg') }}" class="img-fluid rounded-lg shadow-lg" alt="Zone d'intervention" style="border-radius: 24px;">
+                <img src="{{ asset('assets/images/realisation/zone.jpg') }}" class="img-fluid rounded-lg shadow-lg" alt="Zone d'intervention" style="border-radius: 24px;">
             </div>
 
             <div class="col-lg-6 order-lg-1 pe-lg-5" data-animate>
@@ -314,16 +313,17 @@
                     <h2>Une présence nationale au Mali</h2>
                 </div>
                 <p class="text-muted mb-4" style="font-size: 1.1rem;">
-                    Basés principalement dans la région de Mopti, nous couvrons activement l'ensemble de la 5ème région du Mali et nous nous étendons sur plusieurs autres zones stratégiques :
+                    Basés principalement dans la région de Mopti, nous disposons également de deux annexes à Bamako et Ségou pour mieux vous servir. Nous couvrons activement l'ensemble de la 5ème région du Mali et nous nous étendons sur plusieurs autres zones stratégiques :
                 </p>
 
                 <div class="row mb-4">
                     <div class="col-6">
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Mopti</li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i> Mopti (Siège)</li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i> Bamako (Annexe)</li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i> Ségou (Annexe)</li>
                             <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Douentza</li>
                             <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Bandiagara</li>
-                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Ségou</li>
                         </ul>
                     </div>
                     <div class="col-6">
@@ -359,17 +359,19 @@
             <div class="col-lg-4 col-md-6" data-animate>
                 <div class="team-card h-100">
                     <div class="team-cover"></div>
-                    <div class="team-avatar">
-                        <i class="fas fa-user-tie"></i>
+                    <div class="team-avatar overflow-hidden">
+                        @if(!empty($member['image']))
+                            <img src="{{ asset($member['image']) }}" alt="{{ $member['name'] }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        @else
+                            <i class="fas fa-user-tie"></i>
+                        @endif
                     </div>
                     <div class="p-4 pt-0">
                         <h4 class="font-weight-bold mb-1" style="color: var(--gris-fonce);">{{ $member['name'] }}</h4>
-                        <p class="font-weight-bold mb-3" style="color: var(--vert-nature); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                        <p class="font-weight-bold mb-3" style="color: var(--vert); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
                             {{ $member['role'] }}
                         </p>
-                        <p class="text-muted m-0" style="font-size: 0.95rem;">
-                            {{ $member['bio'] }}
-                        </p>
+                       
                     </div>
                 </div>
             </div>
@@ -381,7 +383,7 @@
 <!-- ===== CTA FINAL ===== -->
 <section class="section-pad text-center bg-white" data-animate>
     <div class="container">
-        <div class="p-5" style="background: linear-gradient(135deg, var(--vert-nature), var(--vert-dark)); border-radius: 24px; color: white; box-shadow: 0 20px 40px rgba(46,125,50,0.2);">
+        <div class="p-5" style="background: linear-gradient(135deg, var(--vert), var(--vert-dark)); border-radius: 24px; color: white; box-shadow: 0 20px 40px rgba(46,125,50,0.2);">
             <h2 class="mb-3 font-weight-bold text-white">Prêt à transformer votre agriculture ?</h2>
             <p class="mb-4" style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">Contactez-nous pour en savoir plus sur nos produits, nos formations ou pour devenir distributeur partenaire.</p>
             <a href="{{ route('contact') }}" class="btn-dj-primary" style="background: var(--jaune-agri); color: var(--gris-fonce); font-size: 1.1rem; padding: 15px 40px;">
@@ -389,6 +391,6 @@
             </a>
         </div>
     </div>
-</section>
+</section>  
 
 @endsection

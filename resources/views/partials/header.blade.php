@@ -64,9 +64,7 @@
                                                     <li class="{{ Route::is('testimonials') ? 'active' : '' }}">
                                                         <a href="{{ route('testimonials') }}"><span>Témoignages</span></a>
                                                     </li>
-                                                    <li class="{{ Route::is('distributors') ? 'active' : '' }}">
-                                                        <a href="{{ route('distributors') }}"><span>Distributeurs</span></a>
-                                                    </li>
+                                                   
                                                     <li class="{{ Route::is('contact') ? 'active' : '' }}">
                                                         <a href="{{ route('contact') }}"><span>Contact</span></a>
                                                     </li>
@@ -104,7 +102,7 @@
                     <div class="col-8">
                         <div class="logo">
                             <a href="{{ route('home') }}" class="d-flex align-items-center text-decoration-none">
-                                <span class="logo-text text-white">DJIBO SERVICE</span>
+                                <span class="logo-text text-white">DJIBO SERVICES</span>
                             </a>
                         </div>
                     </div>
@@ -125,7 +123,6 @@
                     <li><a href="{{ route('services') }}">Nos Services</a></li>
                     <li><a href="{{ route('realisations') }}">Réalisations</a></li>
                     <li><a href="{{ route('testimonials') }}">Témoignages</a></li>
-                    <li><a href="{{ route('distributors') }}">Nos Distributeurs</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
                 </ul>
             </nav>

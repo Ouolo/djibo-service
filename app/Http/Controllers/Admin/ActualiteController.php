@@ -35,18 +35,18 @@ class ActualiteController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'titre'            => 'required|string|max:255',
-            'extrait'          => 'required|string|max:500',
-            'contenu'          => 'required|string',
-            'image'            => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'titre' => 'required|string|max:255',
+            'extrait' => 'required|string|max:500',
+            'contenu' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'date_publication' => 'required|date',
-            'publie'           => 'boolean',
-            'ordre'            => 'nullable|integer|min:0',
+            'publie' => 'boolean',
+            'ordre' => 'nullable|integer|min:0',
         ]);
 
-        $data['slug']   = Str::slug($data['titre']);
+        $data['slug'] = Str::slug($data['titre']);
         $data['publie'] = $request->boolean('publie');
-        $data['ordre']  = $data['ordre'] ?? 0;
+        $data['ordre'] = $data['ordre'] ?? 0;
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('actualites', 'public');
@@ -66,18 +66,18 @@ class ActualiteController extends Controller
     public function update(Request $request, Actualite $actualite)
     {
         $data = $request->validate([
-            'titre'            => 'required|string|max:255',
-            'extrait'          => 'required|string|max:500',
-            'contenu'          => 'required|string',
-            'image'            => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'titre' => 'required|string|max:255',
+            'extrait' => 'required|string|max:500',
+            'contenu' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'date_publication' => 'required|date',
-            'publie'           => 'boolean',
-            'ordre'            => 'nullable|integer|min:0',
+            'publie' => 'boolean',
+            'ordre' => 'nullable|integer|min:0',
         ]);
 
-        $data['slug']   = Str::slug($data['titre']);
+        $data['slug'] = Str::slug($data['titre']);
         $data['publie'] = $request->boolean('publie');
-        $data['ordre']  = $data['ordre'] ?? 0;
+        $data['ordre'] = $data['ordre'] ?? 0;
 
         if ($request->hasFile('image')) {
             // Delete old image if stored in public disk

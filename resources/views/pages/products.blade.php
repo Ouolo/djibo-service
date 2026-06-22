@@ -66,6 +66,10 @@
                                 class="btn-dj-primary" style="background: #25d366; color: #fff;">
                                 <i class="fab fa-whatsapp me-2"></i> Commander via WhatsApp
                             </a>
+                            <a href="{{ route('fiche-technique') }}" 
+                               class="btn-dj-primary" style="background: transparent; border: 2px solid var(--vert); color: var(--vert) !important; margin-left: 12px;">
+                                <i class="fas fa-file-alt me-2"></i> Voir la Fiche Technique
+                            </a>
                         </div>
                     </div>
                 </div>

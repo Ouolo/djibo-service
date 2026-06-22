@@ -21,7 +21,7 @@ class Actualite extends Model
     ];
 
     protected $casts = [
-        'publie'           => 'boolean',
+        'publie' => 'boolean',
         'date_publication' => 'date',
     ];
 
@@ -55,16 +55,26 @@ class Actualite extends Model
      */
     public function getDateFormatteeAttribute(): string
     {
-        if (!$this->date_publication) return '';
+        if (!$this->date_publication)
+            return '';
 
         $mois = [
-            1 => 'Janvier', 2 => 'Février', 3 => 'Mars', 4 => 'Avril',
-            5 => 'Mai', 6 => 'Juin', 7 => 'Juillet', 8 => 'Août',
-            9 => 'Septembre', 10 => 'Octobre', 11 => 'Novembre', 12 => 'Décembre',
+            1 => 'Janvier',
+            2 => 'Février',
+            3 => 'Mars',
+            4 => 'Avril',
+            5 => 'Mai',
+            6 => 'Juin',
+            7 => 'Juillet',
+            8 => 'Août',
+            9 => 'Septembre',
+            10 => 'Octobre',
+            11 => 'Novembre',
+            12 => 'Décembre',
         ];
 
         return $this->date_publication->day . ' ' .
-               $mois[$this->date_publication->month] . ' ' .
-               $this->date_publication->year;
+            $mois[$this->date_publication->month] . ' ' .
+            $this->date_publication->year;
     }
 }

@@ -86,7 +86,7 @@ class PageController extends Controller
                 'location' => 'Ségou (Mali)',
                 'impact' => '15 hectares restaurés',
                 'description' => 'Restauration de parcelles agricoles dégradées par l\'utilisation intensive de produits chimiques. Grâce à notre BioActivateur Sol-Plus, les producteurs ont retrouvé un rendement historique de 80% supérieur dès la première récolte d\'oignons.',
-                'image' => 'assets/images/box-image/blog-01-330x330.jpg'
+                'image' => 'assets/images/realisation/IMG-20260615-WA0129.jpg'
             ],
             [
                 'id' => 2,
@@ -94,7 +94,7 @@ class PageController extends Controller
                 'location' => 'Zone périurbaine de Ségou',
                 'impact' => 'Plus de 500 producteurs formés par an',
                 'description' => 'Création d\'un centre de démonstration agroécologique moderne combinant maraîchage, arboriculture et élevage intégré, fonctionnant entièrement à l\'énergie solaire et avec recyclage des déchets.',
-                'image' => 'assets/images/box-image/blog-02-330x330.jpg'
+                'image' => 'assets/images/realisation/formation.jpg'
             ],
             [
                 'id' => 3,
@@ -102,7 +102,31 @@ class PageController extends Controller
                 'location' => 'Cercle de Ségou',
                 'impact' => '120 femmes accompagnées et autonomisées',
                 'description' => 'Dotation en intrants organiques et formation complète sur la production de tomates hors-saison. Le projet a permis d\'augmenter les revenus mensuels des familles bénéficiaires de près de 150%.',
-                'image' => 'assets/images/box-image/blog-03-330x330.jpg'
+                'image' => 'assets/images/realisation/amenagement deni hectar en tomate.jpg'
+            ],
+            [
+                'id' => 4,
+                'title' => 'Aménagement de Parcelles de Papayes',
+                'location' => 'Ségou (Mali)',
+                'impact' => '1 hectare de papayes planté',
+                'description' => 'Accompagnement technique de producteurs pour la mise en place d\'une plantation moderne de papayers de haute productivité avec système d\'irrigation localisé.',
+                'image' => "assets/images/realisation/amenagement d'unhectar en papaye.jpg"
+            ],
+            [
+                'id' => 5,
+                'title' => 'Encadrement Pratique des Jeunes Stagiaires',
+                'location' => 'Centre Djibo-Bio',
+                'impact' => '30+ stagiaires formés et qualifiés',
+                'description' => 'Encadrement professionnel d\'étudiants en agronomie et jeunes ruraux sur la production d\'intrants organiques et la conduite d\'exploitations agroécologiques.',
+                'image' => 'assets/images/realisation/stagaire.jpg'
+            ],
+            [
+                'id' => 6,
+                'title' => 'Réalisation de Diagnostics de Parcelles',
+                'location' => 'Région de Ségou',
+                'impact' => '100+ diagnostics de sols effectués',
+                'description' => 'Fourniture de fiches techniques personnalisées et de conseils pratiques pour optimiser la fertilisation naturelle et la protection des cultures.',
+                'image' => 'assets/images/realisation/ficheTechnique.jpg'
             ]
         ];
     }
@@ -197,7 +221,7 @@ class PageController extends Controller
         $featured_product = collect($this->getProducts())->firstWhere('is_featured', true);
         $products         = collect($this->getProducts())->where('is_featured', false)->take(3);
         $services         = $this->getServices();
-        $realisations     = collect($this->getRealisations())->take(2);
+        $realisations     = collect($this->getRealisations())->take(3);
         $testimonials     = $this->getTestimonials();
 
         // Charger les actualités depuis la base de données
@@ -222,22 +246,34 @@ class PageController extends Controller
     {
         $team = [
             [
-                'name' => 'M. Bakary Djibo',
+                'name' => 'M. Baba Djibo',
                 'role' => 'Fondateur & Directeur Général',
-                'bio' => 'Ingénieur agronome de formation avec plus de 20 ans d\'expérience dans le conseil agricole au Sahel.',
-                'image' => 'assets/images/team/team-01.png'
+                'image' => 'assets/images/image-equipe/Baba Djibo .jpg'
             ],
             [
-                'name' => 'Dr. Aminata Touré',
-                'role' => 'Directrice Recherche & Développement',
-                'bio' => 'Spécialiste de la microbiologie des sols, responsable de la formulation de notre BioActivateur.',
-                'image' => 'assets/images/team/team-02.png'
+                'name' => 'Mme Nafi Kébé',
+                'role' => 'Assistante Chargée De Projet & Programmation',
+                'image' => 'assets/images/image-equipe/Nafi kebe.jpg'
             ],
             [
-                'name' => 'M. Ousmane Coulibaly',
-                'role' => 'Responsable Formation & Suivi Terrain',
-                'bio' => 'Technicien supérieur d\'agriculture, toujours sur le terrain pour conseiller et guider les producteurs.',
-                'image' => 'assets/images/team/team-03.png'
+                'name' => 'M. Abdoulaye N. Traoré',
+                'role' => 'Responsable Des Opérations',
+                'image' => 'assets/images/image-equipe/Adboulaye N Traore.jpg'
+            ],
+            [
+                'name' => 'M. Almamy Oumar Kane',
+                'role' => 'Chargé Des Productions & Le Développement Des Innovations',
+                'image' => 'assets/images/image-equipe/Almany oumar Kane.jpg'
+            ],
+            [
+                'name' => 'M. Lasseini Pamanta',
+                'role' => 'Responsable Administratif & Communication',
+                'image' => 'assets/images/image-equipe/Lasseini Pamanta.jpg'
+            ],
+            [
+                'name' => 'M. Nouhoum Djitèye',
+                'role' => 'Responsable Logistique & Distribution',
+                'image' => 'assets/images/image-equipe/NouhoumDjiteye.jpg'
             ]
         ];
 
@@ -251,6 +287,14 @@ class PageController extends Controller
     {
         $products = $this->getProducts();
         return view('pages.products', compact('products'));
+    }
+
+    /**
+     * Fiche Technique Page (Bonnes Pratiques)
+     */
+    public function ficheTechnique()
+    {
+        return view('pages.fiche-technique');
     }
 
     /**
@@ -278,6 +322,24 @@ class PageController extends Controller
     {
         $testimonials = $this->getTestimonials();
         return view('pages.testimonials', compact('testimonials'));
+    }
+
+    /**
+     * Public Actualites Page
+     */
+    public function actualites()
+    {
+        $actualites = Actualite::publie()->paginate(9);
+        return view('pages.actualites', compact('actualites'));
+    }
+
+    /**
+     * Public Actualite Detail Page
+     */
+    public function actualiteShow($slug)
+    {
+        $actualite = Actualite::where('slug', $slug)->where('publie', true)->firstOrFail();
+        return view('pages.actualite-show', compact('actualite'));
     }
 
     /**

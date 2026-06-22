@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Djibo Service – Agriculture Durable au Mali')
+@section('title', 'Djibo Services – Agriculture Durable au Mali')
 
 @push('styles')
 <style>
@@ -10,7 +10,27 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    background: linear-gradient(160deg, #1B5E20 0%, var(--vert) 55%, #0d230e 100%);
+    background: #000;
+}
+
+/* Background Slider */
+.dj-hero-slider {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.dj-hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.dj-hero-slide.active {
+    opacity: 1;
 }
 
 /* SVG champs de mil animé */
@@ -19,13 +39,13 @@
     bottom: 0; left: 0; right: 0;
     height: 280px;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
 }
 
 .dj-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(27,94,32,0.7) 40%, transparent 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.3) 100%);
     z-index: 2;
 }
 
@@ -171,6 +191,15 @@
 
 <!-- ===== HERO ===== -->
 <section class="dj-hero">
+    <!-- Diaporama d'images en arrière-plan -->
+    <div class="dj-hero-slider">
+        <div class="dj-hero-slide active" style="background-image: url('{{ asset('assets/images/realisation/formation.jpg') }}')"></div>
+        <div class="dj-hero-slide" style="background-image: url('{{ asset('assets/images/realisation/amenagement deni hectar en tomate.jpg') }}')"></div>
+        <div class="dj-hero-slide" style="background-image: url('{{ asset('assets/images/realisation/formation3.jpg') }}')"></div>
+        <div class="dj-hero-slide" style="background-image: url('{{ asset('assets/images/realisation/formation2.jpg') }}')"></div>
+        <div class="dj-hero-slide" style="background-image: url('{{ asset('assets/images/realisation/formation1.jpg') }}')"></div>
+    </div>
+
     <!-- SVG Champs de mil/sorgho animé -->
     <svg class="dj-hero-svg-field" viewBox="0 0 1440 280" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
@@ -226,6 +255,49 @@
 <a href="https://wa.me/22376543210" target="_blank" class="dj-float-wa" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
+<!-- ===== ACTUALITÉS ===== -->
+<section style="background: var(--gris-clair); padding: 80px 0;">
+    <div class="container">
+
+        <div class="section-heading" data-animate>
+            <span class="section-label">📰 Actualités & Conseils</span>
+            <h2>Nos Dernières Publications</h2>
+            <p>Restez informé des nouveautés, conseils agronomiques et formations de Djibo Service.</p>
+        </div>
+
+        <div class="row g-4">
+            @foreach($news as $article)
+            <div class="col-lg-4 col-md-6" data-animate>
+                <div class="dj-news-card">
+                    <div class="dj-news-card__img-wrap">
+                        <img src="{{ asset($article['image']) }}" alt="{{ $article['title'] }}">
+                        <div class="dj-news-card__date-badge">
+                            <i class="far fa-calendar-alt"></i>
+                            {{ $article['date'] }}
+                        </div>
+                    </div>
+                    <div class="dj-news-card__body">
+                        <span class="dj-news-card__tag">🌱 Agriculture Durable</span>
+                        <h5 class="dj-news-card__title">{{ $article['title'] }}</h5>
+                        <p class="dj-news-card__excerpt">{{ $article['excerpt'] }}</p>
+                        <a href="{{ route('contact') }}" class="dj-news-card__link">
+                            Lire plus <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        {{-- CTA centré sous les cartes --}}
+        <div class="text-center mt-5" data-animate>
+            <a href="{{ route('contact') }}" class="btn-dj-outline" style="display:inline-flex;align-items:center;gap:10px;padding:14px 36px;border-radius:50px;">
+                <i class="fas fa-envelope"></i> Recevoir nos newsletters
+            </a>
+        </div>
+
+    </div>
+</section>
 
 <!-- ===== STATS BAR ===== -->
 <div class="dj-stats-bar">
@@ -319,8 +391,8 @@
             @endforeach
         </div>
         <div class="text-center" style="margin-top:40px;" data-animate>
-            <a href="{{ route('realisations') }}" class="btn-dj-primary" style="background:transparent;border:2px solid var(--vert);color:var(--vert);">
-                Toutes les réalisations →
+            <a href="{{ route('realisations') }}" class="btn-dj-primary" style="background:transparent;border:2px solid #000;color:#000 !important;">
+                Toutes les réalisations <span>&#129058;</span>
             </a>
         </div>
     </div>
@@ -363,49 +435,6 @@
     </div>
 </section>
 
-<!-- ===== ACTUALITÉS ===== -->
-<section style="background: var(--gris-clair); padding: 80px 0;">
-    <div class="container">
-
-        <div class="section-heading" data-animate>
-            <span class="section-label">📰 Actualités & Conseils</span>
-            <h2>Nos Dernières Publications</h2>
-            <p>Restez informé des nouveautés, conseils agronomiques et formations de Djibo Service.</p>
-        </div>
-
-        <div class="row g-4">
-            @foreach($news as $article)
-            <div class="col-lg-4 col-md-6" data-animate>
-                <div class="dj-news-card">
-                    <div class="dj-news-card__img-wrap">
-                        <img src="{{ asset($article['image']) }}" alt="{{ $article['title'] }}">
-                        <div class="dj-news-card__date-badge">
-                            <i class="far fa-calendar-alt"></i>
-                            {{ $article['date'] }}
-                        </div>
-                    </div>
-                    <div class="dj-news-card__body">
-                        <span class="dj-news-card__tag">🌱 Agriculture Durable</span>
-                        <h5 class="dj-news-card__title">{{ $article['title'] }}</h5>
-                        <p class="dj-news-card__excerpt">{{ $article['excerpt'] }}</p>
-                        <a href="{{ route('contact') }}" class="dj-news-card__link">
-                            Lire plus <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-
-        {{-- CTA centré sous les cartes --}}
-        <div class="text-center mt-5" data-animate>
-            <a href="{{ route('contact') }}" class="btn-dj-outline" style="display:inline-flex;align-items:center;gap:10px;padding:14px 36px;border-radius:50px;">
-                <i class="fas fa-envelope"></i> Recevoir nos newsletters
-            </a>
-        </div>
-
-    </div>
-</section>
 
 <!-- ===== CTA FINAL ===== -->
 <section style="background:linear-gradient(135deg, var(--vert-dark) 0%, var(--vert) 100%); padding:72px 0; text-align:center;">
@@ -435,6 +464,17 @@ document.addEventListener('DOMContentLoaded', function () {
             const next = hero.nextElementSibling;
             if (next) next.scrollIntoView({ behavior: 'smooth' });
         });
+    }
+
+    // Diaporama d'arrière-plan du Hero (chaque 3 secondes)
+    const slides = document.querySelectorAll('.dj-hero-slide');
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 3000);
     }
 });
 </script>

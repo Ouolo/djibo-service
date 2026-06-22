@@ -50,7 +50,7 @@
                        target="_blank" class="btn-dj-primary" style="justify-content:center;background:#25d366;text-align:center;">
                         <i class="fab fa-whatsapp"></i> Demander un devis
                     </a>
-                    <a href="{{ route('contact') }}" class="btn-dj-primary" style="justify-content:center;background:transparent;border:2px solid {{ $serviceColor }};color:{{ $serviceColor }};text-align:center;">
+                    <a href="{{ route('contact') }}" class="btn-dj-primary" style="justify-content:center;background:transparent;border:2px solid {{ $serviceColor }};color:{{ $serviceColor }} !important;text-align:center;">
                         Nous contacter
                     </a>
                 </div>
@@ -63,7 +63,7 @@
 <section style="background:linear-gradient(135deg,var(--vert-dark),var(--vert));padding:64px 0;text-align:center;">
     <div class="container">
         <h2 style="color:#fff;margin-bottom:16px;" data-animate>Besoin d'un accompagnement sur-mesure ?</h2>
-        <p style="color:rgba(255,255,255,0.85);font-size:17px;margin-bottom:28px;" data-animate>Nos ingénieurs interviennent sur toute la région de Ségou.</p>
+        <p style="color:rgba(255,255,255,0.85);font-size:17px;margin-bottom:28px;" data-animate>Nos ingénieurs interviennent sur toute l'etendue du territoire Malien.</p>
         <a href="{{ route('contact') }}" class="btn-dj-primary" style="background: var(--jaune-agri); color: var(--gris-fonce); border: none; font-weight: 700;" data-animate>Demander une visite diagnostic</a>
     </div>
 </section>

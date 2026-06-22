@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Djibo Service – Formation agricole, appui conseil et intrants biologiques pour une agriculture durable au Mali.">
-    <title>@yield('title', 'Djibo Service – Agriculture Durable au Mali')</title>
+    <meta name="description" content="Djibo Services – Formation agricole, appui conseil et intrants biologiques pour une agriculture durable au Mali.">
+    <title>@yield('title', 'Djibo Services – Agriculture Durable au Mali')</title>
     <link rel="icon" href="{{ asset('assets/images/favicon.webp') }}" type="image/webp">
 
     <!-- Google Fonts : Playfair Display + Inter -->
@@ -48,6 +48,7 @@
             --orange:           var(--jaune-agri);
             --ocre:             var(--brun-terre);
             --vert-light:       var(--vert-light-bg);
+            --vert-nature:      var(--vert);
         }
 
         /* ---- BASE ---- */
@@ -535,14 +536,10 @@
         <div class="dj-navbar-inner">
             <!-- Logo -->
             <a href="{{ route('home') }}" class="dj-brand">
-                <svg class="dj-brand-leaf" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="40" cy="40" r="38" fill="var(--vert)"/>
-                    <path d="M40 66 C40 66 40 40 28 32 C16 24 20 12 36 24 C36 24 38 28 40 34 C42 28 44 24 44 24 C60 12 64 24 52 32 C40 40 40 66 40 66Z" fill="var(--jaune-agri)"/>
-                    <path d="M40 66 C40 66 40 44 36 38 C32 32 24 32 32 42 C32 42 36 45 38 50 C39 46 42 40 42 40 C52 34 54 42 46 46 C38 50 40 66 40 66Z" fill="var(--vert-clair)"/>
-                </svg>
+                 <img src="{{ asset('assets/images/logo-djibo.jpg') }}" alt="Djibo Services" style="height: 60px; width: auto;">
                 <div class="dj-brand-text">
-                    <span class="dj-brand-name">Djibo Service</span>
-                    <span class="dj-brand-sub">Agro-écologie & Conseil</span>
+                    <span class="dj-brand-name">Djibo Services</span>
+                    <span class="dj-brand-sub">Création – Innovation - Développement</span>
                 </div>
             </a>
 
@@ -554,7 +551,7 @@
                 <li class="{{ Route::is('services') ? 'active' : '' }}"><a href="{{ route('services') }}">Services</a></li>
                 <li class="{{ Route::is('realisations') ? 'active' : '' }}"><a href="{{ route('realisations') }}">Réalisations</a></li>
                 <li class="{{ Route::is('testimonials') ? 'active' : '' }}"><a href="{{ route('testimonials') }}">Témoignages</a></li>
-                <li class="{{ Route::is('distributors') ? 'active' : '' }}"><a href="{{ route('distributors') }}">Distributeurs</a></li>
+                <li class="{{ request()->routeIs('actualites.public.*') ? 'active' : '' }}"><a href="{{ route('actualites.public.index') }}">Actualités</a></li>
                 <li><a href="{{ route('contact') }}" class="dj-nav-cta">Contact</a></li>
             </ul>
 
@@ -573,7 +570,7 @@
                 <li><a href="{{ route('services') }}">Nos Services</a></li>
                 <li><a href="{{ route('realisations') }}">Réalisations</a></li>
                 <li><a href="{{ route('testimonials') }}">Témoignages</a></li>
-                <li><a href="{{ route('distributors') }}">Distributeurs</a></li>
+                <li><a href="{{ route('actualites.public.index') }}">Actualités</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
         </div>
@@ -596,11 +593,11 @@
                             <path d="M40 66 C40 66 40 40 28 32 C16 24 20 12 36 24 C36 24 38 28 40 34 C42 28 44 24 44 24 C60 12 64 24 52 32 C40 40 40 66 40 66Z" fill="var(--jaune-agri)"/>
                         </svg>
                     </div>
-                    <p style="font-size:14px; margin-bottom:20px;">Djibo Service est votre partenaire agroécologique de confiance au Mali — intrants biologiques, formation et conseil agronomique depuis Ségou.</p>
+                    <p style="font-size:14px; margin-bottom:20px;">Djibo Services est votre partenaire agroécologique de confiance au Mali — intrants biologiques, formation et conseil agronomique depuis Ségou.</p>
                     <ul>
-                        <li>📍 Route de Ségou, Sébougou, Ségou, Mali</li>
+                       <!--  <li>📍 Route de Ségou, Sébougou, Ségou, Mali</li> -->
                         <li>📞 <a href="tel:+22376543210">(+223) 76 54 32 10</a></li>
-                        <li>📧 <a href="mailto:contact@djiboservice.com">contact@djiboservice.com</a></li>
+                        <li>📧 <a href="mailto:djiboservice@gmail.com">contact@djiboservice.com</a></li>
                         <li>💬 <a href="https://wa.me/22376543210" target="_blank">WhatsApp Direct</a></li>
                     </ul>
                 </div>
@@ -648,7 +645,7 @@
 
         <div class="dj-footer-bottom">
             <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
-                <span>&copy; 2026 <a href="{{ route('home') }}">Djibo Service</a>. Tous droits réservés.</span>
+                <span>&copy; 2026 <a href="{{ route('home') }}">Djibo Services</a>. Tous droits réservés.</span>
                 <div class="d-flex gap-3">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://wa.me/22376543210" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
