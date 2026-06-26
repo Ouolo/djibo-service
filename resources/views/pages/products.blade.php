@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Nos Produits – Djibo Service')
+@section('title', 'Nos Produits – Djibo Services')
 
 @section('content')
 
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
 
-                             <a href="https://wa.me/22376543210?text=Bonjour,%20je%20souhaite%20commander%20le%20BioActivateur%20Sol-Plus" target="_blank" 
+                             <a href="https://wa.me/22392692448?text=Bonjour,%20je%20souhaite%20commander%20le%20BioActivateur%20Sol-Plus" target="_blank" 
                                 class="btn-dj-primary" style="background: #25d366; color: #fff;">
                                 <i class="fab fa-whatsapp me-2"></i> Commander via WhatsApp
                             </a>
@@ -84,7 +84,7 @@
                 <div class="col-lg-12">
                     <div class="section-title-wrap text-center mb-5">
                         <h6 class="font-weight-bold mb-2" style="color: var(--vert); letter-spacing: 1px;">AUTRES INTRANTS</h6>
-                        <h3 class="font-weight-bold">Gamme Complète Djibo Service</h3>
+                        <h3 class="font-weight-bold">Gamme Complète Djibo Services</h3>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                             <div class="px-4 pb-4">
-                                <a href="https://wa.me/22376543210?text=Bonjour,%20je%20suis%20interesse%20par%20le%20produit%20{{ urlencode($product['name']) }}" target="_blank" 
+                                <a href="https://wa.me/22392692448?text=Bonjour,%20je%20suis%20interesse%20par%20le%20produit%20{{ urlencode($product['name']) }}" target="_blank" 
                                    class="btn w-100 rounded-pill font-weight-bold" 
                                    style="border: 2px solid var(--vert); color: var(--vert); background: transparent; transition: all 0.3s;"
                                    onmouseover="this.style.background='var(--vert)'; this.style.color='#fff';"

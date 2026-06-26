@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p class="text-center top-message m-0 py-2">
-                        🌱 Djibo Service – Pour une agriculture moderne, durable et productive au Mali
+                        🌱 Djibo Services – Pour une agriculture moderne, durable et productive au Mali
                     </p>
                 </div>
             </div>

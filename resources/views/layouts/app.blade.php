@@ -22,7 +22,7 @@
 
     <style>
         /* ============================================
-           DESIGN SYSTEM – DJIBO SERVICE (Palette Vert Nature)
+           DESIGN SYSTEM – DJIBO SERVICES (Palette Vert Nature)
         ============================================ */
         :root {
             /* Couleurs principales */
@@ -593,12 +593,12 @@
                             <path d="M40 66 C40 66 40 40 28 32 C16 24 20 12 36 24 C36 24 38 28 40 34 C42 28 44 24 44 24 C60 12 64 24 52 32 C40 40 40 66 40 66Z" fill="var(--jaune-agri)"/>
                         </svg>
                     </div>
-                    <p style="font-size:14px; margin-bottom:20px;">Djibo Services est votre partenaire agroécologique de confiance au Mali — intrants biologiques, formation et conseil agronomique depuis Ségou.</p>
+                    <p style="font-size:14px; margin-bottom:20px;">Djibo Services est votre partenaire agroécologique de confiance au Mali — intrants biologiques, formation et conseil agronomique depuis Mopti.</p>
                     <ul>
                        <!--  <li>📍 Route de Ségou, Sébougou, Ségou, Mali</li> -->
-                        <li>📞 <a href="tel:+22376543210">(+223) 76 54 32 10</a></li>
+                        <li>📞 <a href="tel:+22392692448">(+223) 76 54 32 10</a></li>
                         <li>📧 <a href="mailto:djiboservice@gmail.com">contact@djiboservice.com</a></li>
-                        <li>💬 <a href="https://wa.me/22376543210" target="_blank">WhatsApp Direct</a></li>
+                        <li>💬 <a href="https://wa.me/22392692448?text=Bonjour,%20je%20vous%20contacte%20via%20WhatsApp." target="_blank">WhatsApp Direct</a></li>
                     </ul>
                 </div>
 
@@ -634,7 +634,7 @@
                         <li style="color: rgba(250,246,239,0.4)">Dimanche : Fermé</li>
                     </ul>
                     <div style="margin-top:20px">
-                        <a href="https://wa.me/22376543210" target="_blank"
+                        <a href="https://wa.me/22392692448?text=Bonjour,%20je%20veux%20en%20savoir%20plus%20sur%20vos%20services%20et%20produits." target="_blank"
                            style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:10px 20px;border-radius:30px;font-weight:700;font-size:14px;text-decoration:none;">
                             <i class="fab fa-whatsapp"></i> Contacter via WhatsApp
                         </a>
@@ -647,10 +647,11 @@
             <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
                 <span>&copy; 2026 <a href="{{ route('home') }}">Djibo Services</a>. Tous droits réservés.</span>
                 <div class="d-flex gap-3">
-                    <a href="https://www.facebook.com/djibobio/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100077406985953" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://wa.me/22376543210" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/company/djibo-services" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/22392692448?text=Bonjour%20Djibo%20Services!" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>

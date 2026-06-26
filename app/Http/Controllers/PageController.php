@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Actualite;
 use App\Models\Produit;
 use App\Models\Realisation;
+use App\Models\Temoignage;
 
 
 class PageController extends Controller
@@ -35,46 +36,46 @@ class PageController extends Controller
 
     private function getServices()
     {
+        // If a dedicated services table/model exists in the future this can be
+        // replaced by a DB query. For now provide a safe static fallback so
+        // views always receive an array (avoids foreach null errors).
         return [
             [
                 'slug' => 'formation',
-                'title' => 'Formation Agricole',
-                'icon' => 'fa-graduation-cap',
-                'short_description' => 'Programmes de formation pratiques et adaptés aux techniques culturales modernes et écologiques.',
-                'description' => 'Nous formons les producteurs agricoles, les jeunes et les entrepreneurs aux techniques innovantes de production, à la fabrication de compost enrichi, à la gestion de pépinières et à l\'agroécologie pratique.',
+                'icon' => 'fa-chalkboard-teacher',
+                'title' => 'Formations & Ateliers',
+                'short_description' => 'Formations pratiques pour producteurs',
+                'description' => 'Formations sur agroécologie, compostage et techniques de régénération des sols.',
                 'details' => [
-                    'Techniques de maraîchage biologique',
-                    'Gestion de l\'irrigation et économie d\'eau',
-                    'Production d\'intrants organiques sur place',
-                    'Entreprenariat agricole et gestion financière des exploitations'
-                ]
+                    'Formation sur compostage et fertilité',
+                    'Techniques de restauration des sols',
+                    'Ateliers pratiques sur la gestion de ferme'
+                ],
             ],
             [
-                'slug' => 'appui-conseil',
-                'title' => 'Appui Conseil',
-                'icon' => 'fa-comments',
-                'short_description' => 'Orientation stratégique et conseils personnalisés pour optimiser le rendement de vos parcelles.',
-                'description' => 'Nos experts agronomes se déplacent sur vos exploitations pour analyser vos sols, diagnostiquer les maladies de vos cultures et vous conseiller sur les meilleures pratiques agroécologiques adaptées à votre sol.',
+                'slug' => 'conseil',
+                'icon' => 'fa-handshake',
+                'title' => 'Conseil & Accompagnement',
+                'short_description' => 'Accompagnement technique sur-mesure',
+                'description' => 'Accompagnement technique et organisationnel pour coopératives et projets.',
                 'details' => [
-                    'Analyses rapides de la santé du sol',
-                    'Plans de fertilisation sur mesure',
-                    'Conseil en choix de variétés culturales',
-                    'Aide à l\'aménagement et au design de fermes'
-                ]
+                    'Diagnostic de ferme',
+                    'Plan de fertilité',
+                    'Suivi post-formation'
+                ],
             ],
             [
-                'slug' => 'suivi-accompagnement',
-                'title' => 'Suivi Accompagnement',
+                'slug' => 'produits',
                 'icon' => 'fa-seedling',
-                'short_description' => 'Assistance continue tout au long du cycle cultural pour sécuriser vos investissements.',
-                'description' => 'Nous n\'abandonnons pas nos partenaires après les conseils. Nous mettons en place un calendrier de visites de suivi régulier pour s\'assurer de la bonne exécution des recommandations et corriger les dérives en temps réel.',
+                'title' => 'Fourniture de produits',
+                'short_description' => 'Produits organiques et intrants',
+                'description' => 'Vente d’intrants, composts et kits pratiques pour producteurs.',
                 'details' => [
-                    'Visites périodiques de techniciens sur le terrain',
-                    'Assistance téléphonique en cas d\'urgence phytosanitaire',
-                    'Évaluation des rendements et bilan de fin de campagne',
-                    'Accompagnement vers la certification biologique'
-                ]
-            ]
+                    'Produits certifiés',
+                    'Kits de démarrage',
+                    'Livraison locale'
+                ],
+            ],
         ];
     }
 
@@ -102,112 +103,82 @@ class PageController extends Controller
         return [
             [
                 'id' => 1,
-                'title' => 'Projet de Restauration des Sols à Segouboughou',
-                'location' => 'Ségou (Mali)',
-                'impact' => '15 hectares restaurés',
-                'description' => 'Restauration de parcelles agricoles dégradées par l\'utilisation intensive de produits chimiques. Grâce à notre BioActivateur Sol-Plus, les producteurs ont retrouvé un rendement historique de 80% supérieur dès la première récolte d\'oignons.',
-                'image' => 'assets/images/realisation/IMG-20260615-WA0129.jpg'
+                'title' => 'Formation terrain à Koutiala',
+                'location' => 'Koutiala',
+                'impact' => 'Réduction de l érosion, +20% rendement',
+                'description' => 'Programme de formation de 3 jours sur le compostage et les cultures associées.',
+                'image' => 'assets/images/realisation/formation.jpg',
             ],
             [
                 'id' => 2,
-                'title' => 'Aménagement de la Ferme École Djibo-Bio',
-                'location' => 'Zone périurbaine de Ségou',
-                'impact' => 'Plus de 500 producteurs formés par an',
-                'description' => 'Création d\'un centre de démonstration agroécologique moderne combinant maraîchage, arboriculture et élevage intégré, fonctionnant entièrement à l\'énergie solaire et avec recyclage des déchets.',
-                'image' => 'assets/images/realisation/formation.jpg'
-            ],
-            [
-                'id' => 3,
-                'title' => 'Programme d\'Appui aux Coopératives Féminines',
-                'location' => 'Cercle de Ségou',
-                'impact' => '120 femmes accompagnées et autonomisées',
-                'description' => 'Dotation en intrants organiques et formation complète sur la production de tomates hors-saison. Le projet a permis d\'augmenter les revenus mensuels des familles bénéficiaires de près de 150%.',
-                'image' => 'assets/images/realisation/amenagement deni hectar en tomate.jpg'
+                'title' => 'Restauration de parcelle',
+                'location' => 'Sikasso',
+                'impact' => 'Réhabilitation de 5 ha',
+                'description' => 'Intervention de régénération avec méthodes agroécologiques.',
+                'image' => 'assets/images/realisation/ferme.jpg',
             ],
         ];
     }
 
     private function getTestimonials()
     {
+        // Charger les témoignages depuis la base de données
+        $fromDb = Temoignage::publie()->ordre()->get();
+
+        if ($fromDb->isNotEmpty()) {
+            return $fromDb->map(function ($t) {
+                $result = [
+                    'name' => $t->nom_client,
+                    'role' => $t->role,
+                    'location' => $t->localisation,
+                    'type' => $t->type,
+                    'quote' => $t->contenu,
+                ];
+
+                // Ajouter les médias selon le type
+                if ($t->type === 'image' && $t->media) {
+                    $result['image'] = $t->media_url;
+                } elseif ($t->type === 'video' && $t->media) {
+                    $result['video'] = $t->media_url;
+                } else {
+                    $result['image'] = 'assets/images/logo-djibo.jpg';
+                }
+
+                // Ajouter avant/après
+                if ($t->avant || $t->apres) {
+                    $result['before_after'] = [
+                        'before' => $t->avant,
+                        'after' => $t->apres
+                    ];
+                }
+
+                return $result;
+            })->toArray();
+        }
+
+        // Fallback static testimonials when DB is empty
         return [
             [
-                'name' => 'Amadou Diallo',
-                'role' => 'Maraîcher professionnel',
-                'location' => 'Mopti',
-                'quote' => 'J\'utilisais des engrais chimiques depuis des années et mon sol devenait stérile et dur comme de la pierre. Depuis que j\'applique le BioActivateur de Djibo Service, la terre est redevenue meuble et mes oignons sont de bien meilleure qualité !',
-                'image' => 'assets/images/logo-djibo.jpg',
-                'before_after' => [
-                    'before' => 'Terre compacte et rendement de 8 tonnes/ha',
-                    'after' => 'Terre riche et rendement de 14.5 tonnes/ha avec économie d\'eau'
-                ]
+                'name' => 'Mariama C.',
+                'role' => 'Productrice',
+                'location' => 'Bamako',
+                'type' => 'image',
+                'quote' => 'Les formations m ont aidée à améliorer mes rendements.',
+                'image' => 'assets/images/logo-djibo.jpg'
             ],
             [
-                'name' => 'Fatoumata Traoré',
-                'role' => 'Présidente de coopérative',
-                'location' => 'Badiangara',
-                'quote' => 'La formation que nous avons reçue de Djibo Service a changé notre façon de voir l\'agriculture. Nous savons maintenant fabriquer notre propre compost en un temps record et nos produits se vendent plus cher car ils sont sains.',
-                'image' => 'assets/images/logo-djibo.jpg',
-                'before_after' => [
-                    'before' => 'Production aléatoire sujette aux maladies',
-                    'after' => 'Contrôle biologique des ravageurs et récolte garantie stable'
-                ]
+                'name' => 'Oumar K.',
+                'role' => 'Coopérative',
+                'location' => 'Sikasso',
+                'type' => 'image',
+                'quote' => 'Accompagnement professionnel et utile.',
+                'image' => 'assets/images/logo-djibo.jpg'
             ]
         ];
     }
 
-    private function getDistributors()
-    {
-        return [
-            [
-                'name' => 'Agro-Dealer Al-Baraka',
-                'contact_name' => 'M. Ibrahim Maïga',
-                'phone' => '+223 76 54 32 10',
-                'location' => 'Grand Marché, Ségou',
-                'address' => 'Rue 14, Secteur 2',
-                'cities_covered' => 'Ségou Centre, Sébougou'
-            ],
-            [
-                'name' => 'Maison des Intrants du Nord',
-                'contact_name' => 'M. Lassana Diarra',
-                'phone' => '+223 66 77 88 99',
-                'location' => 'Gare Routière, Bla',
-                'address' => 'Route Nationale 6',
-                'cities_covered' => 'Bla, San'
-            ],
-            [
-                'name' => 'Coopérative Agro-Pastoral de Pélengana',
-                'contact_name' => 'Mme Koné Oumou',
-                'phone' => '+223 79 12 34 56',
-                'location' => 'Face Mairie, Pélengana',
-                'address' => 'Avenue de la Liberté',
-                'cities_covered' => 'Pélengana, Markala'
-            ]
-        ];
-    }
 
-    private function getNews()
-    {
-        return [
-            [
-                'title' => 'Lancement de notre nouveau catalogue d\'intrants organiques',
-                'date' => '10 Juin 2026',
-                'excerpt' => 'Découvrez nos nouveautés pour booster vos rendements de maraîchage biologique cet été.',
-                'image' => 'assets/images/box-image/blog-01-330x330.jpg'
-            ],
-            [
-                'title' => 'Campagne de formation gratuite pour les jeunes maraîchers',
-                'date' => '05 Juin 2026',
-                'excerpt' => 'Djibo Service organise un atelier pratique de 3 jours sur l\'utilisation rationnelle de l\'eau en agriculture.',
-                'image' => 'assets/images/box-image/blog-02-330x330.jpg'
-            ],
-            [
-                'title' => 'Comment fabriquer un compost de qualité en 21 jours ?',
-                'date' => '28 Mai 2026',
-                'excerpt' => 'Guide pratique expliquant les secrets de la fermentation accélérée avec le BioActivateur Sol-Plus.',
-                'image' => 'assets/images/box-image/blog-03-330x330.jpg'
-            ]
-        ];
-    }
+
 
     /**
      * Home Page (Accueil)
@@ -229,6 +200,7 @@ class PageController extends Controller
                 'image'  => \Illuminate\Support\Str::startsWith($a->image, 'assets/')
                                 ? $a->image
                                 : 'storage/' . $a->image,
+                'slug'   => $a->slug,
             ];
         });
 
@@ -249,26 +221,26 @@ class PageController extends Controller
             [
                 'name' => 'Mme Nafi Kébé',
                 'role' => 'Assistante Chargée De Projet & Programmation',
-                'image' => 'assets/images/image-equipe/Nafi kebe.jpg'
+                'image' => 'assets/images/image-equipe/e2.jpeg'
             ],
             [
                 'name' => 'M. Abdoulaye N. Traoré',
                 'role' => 'Responsable Des Opérations',
-                'image' => 'assets/images/image-equipe/Adboulaye N Traore.jpg'
+                'image' => 'assets/images/image-equipe/e4.jpeg'
             ],
             [
                 'name' => 'M. Almamy Oumar Kane',
                 'role' => 'Chargé Des Productions & Le Développement Des Innovations',
-                'image' => 'assets/images/image-equipe/Almany oumar Kane.jpg'
+                'image' => 'assets/images/image-equipe/e1.jpeg'
             ],
             [
                 'name' => 'M. Lasseini Pamanta',
-                'role' => 'Responsable Administratif & Communication',
+                'role' => 'Charge de la Gestion administrative et Financière',
                 'image' => 'assets/images/image-equipe/Lasseini Pamanta.jpg'
             ],
             [
                 'name' => 'M. Nouhoum Djitèye',
-                'role' => 'Responsable Logistique & Distribution',
+                'role' => 'Chargé Communication & Marketing',
                 'image' => 'assets/images/image-equipe/NouhoumDjiteye.jpg'
             ]
         ];
@@ -309,6 +281,39 @@ class PageController extends Controller
     {
         $realisations = $this->getRealisations();
         return view('pages.realisations', compact('realisations'));
+    }
+
+    /**
+     * Show a single realisation (public)
+     */
+    public function realisationShow($id)
+    {
+        // Try to load from DB first
+        if (class_exists(Realisation::class)) {
+            $r = Realisation::find($id);
+            if ($r) {
+                $realisation = [
+                    'id' => $r->id,
+                    'title' => $r->titre,
+                    'location' => $r->localisation,
+                    'impact' => $r->impact,
+                    'description' => $r->description,
+                    'image' => \Illuminate\Support\Str::startsWith($r->image ?? '', 'assets/') ? ($r->image ?? '') : 'storage/' . ($r->image ?? ''),
+                ];
+                return view('pages.realisation-show', compact('realisation'));
+            }
+        }
+
+        // Fallback to static list
+        $list = $this->getRealisations();
+        foreach ($list as $item) {
+            if ((int) ($item['id'] ?? 0) === (int) $id) {
+                $realisation = $item;
+                return view('pages.realisation-show', compact('realisation'));
+            }
+        }
+
+        abort(404);
     }
 
     /**

@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function showLogin()
     {
-        if (Auth::check() && Auth::user()->isAdmin()) {
+        if (Auth::check() && Auth::user()->role) {
             return redirect()->route('admin.dashboard');
         }
         return view('admin.auth.login');
@@ -24,10 +24,12 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
-            if (!Auth::user()->isAdmin()) {
+            // Tout utilisateur ayant un rôle assigné peut accéder au backoffice.
+            // Les permissions contrôlent ensuite ce qu'il peut faire.
+            if (!Auth::user()->role) {
                 Auth::logout();
                 return back()->withErrors([
-                    'email' => 'Ce compte n\'a pas les droits administrateur.',
+                    'email' => 'Ce compte n\'a pas de rôle assigné. Contactez un administrateur.',
                 ])->onlyInput('email');
             }
 

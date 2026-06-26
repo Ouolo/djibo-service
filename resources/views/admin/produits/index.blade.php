@@ -96,12 +96,26 @@
                             </form>
                         </td>
                         <td>
-                            <div style="display:flex; gap:6px; justify-content:flex-end;">
+                            <div style="display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap;">
+                                @if($produit->published_to_facebook)
+                                    <span class="adm-badge adm-badge-blue" title="Publié sur Facebook" style="background:#1877F2; color:white;">
+                                        <i class="fab fa-facebook-f"></i> Publié
+                                    </span>
+                                @else
+                                    <form method="POST" action="" style="display:inline;">
+                                        @csrf
+                                        <button type="submit" class="adm-btn adm-btn-sm" title="Publier sur Facebook"
+                                                style="background:#1877F2; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; font-size:12px;">
+                                            <i class="fab fa-facebook-f"></i> Publier
+                                        </button>
+                                    </form>
+                                @endif
                                 <a href="{{ route('admin.produits.edit', $produit) }}" class="adm-btn adm-btn-outline adm-btn-sm" title="Modifier">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <form method="POST" action="{{ route('admin.produits.destroy', $produit) }}"
-                                      onsubmit="return confirm('Supprimer ce produit ?');">
+                                      onsubmit="return confirm('Supprimer ce produit ?');"
+                                      style="display:inline;">
                                     @csrf @method('DELETE')
                                     <button type="submit" class="adm-btn adm-btn-danger adm-btn-sm" title="Supprimer">
                                         <i class="fas fa-trash"></i>

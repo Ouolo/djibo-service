@@ -12,17 +12,176 @@
 
 @section('content')
 
+<style>
+    /* Layout responsive pour le formulaire réalisation */
+    .adm-form-layout {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 20px;
+        align-items: start;
+    }
+
+    .adm-form-left {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .adm-form-right {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* Grid interne pour localisation + impact */
+    .adm-form-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .adm-textarea {
+        min-height: 120px;
+        line-height: 1.6;
+        resize: vertical;
+    }
+
+    .adm-textarea[rows="8"] {
+        min-height: 280px;
+    }
+
+    /* Bouton submit */
+    .adm-btn-submit {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 1200px) {
+        .adm-form-layout {
+            grid-template-columns: 1fr 320px;
+            gap: 16px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .adm-form-layout {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .adm-form-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .adm-form-grid-2 {
+            gap: 12px;
+        }
+
+        .adm-textarea[rows="8"] {
+            min-height: 240px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .adm-form-layout {
+            gap: 16px;
+        }
+
+        .adm-form-right {
+            grid-template-columns: 1fr;
+        }
+
+        .adm-form-grid-2 {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .adm-textarea {
+            min-height: 100px;
+        }
+
+        .adm-textarea[rows="8"] {
+            min-height: 200px;
+        }
+
+        .adm-card__header {
+            padding: 14px 18px;
+        }
+
+        .adm-card__title {
+            font-size: 14px;
+        }
+
+        .adm-form-group {
+            margin-bottom: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .adm-form-layout {
+            gap: 12px;
+        }
+
+        .adm-card__body {
+            padding: 16px;
+        }
+
+        .adm-card__header {
+            padding: 12px 16px;
+        }
+
+        .adm-label {
+            font-size: 12px;
+        }
+
+        .adm-input,
+        .adm-textarea {
+            font-size: 13px;
+            padding: 8px 12px;
+        }
+
+        .adm-textarea {
+            min-height: 80px;
+        }
+
+        .adm-textarea[rows="8"] {
+            min-height: 160px;
+        }
+
+        .adm-help {
+            font-size: 11px;
+        }
+
+        .adm-btn {
+            font-size: 12px;
+            padding: 8px 14px;
+        }
+
+        .adm-form-group {
+            margin-bottom: 14px;
+        }
+
+        .adm-img-preview,
+        .adm-img-placeholder {
+            max-height: 160px;
+        }
+    }
+</style>
+
 <form method="POST"
       action="{{ $realisation->exists ? route('admin.realisations.update', $realisation) : route('admin.realisations.store') }}"
       enctype="multipart/form-data">
     @csrf
     @if($realisation->exists) @method('PUT') @endif
 
-    <div style="display:grid; grid-template-columns:1fr 340px; gap:20px; align-items:start;">
+    <div class="adm-form-layout">
 
         {{-- Colonne gauche : contenu principal --}}
-        <div>
-            <div class="adm-card" style="margin-bottom:20px;">
+        <div class="adm-form-left">
+            <div class="adm-card">
                 <div class="adm-card__header">
                     <span class="adm-card__title">🏆 Informations de la réalisation</span>
                 </div>
@@ -36,12 +195,12 @@
                         @error('titre') <div class="adm-error">{{ $message }}</div> @enderror
                     </div>
 
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                    <div class="adm-form-grid-2">
                         <div class="adm-form-group">
                             <label class="adm-label" for="localisation">Localisation <span>*</span></label>
                             <input type="text" id="localisation" name="localisation" class="adm-input"
                                    value="{{ old('localisation', $realisation->localisation) }}"
-                                   placeholder="Ex : Ségou (Mali)" required>
+                                   placeholder="Ex : Mopti (Mali)" required>
                             @error('localisation') <div class="adm-error">{{ $message }}</div> @enderror
                         </div>
                         <div class="adm-form-group">
@@ -66,8 +225,8 @@
         </div>
 
         {{-- Colonne droite : paramètres & image --}}
-        <div>
-            <div class="adm-card" style="margin-bottom:16px;">
+        <div class="adm-form-right">
+            <div class="adm-card">
                 <div class="adm-card__header">
                     <span class="adm-card__title">⚙️ Paramètres</span>
                 </div>
@@ -87,7 +246,7 @@
                         <div class="adm-help">Les plus petits numéros apparaissent en premier.</div>
                     </div>
 
-                    <div class="adm-form-group">
+                    <div class="adm-form-group" style="margin-bottom:10px;">
                         <label class="adm-toggle" for="actif">
                             <input type="checkbox" id="actif" name="actif" value="1"
                                    {{ old('actif', $realisation->actif ?? true) ? 'checked' : '' }}>
@@ -96,10 +255,10 @@
                         <div class="adm-help" style="margin-top:6px;">Si décoché, la réalisation est masquée du public.</div>
                     </div>
 
-                    <div style="display:flex; gap:10px; margin-top:4px;">
-                        <button type="submit" class="adm-btn adm-btn-primary" style="flex:1; justify-content:center;">
+                    <div style="display:flex; gap:10px; margin-top:10px;">
+                        <button type="submit" class="adm-btn adm-btn-primary adm-btn-submit">
                             <i class="fas fa-save"></i>
-                            {{ $realisation->exists ? 'Enregistrer' : 'Créer' }}
+                            <span>{{ $realisation->exists ? 'Enregistrer' : 'Créer' }}</span>
                         </button>
                     </div>
 

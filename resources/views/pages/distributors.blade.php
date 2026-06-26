@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Nos Distributeurs – Djibo Service')
+@section('title', 'Nos Distributeurs – Djibo Services')
 
 @section('content')
 
@@ -75,7 +75,7 @@
                 <div class="col-lg-6">
                     <div class="ps-lg-4">
                         <h6 class="font-weight-bold mb-2" style="color: var(--vert); letter-spacing: 1px;">REJOINDRE NOTRE RÉSEAU</h6>
-                        <h2 class="font-weight-bold mb-4">Devenez Distributeur Djibo Service</h2>
+                        <h2 class="font-weight-bold mb-4">Devenez Distributeur Djibo Services</h2>
                         <p class="text-muted mb-4">
                             Vous êtes propriétaire d'un magasin d'intrants agricoles, d'une coopérative ou un agro-dealer au Mali ? Rejoignez notre réseau de distribution et proposez à vos clients des produits biologiques haut de gamme certifiés, qui régénèrent les sols et augmentent les rendements.
                         </p>

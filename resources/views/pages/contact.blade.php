@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Contactez-nous – Djibo Service')
+@section('title', 'Contactez-nous – Djibo Services')
 
 @section('content')
 
@@ -29,12 +29,12 @@
             <!-- Coordonnées -->
             <div class="col-lg-5" data-animate>
                 <h2 style="margin-bottom:8px;">Nos Coordonnées</h2>
-                <p style="color:#6b5e50;margin-bottom:36px;">Appelez-nous, écrivez-nous ou passez directement à nos bureaux à Ségou.</p>
+                <p style="color:#6b5e50;margin-bottom:36px;">Appelez-nous, écrivez-nous ou passez directement à nos bureaux à Mopti.</p>
 
                 @foreach([
-                    ['fas fa-map-marker-alt','Notre Adresse','Route de Mopti, Sevare, Mopti, Mali'],
+                    ['fas fa-map-marker-alt','Notre Adresse','Sevare Milionki derriere la cite & L\'ADRAO'],
                     ['fas fa-phone-alt','Téléphone','(+223) +223 92 69 24 48'],
-                    ['fab fa-whatsapp','WhatsApp','<a href="https://wa.me/22376543210" target="_blank" style="color:var(--vert);font-weight:700;">Cliquer ici pour discuter</a>'],
+                    ['fab fa-whatsapp','WhatsApp','<a href="https://wa.me/22392692448?text=Bonjour,%20je%20souhaite%20obtenir%20plus%20d%27informations%20sur%20vos%20services." target="_blank" style="color:var(--vert);font-weight:700;">Cliquer ici pour discuter</a>'],
                     ['fas fa-envelope','E-mail','djiboservices@gmail.com'],
                     ['fas fa-clock','Horaires','Lun-Ven: 08h00-17h00 · Sam: 09h00-13h00'],
                 ] as $info)

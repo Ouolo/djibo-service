@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Admin') – Djibo Service</title>
+    <title>@yield('title', 'Admin') – Djibo Services</title>
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/fontawesome-all.min.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -39,6 +39,12 @@
             border-bottom: 1px solid rgba(255,255,255,0.07);
         }
         .adm-sidebar__logo svg { flex-shrink: 0; }
+        .adm-sidebar__logo-img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
         .adm-sidebar__logo-text { color: #fff; font-weight: 800; font-size: 16px; line-height: 1.2; }
         .adm-sidebar__logo-sub { color: var(--vert-clair); font-size: 11px; font-weight: 500; }
 
@@ -94,6 +100,16 @@
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 28px; position: sticky; top: 0; z-index: 50;
             box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+        }
+        .adm-topbar__left {
+            display: flex; align-items: center; gap: 16px;
+        }
+        .adm-topbar__menu-toggle {
+            display: none; background: none; border: none; color: var(--vert-dark);
+            font-size: 20px; cursor: pointer; transition: color 0.2s;
+        }
+        .adm-topbar__menu-toggle:hover {
+            color: var(--vert);
         }
         .adm-topbar__title { font-size: 18px; font-weight: 700; color: var(--vert-dark); }
         .adm-topbar__breadcrumb { font-size: 13px; color: #7a9a7d; margin-top: 2px; }
@@ -216,26 +232,121 @@
         .adm-search { display: flex; gap: 10px; margin-bottom: 20px; }
         .adm-search .adm-input { max-width: 300px; }
 
+        /* ── MOBILE / TABLET RESPONSIVITÉ ── */
+        @media (max-width: 1024px) {
+            .adm-content { padding: 20px; }
+            .adm-topbar { padding: 0 20px; }
+            .adm-stats { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+        }
+
         @media (max-width: 768px) {
-            .adm-sidebar { transform: translateX(-100%); }
-            .adm-sidebar.open { transform: translateX(0); }
+            :root { --sidebar-w: 0px; }
+            
+            .adm-sidebar {
+                transform: translateX(-100%);
+                z-index: 999;
+                width: 260px;
+                box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+            }
+            .adm-sidebar.open {
+                transform: translateX(0);
+            }
+            
             .adm-main { margin-left: 0; }
+            
+            .adm-topbar__menu-toggle { display: block; }
+            
+            .adm-topbar {
+                padding: 0 16px;
+            }
+            
+            .adm-topbar__title {
+                font-size: 16px;
+            }
+            
+            .adm-content {
+                padding: 16px;
+            }
+            
+            .adm-stats { grid-template-columns: 1fr; }
+            
+            .adm-search .adm-input { max-width: 100%; }
+            
+            .adm-btn { padding: 8px 16px; font-size: 12px; }
+            
+            .adm-table {
+                font-size: 12px;
+            }
+            .adm-table th, .adm-table td {
+                padding: 10px 8px;
+            }
+            
+            /* Overlay pour fermer la sidebar */
+            .adm-sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.3);
+                z-index: 99;
+            }
+            .adm-sidebar-overlay.open {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --topbar-h: 56px;
+            }
+            
+            .adm-sidebar__logo-text {
+                font-size: 14px;
+            }
+            
+            .adm-topbar__title {
+                font-size: 14px;
+            }
+            
+            .adm-topbar__breadcrumb {
+                display: none;
+            }
+            
+            .adm-content { padding: 12px; }
+            
+            .adm-stats { gap: 12px; }
+            
+            .adm-stat {
+                padding: 16px;
+                gap: 12px;
+            }
+            
+            .adm-stat__num { font-size: 22px; }
+            
+            .adm-card__body { padding: 16px; }
+            
+            .adm-btn { padding: 7px 12px; font-size: 11px; }
+            
+            .adm-nav__link { padding: 9px 12px; font-size: 13px; }
+            
+            .adm-topbar__actions { gap: 8px; }
         }
     </style>
     @stack('styles')
 </head>
 <body>
 
+{{-- SIDEBAR OVERLAY (mobile) --}}
+<div class="adm-sidebar-overlay" id="sidebarOverlay"></div>
+
 {{-- SIDEBAR --}}
-<aside class="adm-sidebar">
+<aside class="adm-sidebar" id="sidebar">
     <div class="adm-sidebar__logo">
-        <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="48" fill="#2E7D32"/>
-            <path d="M50 80C50 80 50 50 35 40C20 30 25 15 45 30C45 30 48 35 50 42C52 35 55 30 55 30C75 15 80 30 65 40C50 50 50 80 50 80Z" fill="#F9A825"/>
-            <path d="M50 80C50 80 50 55 45 48C40 41 30 40 40 52C40 52 45 56 48 62C49 58 52 50 52 50C65 42 68 52 58 58C48 64 50 80 50 80Z" fill="#66BB6A"/>
-        </svg>
+        <img src="{{ asset('assets/images/logo-djibo.jpg') }}" alt="Logo DJIBO" class="adm-sidebar__logo-img">
         <div>
-            <div class="adm-sidebar__logo-text">DJIBO SERVICE</div>
+            <div class="adm-sidebar__logo-text">DJIBO SERVICES</div>
             <div class="adm-sidebar__logo-sub">Administration</div>
         </div>
     </div>
@@ -275,12 +386,51 @@
             @endif
         </a>
 
+        <a href="{{ route('admin.temoignages.index') }}"
+           class="adm-nav__link {{ request()->routeIs('admin.temoignages.*') ? 'active' : '' }}">
+            <i class="fas fa-comments"></i> Témoignages
+            @php $totalTemos = \App\Models\Temoignage::count(); @endphp
+            @if($totalTemos > 0)
+                <span class="adm-nav__badge">{{ $totalTemos }}</span>
+            @endif
+        </a>
+
+        @if(auth()->user()->hasPermission('read_users') || auth()->user()->hasPermission('read_roles'))
+        <div class="adm-nav__label" style="margin-top:12px;">Administration</div>
+        
+        @if(auth()->user()->hasPermission('read_users'))
+        <a href="{{ route('admin.users.index') }}"
+           class="adm-nav__link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+            <i class="fas fa-users"></i> Utilisateurs
+        </a>
+        @endif
+
+        @if(auth()->user()->hasPermission('read_roles'))
+        <a href="{{ route('admin.roles.index') }}"
+           class="adm-nav__link {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}">
+            <i class="fas fa-shield-alt"></i> Rôles
+            @php $totalRoles = \App\Models\Role::count(); @endphp
+            @if($totalRoles > 0)
+                <span class="adm-nav__badge">{{ $totalRoles }}</span>
+            @endif
+        </a>
+        
+        <a href="{{ route('admin.permissions.index') }}"
+           class="adm-nav__link {{ request()->routeIs('admin.permissions.*') ? 'active' : '' }}">
+            <i class="fas fa-lock"></i> Permissions
+        </a>
+        @endif
+        @endif
+
         <div class="adm-nav__label" style="margin-top:12px;">Raccourcis</div>
         <a href="{{ route('admin.actualites.create') }}" class="adm-nav__link">
             <i class="fas fa-plus-circle"></i> Nouvelle publication
         </a>
         <a href="{{ route('admin.realisations.create') }}" class="adm-nav__link">
             <i class="fas fa-plus-circle"></i> Nouvelle réalisation
+        </a>
+        <a href="{{ route('admin.temoignages.create') }}" class="adm-nav__link">
+            <i class="fas fa-plus-circle"></i> Nouveau témoignage
         </a>
         <a href="{{ route('home') }}" target="_blank" class="adm-nav__link">
             <i class="fas fa-external-link-alt"></i> Voir le site
@@ -306,9 +456,14 @@
 <div class="adm-main">
     {{-- TOPBAR --}}
     <header class="adm-topbar">
-        <div>
-            <div class="adm-topbar__title">@yield('page-title', 'Tableau de bord')</div>
-            <div class="adm-topbar__breadcrumb">@yield('breadcrumb', 'Admin')</div>
+        <div class="adm-topbar__left">
+            <button class="adm-topbar__menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div>
+                <div class="adm-topbar__title">@yield('page-title', 'Tableau de bord')</div>
+                <div class="adm-topbar__breadcrumb">@yield('breadcrumb', 'Admin')</div>
+            </div>
         </div>
         <div class="adm-topbar__actions">
             @yield('topbar-actions')
@@ -333,6 +488,42 @@
         @yield('content')
     </main>
 </div>
+
+<script>
+    // Toggle sidebar on mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('open');
+    });
+
+    // Close sidebar when clicking overlay
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('open');
+    });
+
+    // Close sidebar when clicking a link (on mobile)
+    document.querySelectorAll('.adm-nav__link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('open');
+            }
+        });
+    });
+
+    // Close sidebar when window is resized to larger screen
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+    });
+</script>
 
 @stack('scripts')
 </body>

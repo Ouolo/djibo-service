@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Témoignages – Djibo Service')
+@section('title', 'Témoignages – Djibo Services')
 
 @push('styles')
 <style>
@@ -85,7 +85,7 @@
     <div class="container">
         <h1 class="font-weight-bold mb-2 text-white">⭐ Témoignages & Références</h1>
         <p class="lead m-0" style="color: var(--jaune-agri); font-weight: 700;">
-            Expériences réelles des producteurs accompagnés par Djibo Service
+            Expériences réelles des producteurs accompagnés par Djibo Services
         </p>
     </div>
 </div>
@@ -101,90 +101,101 @@
 <!-- TESTIMONIALS -->
 <div class="section-space--ptb_80 bg-light">
     <div class="container">
-
         <div class="row">
-
-            @foreach($testimonials as $testimonial)
-
-            <div class="col-lg-12 mb-4 wow animate__fadeInUp">
-
-                <div class="testimonial-page-card">
-
-                    <div class="quote-icon-bg">
-                        <i class="fas fa-quote-right"></i>
-                    </div>
-
-                    <div class="row align-items-center">
-
-                        <!-- IMAGE -->
-                        <div class="col-md-2 text-center mb-3 mb-md-0">
-
-                            <img src="{{ asset($testimonial['image']) }}"
-                                 class="rounded-circle shadow-sm"
-                                 style="width:90px;height:90px;object-fit:cover;border:3px solid var(--vert);">
-
-                            <h6 class="font-weight-bold mt-2 mb-0">
-                                {{ $testimonial['name'] }}
-                            </h6>
-
-                            <small class="text-muted">
-                                {{ $testimonial['location'] }}
-                            </small>
-
+            @forelse($testimonials as $testimonial)
+                <div class="col-lg-12 mb-4 wow animate__fadeInUp">
+                    <div class="testimonial-page-card">
+                        <div class="quote-icon-bg">
+                            <i class="fas fa-quote-right"></i>
                         </div>
 
-                        <!-- QUOTE -->
-                        <div class="col-md-6 mb-3 mb-md-0">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 text-center mb-3 mb-md-0">
+                                @if($testimonial['type'] === 'image' && isset($testimonial['image']))
+                                    <img src="{{ asset($testimonial['image']) }}"
+                                         class="rounded shadow-sm"
+                                         style="width:140px;height:140px;object-fit:cover;border:3px solid var(--vert);">
+                                @elseif($testimonial['type'] === 'video' && isset($testimonial['video']))
+                                    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px; border:3px solid var(--vert);">
+                                        <video controls style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:5px;">
+                                            <source src="{{ asset($testimonial['video']) }}" type="video/mp4">
+                                            Votre navigateur ne supporte pas la vidéo.
+                                        </video>
+                                    </div>
+                                @else
+                                    <img src="{{ asset($testimonial['image'] ?? 'assets/images/logo-djibo.jpg') }}"
+                                         class="rounded-circle shadow-sm"
+                                         style="width:90px;height:90px;object-fit:cover;border:3px solid var(--vert);">
+                                @endif
 
-                            <span class="role-badge">
-                                {{ $testimonial['role'] }}
-                            </span>
+                                <h6 class="font-weight-bold mt-2 mb-0">
+                                    {{ $testimonial['name'] }}
+                                </h6>
 
-                            <p class="mt-3 mb-0 font-italic" style="font-size: 1.1rem;">
-                                “ {{ $testimonial['quote'] }} ”
-                            </p>
+                                <small class="text-muted">
+                                    📍 {{ $testimonial['location'] }}
+                                </small>
 
-                        </div>
-
-                        <!-- BEFORE AFTER -->
-                        <div class="col-md-4">
-
-                            <h6 class="font-weight-bold mb-3">
-                                📊 Résultat terrain
-                            </h6>
-
-                            <div class="before-after-box">
-
-                                <div class="mb-2">
-                                    <span class="badge bg-danger text-white">Avant</span>
-                                    <p class="text-muted small mt-1 mb-0">
-                                        {{ $testimonial['before_after']['before'] }}
-                                    </p>
-                                </div>
-
-                                <hr>
-
-                                <div>
-                                    <span class="badge" style="background: var(--vert); color:#fff;">
-                                        Après
-                                    </span>
-                                    <p class="small font-weight-bold mt-1 mb-0" style="color: var(--vert);">
-                                        {{ $testimonial['before_after']['after'] }}
-                                    </p>
-                                </div>
-
+                                @if(isset($testimonial['type']) && $testimonial['type'] !== 'text')
+                                    <div style="margin-top:8px;">
+                                        <span style="display:inline-block; padding:4px 8px; background:{{ $testimonial['type'] === 'image' ? '#f3e5f5' : '#e8f5e9' }}; color:{{ $testimonial['type'] === 'image' ? '#7b1fa2' : '#388e3c' }}; border-radius:4px; font-size:12px; font-weight:600;">
+                                            {{ $testimonial['type'] === 'image' ? '🖼️ Photo' : '🎬 Vidéo' }}
+                                        </span>
+                                    </div>
+                                @endif
                             </div>
 
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <span class="role-badge">
+                                    {{ $testimonial['role'] }}
+                                </span>
+
+                                <p class="mt-3 mb-0 font-italic" style="font-size: 1.1rem;">
+                                    " {{ $testimonial['quote'] }} "
+                                </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                @if(isset($testimonial['before_after']) && ($testimonial['before_after']['before'] || $testimonial['before_after']['after']))
+                                    <h6 class="font-weight-bold mb-3">
+                                        📊 Résultat terrain
+                                    </h6>
+
+                                    <div class="before-after-box">
+                                        @if($testimonial['before_after']['before'])
+                                            <div class="mb-2">
+                                                <span class="badge bg-danger text-white">Avant</span>
+                                                <p class="text-muted small mt-1 mb-0">
+                                                    {{ $testimonial['before_after']['before'] }}
+                                                </p>
+                                            </div>
+                                            <hr>
+                                        @endif
+
+                                        @if($testimonial['before_after']['after'])
+                                            <div>
+                                                <span class="badge" style="background: var(--vert); color:#fff;">
+                                                    Après
+                                                </span>
+                                                <p class="small font-weight-bold mt-1 mb-0" style="color: var(--vert);">
+                                                    {{ $testimonial['before_after']['after'] }}
+                                                </p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endif
+                            </div>
                         </div>
-
                     </div>
-
                 </div>
-
-            </div>
-
-            @endforeach
-
+            @empty
+                <div class="col-lg-12">
+                    <div style="padding: 40px; text-align: center; background: #fff; border-radius: 18px;">
+                        <i class="fas fa-comments" style="font-size: 48px; color: rgba(46,125,50,0.2); display: block; margin-bottom: 15px;"></i>
+                        <p style="color: #7a9a7d; font-size: 16px;">Aucun témoignage disponible pour le moment.</p>
+                    </div>
+                </div>
+            @endforelse
         </div>
     </div>
 </div>

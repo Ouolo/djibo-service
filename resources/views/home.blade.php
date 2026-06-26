@@ -45,7 +45,9 @@
 .dj-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.3) 100%);
+    background:
+        linear-gradient(to right, rgba(0,20,5,0.58) 0%, rgba(0,20,5,0.25) 60%, rgba(0,0,0,0.05) 100%),
+        linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%);
     z-index: 2;
 }
 
@@ -240,7 +242,7 @@
                     Pour des récoltes<br><em>abondantes</em> et écologiques
                 </h1>
                 <p class="dj-hero-desc" data-animate>
-                    Intrants biologiques, formation agronomique et suivi terrain — Djibo Service régénère vos sols et sécurise vos récoltes.
+                    Intrants biologiques, formation agronomique et suivi terrain — Djibo Services régénère vos sols et sécurise vos récoltes.
                 </p>
                 <div class="dj-hero-actions" data-animate>
                     <a href="{{ route('products') }}" class="btn-dj-primary">Voir nos produits</a>
@@ -252,7 +254,7 @@
 </section>
 
 <!-- Bouton WhatsApp flottant -->
-<a href="https://wa.me/22376543210" target="_blank" class="dj-float-wa" aria-label="WhatsApp">
+<a href="https://wa.me/22392692448?text=Bonjour%20Djibo%20Services,%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20produits%20et%20services." target="_blank" class="dj-float-wa" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
 <!-- ===== ACTUALITÉS ===== -->
@@ -262,7 +264,7 @@
         <div class="section-heading" data-animate>
             <span class="section-label">📰 Actualités & Conseils</span>
             <h2>Nos Dernières Publications</h2>
-            <p>Restez informé des nouveautés, conseils agronomiques et formations de Djibo Service.</p>
+            <p>Restez informé des nouveautés, conseils agronomiques et formations de Djibo Services.</p>
         </div>
 
         <div class="row g-4">
@@ -280,7 +282,7 @@
                         <span class="dj-news-card__tag">🌱 Agriculture Durable</span>
                         <h5 class="dj-news-card__title">{{ $article['title'] }}</h5>
                         <p class="dj-news-card__excerpt">{{ $article['excerpt'] }}</p>
-                        <a href="{{ route('contact') }}" class="dj-news-card__link">
+                        <a href="{{ route('actualites.public.show', $article['slug']) }}" class="dj-news-card__link">
                             Lire plus <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -358,7 +360,7 @@
                 </ul>
                 <div class="dj-hero-actions">
                     <a href="{{ route('products') }}" class="btn-dj-primary">Voir le catalogue</a>
-                    <a href="https://wa.me/22376543210?text=Je%20veux%20commander%20le%20BioActivateur%20Sol-Plus" target="_blank"
+                    <a href="https://wa.me/22392692448?text=Je%20veux%20commander%20le%20BioActivateur%20Sol-Plus" target="_blank"
                        class="btn-dj-primary" style="background:#25d366;">
                         <i class="fab fa-whatsapp"></i> Commander
                     </a>
@@ -385,6 +387,7 @@
                         <p class="dj-real-impact"><i class="fas fa-map-marker-alt"></i> {{ $r['location'] }} &nbsp;|&nbsp; {{ $r['impact'] }}</p>
                         <h4>{{ $r['title'] }}</h4>
                         <p style="color:#6b5e50;font-size:14px;">{{ Str::limit($r['description'], 120) }}</p>
+                        <a href="{{ route('realisations.public.show', $r['id']) }}" class="dj-real-card__link" style="display:inline-block;margin-top:8px; font-weight:700;color:var(--bleu-confiance);">Lire la suite <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -398,42 +401,6 @@
     </div>
 </section>
 
-<!-- ===== TÉMOIGNAGES ===== -->
-<section class="section-creme section-pad">
-    <div class="container">
-        <div class="section-heading" data-animate>
-            <span class="section-label">Avis Clients</span>
-            <h2>Ce que disent nos producteurs</h2>
-        </div>
-        <div class="row g-4">
-            @foreach($testimonials as $t)
-            <div class="col-md-6" data-animate>
-                <div class="dj-testi-card">
-                    <p class="dj-testi-quote">" {{ $t['quote'] }} "</p>
-                    <div style="background:var(--gris-clair);border-radius:8px;padding:14px;margin-bottom:18px;">
-                        <div style="margin-bottom:8px;">
-                            <span class="dj-testi-badge-before">Avant</span>
-                            <p style="font-size:13px;color:var(--gris-fonce);opacity:0.8;margin:4px 0 0;">{{ $t['before_after']['before'] }}</p>
-                        </div>
-                        <div>
-                            <span class="dj-testi-badge-after">Après</span>
-                            <p style="font-size:13px;color:var(--vert);font-weight:600;margin:4px 0 0;">{{ $t['before_after']['after'] }}</p>
-                        </div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:12px;">
-                        <img src="{{ asset($t['image']) }}" alt="{{ $t['name'] }}"
-                             style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:3px solid var(--vert-clair);">
-                        <div>
-                            <strong style="color:var(--vert);">{{ $t['name'] }}</strong>
-                            <span style="display:block;font-size:13px;color:var(--gris-fonce);opacity:0.8;">{{ $t['role'] }} – {{ $t['location'] }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
 
 
 <!-- ===== CTA FINAL ===== -->
@@ -445,7 +412,7 @@
         </p>
         <div class="dj-hero-actions" style="justify-content:center;" data-animate>
             <a href="{{ route('contact') }}" class="btn-dj-primary btn-dj-orange">Demander un diagnostic</a>
-            <a href="https://wa.me/22376543210" target="_blank" class="btn-dj-primary" style="background:#25d366;">
+            <a href="https://wa.me/22392692448?text=Bonjour,%20pourriez-vous%20m%27aider%20%C3%A0%20diagnostiquer%20l%27%C3%A9tat%20de%20mon%20champ%20?" target="_blank" class="btn-dj-primary" style="background:#25d366;">
                 <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
         </div>

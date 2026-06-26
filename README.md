@@ -1,4 +1,4 @@
-# 🌿 Djibo Service — Site Web Corporate
+# 🌿 Djibo Services — Site Web Corporate
 
 Site web corporate de **DJIBO SERVICES**, entreprise malienne spécialisée dans les biofertilisants, biopesticides et l'accompagnement agricole durable.
 
@@ -189,6 +189,25 @@ Mise à niveau majeure du site avec un panneau d'administration et une interface
 
 ---
 
+## 🏆 Changelog — Module Réalisations & Partenaires (Juin 2026)
+
+Dernières évolutions pour rendre le site entièrement dynamique et connecter les réseaux sociaux.
+
+### 1. Module Réalisations Dynamiques (CRUD)
+- **Modèle et Base de données** : Création de la table `realisations` (titre, localisation, impact, description, image, date_projet, actif, ordre).
+- **Administration** : Gestion complète (Ajouter, Modifier, Supprimer, Toggle actif/inactif en AJAX/PATCH). Intégration dans la barre latérale avec badge de comptage dynamique.
+- **Dashboard** : Intégration des indicateurs statistiques clés (total, actives, récentes) et raccourcis rapides.
+- **Peuplement automatique** : Création et exécution du seeder `RealisationSeeder` injectant les données réelles historiques de l'entreprise.
+
+### 2. Gestion Dynamique des Partenaires
+- **Scan de Médias** : La section partenaires de la page témoignages scanne désormais dynamiquement le dossier `public/assets/images/logo-partenaire` via PHP pour afficher instantanément tous les nouveaux logos déposés par l'utilisateur.
+
+### 3. Réseaux Sociaux & Footer
+- **Harmonisation** : Intégration des icônes de réseaux sociaux officiels (**Facebook**, **Instagram**, **TikTok** et **WhatsApp**) dans le footer du layout global (`layouts/app.blade.php`) et de la vue partielle.
+- **Lien Officiel** : Configuration de la page officielle Facebook vers `https://www.facebook.com/djibobio/`.
+
+---
+
 ## ⚙️ Démarrage Local
 
 ```bash
@@ -199,11 +218,15 @@ composer install
 cp .env.example .env
 php artisan key:generate
 
+# Peupler la base de données (inclut utilisateurs, actualités, produits et réalisations)
+php artisan migrate --seed
+php artisan db:seed --class=RealisationSeeder
+
+# Créer le lien de stockage pour les images
+php artisan storage:link
+
 # Lancer le serveur de développement
 php artisan serve
-
-# (Optionnel) Compiler les assets front-end
-npm install && npm run dev
 ```
 
 Le site sera accessible sur **http://127.0.0.1:8000**
@@ -213,7 +236,9 @@ Le site sera accessible sur **http://127.0.0.1:8000**
 ## 📬 Contact
 
 **DJIBO SERVICES**
-Route de Ségou, Sébougou, Ségou, République du Mali
+Route de Mopti, Sevare, Mopti, République du Mali
 📞 (+223) 92 69 24 48
 ✉️ djiboservices@gmail.com
-🌐 WhatsApp : [wa.me/22376543210](https://wa.me/22376543210)
+🌐 WhatsApp : [wa.me/22392692448](https://wa.me/22392692448)
+🌐 Facebook : [facebook.com/djibobio](https://www.facebook.com/djibobio/)
+

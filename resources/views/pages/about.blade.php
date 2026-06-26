@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'À Propos – Djibo Service')
+@section('title', 'À Propos – Djibo Services')
 
 
 @section('content')
@@ -148,30 +148,48 @@
         background: white;
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        transition: transform 0.3s ease;
+        box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-align: center;
+        border: 1px solid rgba(0,0,0,0.05);
     }
     .team-card:hover {
         transform: translateY(-10px);
+        box-shadow: 0 20px 45px rgba(0,0,0,0.12);
     }
     .team-cover {
         height: 140px;
-        background: linear-gradient(135deg, var(--vert), var(--vert-clair));
+        background: linear-gradient(135deg, #0d3b6f, #1f6bb8);
     }
     .team-avatar {
-        width: 120px;
-        height: 120px;
+        width: 140px;
+        height: 140px;
         background: white;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: -60px auto 20px;
+        margin: -70px auto 20px;
         border: 4px solid white;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.12);
         color: var(--vert);
         font-size: 40px;
+        overflow: hidden;
+    }
+    .team-card.team-featured .team-avatar {
+        width: 160px;
+        height: 160px;
+        margin: -80px auto 18px;
+    }
+    .team-avatar img {
+        transition: transform 0.4s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    .team-card:hover .team-avatar img {
+        transform: scale(1.18);
     }
 </style>
 
@@ -179,7 +197,7 @@
 <div class="about-hero" data-animate>
     <div class="container">
         <h1 style="color: white;">À Propos de Nous</h1>
-        <p>Découvrez l'histoire, la mission et les valeurs qui animent Djibo Service au quotidien pour une agriculture plus verte.</p>
+        <p>Découvrez l'histoire, la mission et les valeurs qui animent Djibo Services au quotidien pour une agriculture plus verte.</p>
     </div>
 </div>
 
@@ -190,7 +208,7 @@
             
             <div class="col-lg-6 mb-5 mb-lg-0" data-animate>
                 <div class="history-img-wrapper">
-                    <img src="{{ asset('assets/images/realisation/propos.jpg') }}" class="history-img" alt="Djibo Service">
+                    <img src="{{ asset('assets/images/realisation/propos.jpg') }}" class="history-img" alt="Djibo Services">
                     <div class="history-badge">
                         <h3>2022</h3>
                         <p>Année de création</p>
@@ -313,7 +331,7 @@
                     <h2>Une présence nationale au Mali</h2>
                 </div>
                 <p class="text-muted mb-4" style="font-size: 1.1rem;">
-                    Basés principalement dans la région de Mopti, nous disposons également de deux annexes à Bamako et Ségou pour mieux vous servir. Nous couvrons activement l'ensemble de la 5ème région du Mali et nous nous étendons sur plusieurs autres zones stratégiques :
+                    Basés principalement dans la région de Mopti, nous disposons également d'une annexe à Bamako pour mieux vous servir. Nous couvrons activement l'ensemble de la 5ème région du Mali et nous nous étendons sur plusieurs autres zones stratégiques :
                 </p>
 
                 <div class="row mb-4">
@@ -321,7 +339,6 @@
                         <ul class="list-unstyled">
                             <li class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i> Mopti (Siège)</li>
                             <li class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i> Bamako (Annexe)</li>
-                            <li class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i> Ségou (Annexe)</li>
                             <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Douentza</li>
                             <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Bandiagara</li>
                         </ul>
@@ -351,7 +368,7 @@
         <div class="section-heading text-center" data-animate>
             <span class="section-label">Des experts engagés</span>
             <h2>Notre Équipe Dirigeante</h2>
-            <p>Découvrez les visages qui propulsent l'innovation agricole chez Djibo Service.</p>
+            <p>Découvrez les visages qui propulsent l'innovation agricole chez Djibo Services.</p>
         </div>
 
         <div class="row justify-content-center g-4">

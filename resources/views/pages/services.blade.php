@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Nos Services – Djibo Service')
+@section('title', 'Nos Services – Djibo Services')
 
 @section('content')
 
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 d-flex flex-column gap-2">
-                    <a href="https://wa.me/22376543210?text=Je%20veux%20plus%20d%27infos%20sur%20{{ urlencode($service['title']) }}"
+                    <a href="https://wa.me/22392692448?text=Je%20veux%20plus%20d%27infos%20sur%20{{ urlencode($service['title']) }}"
                        target="_blank" class="btn-dj-primary" style="justify-content:center;background:#25d366;text-align:center;">
                         <i class="fab fa-whatsapp"></i> Demander un devis
                     </a>

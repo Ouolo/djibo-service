@@ -19,7 +19,7 @@ class RealisationSeeder extends Seeder
         $data = [
             [
                 'titre'        => 'Projet de Restauration des Sols à Segouboughou',
-                'localisation' => 'Ségou (Mali)',
+                'localisation' => 'Mopti (Mali)',
                 'impact'       => '15 hectares restaurés',
                 'description'  => 'Restauration de parcelles agricoles dégradées par l\'utilisation intensive de produits chimiques. Grâce à notre BioActivateur Sol-Plus, les producteurs ont retrouvé un rendement historique de 80% supérieur dès la première récolte d\'oignons.',
                 'image'        => 'assets/images/realisation/IMG-20260615-WA0129.jpg',
@@ -29,7 +29,7 @@ class RealisationSeeder extends Seeder
             ],
             [
                 'titre'        => 'Aménagement de la Ferme École Djibo-Bio',
-                'localisation' => 'Zone périurbaine de Ségou',
+                'localisation' => 'Zone périurbaine de Mopti',
                 'impact'       => 'Plus de 500 producteurs formés par an',
                 'description'  => 'Création d\'un centre de démonstration agroécologique moderne combinant maraîchage, arboriculture et élevage intégré, fonctionnant entièrement à l\'énergie solaire et avec recyclage des déchets.',
                 'image'        => 'assets/images/realisation/formation.jpg',
@@ -39,7 +39,7 @@ class RealisationSeeder extends Seeder
             ],
             [
                 'titre'        => 'Programme d\'Appui aux Coopératives Féminines',
-                'localisation' => 'Cercle de Ségou',
+                'localisation' => 'Cercle de Mopti',
                 'impact'       => '120 femmes accompagnées et autonomisées',
                 'description'  => 'Dotation en intrants organiques et formation complète sur la production de tomates hors-saison. Le projet a permis d\'augmenter les revenus mensuels des familles bénéficiaires de près de 150%.',
                 'image'        => 'assets/images/realisation/amenagement deni hectar en tomate.jpg',
@@ -49,7 +49,7 @@ class RealisationSeeder extends Seeder
             ],
             [
                 'titre'        => 'Aménagement de Parcelles de Papayes',
-                'localisation' => 'Ségou (Mali)',
+                'localisation' => 'Mopti (Mali)',
                 'impact'       => '1 hectare de papayes planté',
                 'description'  => 'Accompagnement technique de producteurs pour la mise en place d\'une plantation moderne de papayers de haute productivité avec système d\'irrigation localisé.',
                 'image'        => "assets/images/realisation/amenagement d'unhectar en papaye.jpg",
@@ -69,7 +69,7 @@ class RealisationSeeder extends Seeder
             ],
             [
                 'titre'        => 'Réalisation de Diagnostics de Parcelles',
-                'localisation' => 'Région de Ségou',
+                'localisation' => 'Région de Mopti',
                 'impact'       => '100+ diagnostics de sols effectués',
                 'description'  => 'Fourniture de fiches techniques personnalisées et de conseils pratiques pour optimiser la fertilisation naturelle et la protection des cultures.',
                 'image'        => 'assets/images/realisation/ficheTechnique.jpg',

@@ -12,17 +12,147 @@
 
 @section('content')
 
+<style>
+    /* Layout responsive pour le formulaire */
+    .adm-form-layout {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 20px;
+        align-items: start;
+    }
+
+    .adm-form-left {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .adm-form-right {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .adm-textarea {
+        min-height: 120px;
+        line-height: 1.6;
+    }
+
+    .adm-textarea[rows="12"] {
+        min-height: 400px;
+    }
+
+    /* Bouton submit */
+    .adm-btn-submit {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 1200px) {
+        .adm-form-layout {
+            grid-template-columns: 1fr 320px;
+            gap: 16px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .adm-form-layout {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .adm-form-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .adm-form-layout {
+            gap: 16px;
+        }
+
+        .adm-form-right {
+            grid-template-columns: 1fr;
+        }
+
+        .adm-textarea {
+            min-height: 100px;
+        }
+
+        .adm-textarea[rows="12"] {
+            min-height: 300px;
+        }
+
+        .adm-card__header {
+            padding: 14px 18px;
+        }
+
+        .adm-card__title {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .adm-form-layout {
+            gap: 12px;
+        }
+
+        .adm-card__body {
+            padding: 16px;
+        }
+
+        .adm-form-group {
+            margin-bottom: 16px;
+        }
+
+        .adm-label {
+            font-size: 12px;
+        }
+
+        .adm-input,
+        .adm-textarea {
+            font-size: 13px;
+            padding: 8px 12px;
+        }
+
+        .adm-textarea {
+            min-height: 80px;
+        }
+
+        .adm-textarea[rows="12"] {
+            min-height: 250px;
+        }
+
+        .adm-help {
+            font-size: 11px;
+        }
+
+        .adm-btn {
+            font-size: 12px;
+            padding: 8px 14px;
+        }
+
+        .adm-img-preview,
+        .adm-img-placeholder {
+            max-height: 180px;
+        }
+    }
+</style>
+
 <form method="POST"
       action="{{ $actualite->exists ? route('admin.actualites.update', $actualite) : route('admin.actualites.store') }}"
       enctype="multipart/form-data">
     @csrf
     @if($actualite->exists) @method('PUT') @endif
 
-    <div style="display:grid; grid-template-columns:1fr 340px; gap:20px; align-items:start;">
+    <div class="adm-form-layout">
 
         {{-- Left column : main content --}}
-        <div>
-            <div class="adm-card" style="margin-bottom:20px;">
+        <div class="adm-form-left">
+            <div class="adm-card">
                 <div class="adm-card__header">
                     <span class="adm-card__title">📝 Contenu de la publication</span>
                 </div>
@@ -58,8 +188,8 @@
         </div>
 
         {{-- Right column : settings & image --}}
-        <div>
-            <div class="adm-card" style="margin-bottom:16px;">
+        <div class="adm-form-right">
+            <div class="adm-card">
                 <div class="adm-card__header">
                     <span class="adm-card__title">⚙️ Paramètres</span>
                 </div>
@@ -88,10 +218,10 @@
                         <div class="adm-help" style="margin-top:6px;">Si décoché, la publication reste en brouillon.</div>
                     </div>
 
-                    <div style="display:flex; gap:10px; margin-top:4px;">
-                        <button type="submit" class="adm-btn adm-btn-primary" style="flex:1; justify-content:center;">
+                    <div style="display:flex; gap:10px; margin-top:10px;">
+                        <button type="submit" class="adm-btn adm-btn-primary adm-btn-submit">
                             <i class="fas fa-save"></i>
-                            {{ $actualite->exists ? 'Enregistrer' : 'Publier' }}
+                            <span>{{ $actualite->exists ? 'Enregistrer' : 'Publier' }}</span>
                         </button>
                     </div>
 

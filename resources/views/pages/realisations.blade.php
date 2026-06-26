@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Nos Réalisations – Djibo Service')
+@section('title', 'Nos Réalisations – Djibo Services')
 
 @section('content')
 
@@ -77,10 +77,13 @@
                             </div>
                             <div class="px-4 pb-4">
                                 <hr class="mt-0">
-                                <a href="https://wa.me/22376543210?text=Je%20souhaite%20en%20savoir%20plus%20sur%20le%20projet%20{{ urlencode($realisation['title']) }}" target="_blank" 
-                                   class="btn btn-link p-0 text-decoration-none font-weight-bold"
+                                <a href="{{ route('realisations.public.show', $realisation['id']) }}" class="btn btn-link p-0 text-decoration-none font-weight-bold" style="color: var(--bleu-confiance);">
+                                    Lire la suite <i class="fas fa-arrow-right ms-1"></i>
+                                </a>
+                                <a href="https://wa.me/22392692448?text=Je%20souhaite%20en%20savoir%20plus%20sur%20le%20projet%20{{ urlencode($realisation['title']) }}" target="_blank" 
+                                   class="btn btn-link p-0 text-decoration-none font-weight-bold ms-3"
                                    style="color: var(--bleu-confiance);">
-                                    Voir plus d'infos <i class="fas fa-arrow-right ms-1"></i>
+                                    Contacter via WhatsApp <i class="fas fa-arrow-right ms-1"></i>
                                 </a>
                             </div>
                         </div>

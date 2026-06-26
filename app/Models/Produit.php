@@ -22,6 +22,8 @@ class Produit extends Model
         'image',
         'actif',
         'ordre',
+        'published_to_facebook',
+        'published_at_facebook',
     ];
 
     protected $casts = [

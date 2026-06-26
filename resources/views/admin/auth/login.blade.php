@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion Admin – Djibo Service</title>
+    <title>Connexion Admin – Djibo Services</title>
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/fontawesome-all.min.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -92,7 +92,7 @@
             <path d="M50 78C50 78 50 50 37 41C24 32 29 18 47 31C47 31 49 36 50 42C51 36 53 31 53 31C71 18 76 32 63 41C50 50 50 78 50 78Z" fill="#F9A825"/>
             <path d="M50 78C50 78 50 56 46 49C42 42 33 42 42 53C42 53 46 57 49 62C50 59 52 52 52 52C64 44 67 53 58 59C50 65 50 78 50 78Z" fill="#66BB6A"/>
         </svg>
-        <h1>DJIBO SERVICE</h1>
+        <h1>DJIBO SERVICES</h1>
         <p>Espace Administration</p>
     </div>
 

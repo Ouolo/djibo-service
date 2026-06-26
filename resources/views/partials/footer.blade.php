@@ -28,6 +28,10 @@
     color: #25D366;
 }
 
+.social-link.linkedin i {
+    color: #0A66C2;
+}
+
 /* Effet au survol */
 .social-link:hover {
     transform: translateY(-5px);
@@ -51,16 +55,16 @@
                                     d="M50 80C50 80 50 50 35 40C20 30 25 15 45 30C45 30 48 35 50 42C52 35 55 30 55 30C75 15 80 30 65 40C50 50 50 80 50 80Z"
                                     fill="var(--jaune-agri)" />
                             </svg>
-                            <span class="logo-text text-white">DJIBO SERVICE</span>
+                            <span class="logo-text text-white">DJIBO SERVICES</span>
                         </div>
                     </div>
                     <ul class="footer-widget__list">
-                        <li>Route de Ségou, Sébougou, Ségou, République du Mali</li>
+                        <li>Sevare Milionki derriere la cite & L'ADRAO</li>
                         <li><a href="mailto:contact@djiboservice.com"
-                                class="hover-style-link">contact@djiboservice.com</a></li>
-                        <li><a href="tel:+22370001122" class="hover-style-link text-white font-weight--bold">(+223) 76
-                                54 32 10</a></li>
-                        <li><a href="https://wa.me/22376543210" target="_blank" class="hover-style-link"
+                                class="hover-style-link">djiboservices@gmail.com</a></li>
+                        <li><a href="tel:+22370001122" class="hover-style-link text-white font-weight--bold">(+223) 92
+                                 69 24 48</a></li>
+                        <li><a href="https://wa.me/22392692448?text=Bonjour%20Djibo%20Services,%20je%20souhaite%20vous%20contacter." target="_blank" class="hover-style-link"
                                 style="color: var(--vert-clair) !important;"><i class="fab fa-whatsapp me-2"></i>
                                 WhatsApp Direct</a></li>
                     </ul>
@@ -115,12 +119,12 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <span class="copyright-text">&copy; 2026 Djibo Service. <a href="#">Tous droits réservés.</a></span>
+                    <span class="copyright-text">&copy; 2026 Djibo Services. <a href="#">Tous droits réservés.</a></span>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <ul class="list ht-social-networks solid-rounded-icon">
     <li class="item">
-        <a href="#" target="_blank" aria-label="Facebook" class="social-link facebook">
+        <a href="https://www.facebook.com/profile.php?id=100077406985953" target="_blank" aria-label="Facebook" class="social-link facebook">
             <i class="fab fa-facebook-f link-icon"></i>
         </a>
     </li>
@@ -138,7 +142,13 @@
     </li>
 
     <li class="item">
-        <a href="https://wa.me/22376543210" target="_blank" aria-label="WhatsApp" class="social-link whatsapp">
+        <a href="https://www.linkedin.com/company/djibo-services" target="_blank" aria-label="LinkedIn" class="social-link linkedin">
+            <i class="fab fa-linkedin-in link-icon"></i>
+        </a>
+    </li>
+
+    <li class="item">
+        <a href="https://wa.me/22392692448?text=Bonjour%20Djibo%20Services,%20je%20souhaite%20vous%20contacter." target="_blank" aria-label="WhatsApp" class="social-link whatsapp">
             <i class="fab fa-whatsapp link-icon"></i>
         </a>
     </li>

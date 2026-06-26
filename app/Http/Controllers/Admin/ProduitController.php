@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Produit;
+use App\Services\FacebookPublisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class ProduitController extends Controller
 {
@@ -137,5 +139,25 @@ class ProduitController extends Controller
         $msg = $produit->actif ? '✅ Produit activé.' : '📝 Produit désactivé.';
 
         return redirect()->back()->with('success', $msg);
+    }
+
+    public function publishToFacebook(Produit $produit, FacebookPublisher $facebook)
+    {
+        try {
+            $facebook->publishProduct($produit);
+            
+            $produit->update([
+                'published_to_facebook' => true,
+                'published_at_facebook' => now(),
+            ]);
+
+            return redirect()->route('admin.produits.index')
+                ->with('success', '✅ Produit publié sur Facebook !');
+        } catch (\Exception $e) {
+            Log::error("Facebook publish error: " . $e->getMessage());
+            
+            return redirect()->back()
+                ->with('error', '❌ Erreur: ' . $e->getMessage());
+        }
     }
 }

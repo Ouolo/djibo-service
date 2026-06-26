@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\Actualite;
 use App\Models\Produit;
 
@@ -12,14 +13,18 @@ class AdminSeeder extends Seeder
 {
     public function run(): void
     {
+        // Get or create superadmin role
+        $superAdminRole = Role::where('slug', 'superadmin')->first();
+        
         // Créer le compte administrateur
-        User::updateOrCreate(
+        $admin = User::updateOrCreate(
             ['email' => 'admin@djiboservice.com'],
             [
                 'name'     => 'Administrateur Djibo',
                 'email'    => 'admin@djiboservice.com',
                 'password' => Hash::make('djibo@2026'),
                 'is_admin' => true,
+                'role_id'  => $superAdminRole ? $superAdminRole->id : null,
             ]
         );
 
@@ -30,7 +35,7 @@ class AdminSeeder extends Seeder
             [
                 'titre'            => 'Lancement de notre nouveau catalogue d\'intrants organiques',
                 'extrait'          => 'Découvrez nos nouveautés pour booster vos rendements de maraîchage biologique cet été.',
-                'contenu'          => '<p>Djibo Service est fier de présenter son nouveau catalogue d\'intrants organiques pour la saison 2026. Ce catalogue inclut notre activateur biologique BioActivateur Sol-Plus, désormais disponible en format économique de 5 litres, ainsi que de nouvelles références d\'engrais organiques adaptés aux cultures sahéliennes.</p><p>Ces produits ont été testés et validés sur plus de 200 parcelles dans la région de Ségou et de Mopti, avec des résultats exceptionnels sur les rendements maraîchers et céréaliers.</p>',
+                'contenu'          => '<p>Djibo Services est fier de présenter son nouveau catalogue d\'intrants organiques pour la saison 2026. Ce catalogue inclut notre activateur biologique BioActivateur Sol-Plus, désormais disponible en format économique de 5 litres, ainsi que de nouvelles références d\'engrais organiques adaptés aux cultures sahéliennes.</p><p>Ces produits ont été testés et validés sur plus de 200 parcelles dans la région de Mopti, avec des résultats exceptionnels sur les rendements maraîchers et céréaliers.</p>',
                 'image'            => 'assets/images/box-image/blog-01-330x330.jpg',
                 'date_publication' => '2026-06-10',
                 'publie'           => true,
@@ -38,8 +43,8 @@ class AdminSeeder extends Seeder
             ],
             [
                 'titre'            => 'Campagne de formation gratuite pour les jeunes maraîchers',
-                'extrait'          => 'Djibo Service organise un atelier pratique de 3 jours sur l\'utilisation rationnelle de l\'eau en agriculture.',
-                'contenu'          => '<p>Dans le cadre de son programme d\'appui aux jeunes agriculteurs, Djibo Service lance une série d\'ateliers de formation gratuits sur la gestion de l\'eau en agriculture irriguée.</p><p>Ces formations se dérouleront dans 5 communes de la région de Mopti et couvriront les techniques d\'irrigation goutte-à-goutte, la fabrication de compost et l\'utilisation des biopesticides.</p><p>Inscriptions ouvertes jusqu\'au 30 Juin 2026. Contactez-nous par WhatsApp pour vous inscrire.</p>',
+                'extrait'          => 'Djibo Services organise un atelier pratique de 3 jours sur l\'utilisation rationnelle de l\'eau en agriculture.',
+                'contenu'          => '<p>Dans le cadre de son programme d\'appui aux jeunes agriculteurs, Djibo Services lance une série d\'ateliers de formation gratuits sur la gestion de l\'eau en agriculture irriguée.</p><p>Ces formations se dérouleront dans 5 communes de la région de Mopti et couvriront les techniques d\'irrigation goutte-à-goutte, la fabrication de compost et l\'utilisation des biopesticides.</p><p>Inscriptions ouvertes jusqu\'au 30 Juin 2026. Contactez-nous par WhatsApp pour vous inscrire.</p>',
                 'image'            => 'assets/images/box-image/blog-02-330x330.jpg',
                 'date_publication' => '2026-06-05',
                 'publie'           => true,
@@ -48,7 +53,7 @@ class AdminSeeder extends Seeder
             [
                 'titre'            => 'Comment fabriquer un compost de qualité en 10 jours ?',
                 'extrait'          => 'Guide pratique expliquant les secrets de la fermentation accélérée avec le BioActivateur Sol-Plus.',
-                'contenu'          => '<p>Le compostage traditionnel prend entre 45 et 90 jours. Avec le BioActivateur Sol-Plus de Djibo Service, vous pouvez obtenir un compost riche et mature en seulement 10 jours !</p><h3>Les étapes clés :</h3><ol><li>Préparer votre tas de matières organiques (résidus de récolte, déchets verts, fumier)</li><li>Arroser avec la solution BioActivateur (1L dilué dans 100L d\'eau) toutes les 2 jours</li><li>Retourner le tas tous les 3 jours pour aérer</li><li>Après 10 jours, votre compost est prêt à l\'emploi !</li></ol><p>Ce compost accéléré présente une teneur en azote et en micro-organismes bénéfiques supérieure au compost traditionnel.</p>',
+                'contenu'          => '<p>Le compostage traditionnel prend entre 45 et 90 jours. Avec le BioActivateur Sol-Plus de Djibo Services, vous pouvez obtenir un compost riche et mature en seulement 10 jours !</p><h3>Les étapes clés :</h3><ol><li>Préparer votre tas de matières organiques (résidus de récolte, déchets verts, fumier)</li><li>Arroser avec la solution BioActivateur (1L dilué dans 100L d\'eau) toutes les 2 jours</li><li>Retourner le tas tous les 3 jours pour aérer</li><li>Après 10 jours, votre compost est prêt à l\'emploi !</li></ol><p>Ce compost accéléré présente une teneur en azote et en micro-organismes bénéfiques supérieure au compost traditionnel.</p>',
                 'image'            => 'assets/images/box-image/blog-03-330x330.jpg',
                 'date_publication' => '2026-05-28',
                 'publie'           => true,

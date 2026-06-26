@@ -12,30 +12,213 @@
 
 @section('content')
 
+<style>
+    /* Layout responsive pour le formulaire produit */
+    .adm-form-layout {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 20px;
+        align-items: start;
+    }
+
+    .adm-form-left {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .adm-form-right {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* Flex row pour nom + catégorie */
+    .adm-form-row {
+        display: flex;
+        gap: 16px;
+    }
+
+    .adm-form-row .adm-form-group {
+        flex: 1;
+    }
+
+    .adm-form-row .adm-form-group:first-child {
+        flex: 2;
+    }
+
+    /* Textareas */
+    .adm-textarea {
+        min-height: 80px;
+        line-height: 1.6;
+        resize: vertical;
+    }
+
+    .adm-textarea[rows="6"] {
+        min-height: 200px;
+    }
+
+    .adm-textarea[rows="4"] {
+        min-height: 150px;
+    }
+
+    /* Bouton submit */
+    .adm-btn-submit {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 1200px) {
+        .adm-form-layout {
+            grid-template-columns: 1fr 320px;
+            gap: 16px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .adm-form-layout {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .adm-form-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .adm-form-row {
+            gap: 12px;
+        }
+
+        .adm-textarea {
+            min-height: 100px;
+        }
+
+        .adm-textarea[rows="6"] {
+            min-height: 180px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .adm-form-layout {
+            gap: 16px;
+        }
+
+        .adm-form-right {
+            grid-template-columns: 1fr;
+        }
+
+        .adm-form-row {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .adm-form-row .adm-form-group {
+            flex: none;
+        }
+
+        .adm-textarea {
+            min-height: 80px;
+        }
+
+        .adm-textarea[rows="6"] {
+            min-height: 150px;
+        }
+
+        .adm-card__header {
+            padding: 14px 18px;
+        }
+
+        .adm-card__title {
+            font-size: 14px;
+        }
+
+        .adm-form-group {
+            margin-bottom: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .adm-form-layout {
+            gap: 12px;
+        }
+
+        .adm-card__body {
+            padding: 16px;
+        }
+
+        .adm-card__header {
+            padding: 12px 16px;
+        }
+
+        .adm-label {
+            font-size: 12px;
+        }
+
+        .adm-input,
+        .adm-textarea {
+            font-size: 13px;
+            padding: 8px 12px;
+        }
+
+        .adm-textarea {
+            min-height: 70px;
+        }
+
+        .adm-textarea[rows="6"] {
+            min-height: 120px;
+        }
+
+        .adm-textarea[rows="4"] {
+            min-height: 100px;
+        }
+
+        .adm-help {
+            font-size: 11px;
+        }
+
+        .adm-btn {
+            font-size: 12px;
+            padding: 8px 14px;
+        }
+
+        .adm-form-group {
+            margin-bottom: 14px;
+        }
+
+        .adm-img-preview,
+        .adm-img-placeholder {
+            max-height: 160px;
+        }
+    }
+</style>
+
 <form method="POST"
       action="{{ $produit->exists ? route('admin.produits.update', $produit) : route('admin.produits.store') }}"
       enctype="multipart/form-data">
     @csrf
     @if($produit->exists) @method('PUT') @endif
 
-    <div style="display:grid; grid-template-columns:1fr 340px; gap:20px; align-items:start;">
+    <div class="adm-form-layout">
 
         {{-- Left column : main content --}}
-        <div>
-            <div class="adm-card" style="margin-bottom:20px;">
+        <div class="adm-form-left">
+            <div class="adm-card">
                 <div class="adm-card__header">
                     <span class="adm-card__title">📦 Informations du produit</span>
                 </div>
                 <div class="adm-card__body">
 
-                    <div style="display:flex; gap:16px;">
-                        <div class="adm-form-group" style="flex:2;">
+                    <div class="adm-form-row">
+                        <div class="adm-form-group">
                             <label class="adm-label" for="nom">Nom du produit <span>*</span></label>
                             <input type="text" id="nom" name="nom" class="adm-input"
                                    value="{{ old('nom', $produit->nom) }}" required>
                             @error('nom') <div class="adm-error">{{ $message }}</div> @enderror
                         </div>
-                        <div class="adm-form-group" style="flex:1;">
+                        <div class="adm-form-group">
                             <label class="adm-label" for="categorie">Catégorie <span>*</span></label>
                             <input type="text" id="categorie" name="categorie" class="adm-input"
                                    value="{{ old('categorie', $produit->categorie) }}" required>
@@ -73,8 +256,8 @@
         </div>
 
         {{-- Right column : settings & image --}}
-        <div>
-            <div class="adm-card" style="margin-bottom:16px;">
+        <div class="adm-form-right">
+            <div class="adm-card">
                 <div class="adm-card__header">
                     <span class="adm-card__title">⚙️ Paramètres</span>
                 </div>
@@ -93,7 +276,7 @@
                                value="{{ old('ordre', $produit->ordre ?? 0) }}" placeholder="0">
                     </div>
 
-                    <div class="adm-form-group" style="margin-bottom:10px;">
+                    <div class="adm-form-group">
                         <label class="adm-toggle" for="en_vedette">
                             <input type="checkbox" id="en_vedette" name="en_vedette" value="1"
                                    {{ old('en_vedette', $produit->en_vedette) ? 'checked' : '' }}>
@@ -102,7 +285,7 @@
                         <div class="adm-help" style="margin-top:6px; margin-left:28px;">Sera mis en avant sur la page d'accueil.</div>
                     </div>
 
-                    <div class="adm-form-group">
+                    <div class="adm-form-group" style="margin-bottom:10px;">
                         <label class="adm-toggle" for="actif">
                             <input type="checkbox" id="actif" name="actif" value="1"
                                    {{ old('actif', $produit->exists ? $produit->actif : true) ? 'checked' : '' }}>
@@ -110,10 +293,10 @@
                         </label>
                     </div>
 
-                    <div style="display:flex; gap:10px; margin-top:16px;">
-                        <button type="submit" class="adm-btn adm-btn-primary" style="flex:1; justify-content:center;">
+                    <div style="display:flex; gap:10px; margin-top:10px;">
+                        <button type="submit" class="adm-btn adm-btn-primary adm-btn-submit">
                             <i class="fas fa-save"></i>
-                            {{ $produit->exists ? 'Enregistrer' : 'Créer le produit' }}
+                            <span>{{ $produit->exists ? 'Enregistrer' : 'Créer le produit' }}</span>
                         </button>
                     </div>
 
