@@ -595,9 +595,9 @@
                     </div>
                     <p style="font-size:14px; margin-bottom:20px;">Djibo Services est votre partenaire agroécologique de confiance au Mali — intrants biologiques, formation et conseil agronomique depuis Mopti.</p>
                     <ul>
-                       <!--  <li>📍 Route de Ségou, Sébougou, Ségou, Mali</li> -->
-                        <li>📞 <a href="tel:+22392692448">(+223) 76 54 32 10</a></li>
-                        <li>📧 <a href="mailto:djiboservice@gmail.com">contact@djiboservice.com</a></li>
+                        <li>📍Mali,Mopti,Sevare</li> 
+                        <li>📞 <a href="tel:+22392692448">(+223) 92692448</a></li>
+                        <li>📧 <a href="mailto:djiboservices@gmail.com">contact@djiboservices.com</a></li>
                         <li>💬 <a href="https://wa.me/22392692448?text=Bonjour,%20je%20vous%20contacte%20via%20WhatsApp." target="_blank">WhatsApp Direct</a></li>
                     </ul>
                 </div>
@@ -620,18 +620,24 @@
                         <li><a href="{{ route('home') }}">Accueil</a></li>
                         <li><a href="{{ route('about') }}">À Propos</a></li>
                         <li><a href="{{ route('realisations') }}">Réalisations</a></li>
-                        <li><a href="{{ route('distributors') }}">Distributeurs</a></li>
+                        <!-- <li><a href="{{ route('distributors') }}">Distributeurs</a></li> -->
                         <li><a href="{{ route('contact') }}">Contact</a></li>
                     </ul>
                 </div>
 
-                <!-- Horaires -->
+                <!-- Réseaux -->
                 <div class="col-lg-4 col-md-8">
-                    <h4>Horaires d'Ouverture</h4>
+                    <h4>Nos Réseaux</h4>
                     <ul>
-                        <li>Lundi – Vendredi : 08h00 – 17h00</li>
-                        <li>Samedi : 09h00 – 13h00</li>
-                        <li style="color: rgba(250,246,239,0.4)">Dimanche : Fermé</li>
+                        <li> 
+                            <a href="https://www.facebook.com/profile.php?id=100077406985953" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-facebook"></i>facebook</a>
+                        </li>
+                        <li>    
+                             <a href="https://www.tiktok.com/@djibo.services0?_r=1&_t=ZS-97XjpuH5X9x" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i>TikTok</a>
+                        </li>
+                        <li >
+                            <a href="https://www.linkedin.com/company/djibo-services" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i>LinkedIn</a>
+                        </li>
                     </ul>
                     <div style="margin-top:20px">
                         <a href="https://wa.me/22392692448?text=Bonjour,%20je%20veux%20en%20savoir%20plus%20sur%20vos%20services%20et%20produits." target="_blank"
@@ -646,13 +652,13 @@
         <div class="dj-footer-bottom">
             <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
                 <span>&copy; 2026 <a href="{{ route('home') }}">Djibo Services</a>. Tous droits réservés.</span>
-                <div class="d-flex gap-3">
+                <!-- <div class="d-flex gap-3">
                     <a href="https://www.facebook.com/profile.php?id=100077406985953" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     <a href="https://www.linkedin.com/company/djibo-services" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://wa.me/22392692448?text=Bonjour%20Djibo%20Services!" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
+                </div> -->
             </div>
         </div>
     </footer>

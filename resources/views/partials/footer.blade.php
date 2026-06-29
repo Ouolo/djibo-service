@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <ul class="footer-widget__list">
-                        <li>Sevare Milionki derriere la cite & L'ADRAO</li>
+                        <li>Mali,Mopti,Sevare</li>
                         <li><a href="mailto:contact@djiboservice.com"
                                 class="hover-style-link">djiboservices@gmail.com</a></li>
                         <li><a href="tel:+22370001122" class="hover-style-link text-white font-weight--bold">(+223) 92
@@ -94,20 +94,26 @@
                     </ul>
                 </div>
 
-                <!-- Horaires -->
-                <div class="col-lg-3 col-md-4 col-sm-6 footer-widget">
-                    <h6 class="footer-widget__title mb-20">Horaires d'Ouverture</h6>
-                    <ul class="footer-widget__list">
-                        <li>Lundi - Vendredi: 08:00 - 17:00</li>
-                        <li>Samedi: 09:00 - 13:00</li>
-                        <li>Dimanche: Fermé</li>
-                        <li class="mt-3">
-                            <span class="badge py-2 px-3 rounded-pill"
-                                style="background-color: var(--jaune-agri) !important; color: var(--gris-fonce) !important;">
-                                🚜 Conseils Agronomiques Libres
-                            </span>
+                <!-- Réseaux -->
+                <div class="col-lg-4 col-md-8">
+                    <h4>Nos Réseaux</h4>
+                    <ul>
+                        <li> 
+                            <a href="https://www.facebook.com/profile.php?id=100077406985953" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-facebook"></i>  facebook</a>
+                        </li>
+                        <li>    
+                             <a href="https://www.tiktok.com/@djibo.services0?_r=1&_t=ZS-97XjpuH5X9x" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i>  TikTok</a>
+                        </li>
+                        <li >
+                            <a href="https://www.linkedin.com/company/djibo-services" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i>   LinkedIn</a>
                         </li>
                     </ul>
+                    <div style="margin-top:20px">
+                        <a href="https://wa.me/22392692448?text=Bonjour,%20je%20veux%20en%20savoir%20plus%20sur%20vos%20services%20et%20produits." target="_blank"
+                           style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:10px 20px;border-radius:30px;font-weight:700;font-size:14px;text-decoration:none;">
+                            <i class="fab fa-whatsapp"></i> Contacter via WhatsApp
+                        </a>
+                    </div>
                 </div>
 
             </div>

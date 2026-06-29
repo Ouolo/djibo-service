@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Admin\AuthController;
@@ -29,8 +29,7 @@ Route::get('/actualites',   [PageController::class, 'actualites'])->name('actual
 Route::get('/actualites/{slug}', [PageController::class, 'actualiteShow'])->name('actualites.public.show');
 Route::get('/distributeurs',[PageController::class, 'distributors'])->name('distributors');
 Route::get('/contact',      [PageController::class, 'contact'])->name('contact');
-Route::post('/contact',     [PageController::class, 'contactSubmit'])->name('contact.submit');
-
+Route::post('/contact',     [ContactController::class, 'submit'])->name('contact.submit');
 /*
 |--------------------------------------------------------------------------
 | Routes Admin

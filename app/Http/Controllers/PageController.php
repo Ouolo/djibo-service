@@ -364,16 +364,23 @@ class PageController extends Controller
      * Handle contact form submit (Simulated)
      */
     public function contactSubmit(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:30',
-            'subject' => 'required|string|max:255',
-            'message' => 'required|string'
-        ]);
+{
+    $request->validate([
+        'name'    => 'required|string|max:255',
+        'email'   => 'required|email|max:255',
+        'phone'   => 'required|string|max:30',
+        'subject' => 'required|string|max:255',
+        'message' => 'required|string'
+    ]);
 
-        // Real applications will mail or database store this.
-        return back()->with('success', 'Merci pour votre message ! Notre équipe vous contactera très rapidement.');
-    }
+    // Sauvegarde en BDD
+    Contact::create($request->only([
+        'name', 'email', 'phone', 'subject', 'message'
+    ]));
+
+    // Envoi email à djiboservices@gmail.com
+    Mail::to('djiboservices@gmail.com')->send(new ContactMail($request->all()));
+
+    return back()->with('success', 'Merci pour votre message ! Notre équipe vous contactera très rapidement.');
+}
 }

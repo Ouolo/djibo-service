@@ -33,13 +33,13 @@
                     <p class="text-muted small m-0 uppercase font-weight-bold">Fermes accompagnées</p>
                 </div>
                 <div class="col-md-2 col-sm-6 wow animate__fadeInUp" data-wow-delay="0.4s">
-                    <h2 class="font-weight-bold mb-1" style="font-size: 2.5rem; color: var(--jaune-agri);">1500+</h2>
+                    <h2 class="font-weight-bold mb-1" style="font-size: 2.5rem; color: var(--jaune-agri);">11 390+</h2>
                     <p class="text-muted small m-0 uppercase font-weight-bold">Litres d'activateur vendus</p>
                 </div>
                 
                  <div class="col-md-2 col-sm-6 wow animate__fadeInUp" data-wow-delay="0.4s">
                     <h2 class="font-weight-bold mb-1" style="font-size: 2.5rem; color: var(--jaune-agri);">30 +</h2>
-                    <p class="text-muted small m-0 uppercase font-weight-bold">stagiaires Encadrer </p>
+                    <p class="text-muted small m-0 uppercase font-weight-bold">stagiaires Encadrés </p>
                 </div>
             </div>
                 

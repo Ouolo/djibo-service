@@ -32,11 +32,10 @@
                 <p style="color:#6b5e50;margin-bottom:36px;">Appelez-nous, écrivez-nous ou passez directement à nos bureaux à Mopti.</p>
 
                 @foreach([
-                    ['fas fa-map-marker-alt','Notre Adresse','Sevare Milionki derriere la cite & L\'ADRAO'],
+                    ['fas fa-map-marker-alt','Notre Adresse','Mali,Mopti,Sevare'],
                     ['fas fa-phone-alt','Téléphone','(+223) +223 92 69 24 48'],
                     ['fab fa-whatsapp','WhatsApp','<a href="https://wa.me/22392692448?text=Bonjour,%20je%20souhaite%20obtenir%20plus%20d%27informations%20sur%20vos%20services." target="_blank" style="color:var(--vert);font-weight:700;">Cliquer ici pour discuter</a>'],
-                    ['fas fa-envelope','E-mail','djiboservices@gmail.com'],
-                    ['fas fa-clock','Horaires','Lun-Ven: 08h00-17h00 · Sam: 09h00-13h00'],
+                    ['fas fa-envelope','E-mail','<a href="mailto:djiboservices@gmail.com" style="color:var(--vert);font-weight:700;">Cliquer ici pour discuter</a>'],
                 ] as $info)
                 <div style="display:flex;gap:16px;margin-bottom:28px;" data-animate>
                     <div style="width:48px;height:48px;background:var(--vert-light-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--vert-clair);font-size:18px;flex-shrink:0;">
@@ -94,9 +93,9 @@
 </section>
 
 <!-- Carte Google Maps -->
-<div>
+<!-- <div>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15538.562304875017!2d-6.300585145785084!3d13.435748892404558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe3497d3dfa00c6d%3A0x867ea6de7257dfde!2zU8OpZ291LCBNYWxp!5e0!3m2!1sfr!2s!4v1718023600000!5m2!1sfr!2s"
         width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
-</div>
+</div> -->
 
 @endsection

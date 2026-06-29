@@ -305,12 +305,12 @@
 <div class="dj-stats-bar">
     <div class="container">
         <div class="row g-3">
-            @foreach([['500+','Producteurs formés'],['150+','Hectares régénérés'],['50+','Fermes accompagnées'],['10+','Années d\'expérience']] as $stat)
-            <div class="col-6 col-md-3 dj-stat-item">
+            <!-- @foreach([['500+','Producteurs formés'],['150+','Hectares régénérés'],['50+','Fermes accompagnées'],['4+','Années d\'expérience']] as $stat) -->
+            <!-- <div class="col-6 col-md-3 dj-stat-item">
                 <span class="dj-stat-num">{{ $stat[0] }}</span>
                 <span class="dj-stat-label">{{ $stat[1] }}</span>
             </div>
-            @endforeach
+            @endforeach -->
         </div>
     </div>
 </div>

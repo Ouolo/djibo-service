@@ -249,7 +249,7 @@
             </div>
             <div class="col-md-3 col-6 mb-4 mb-md-0">
                 <div class="stat-box">
-                    <div class="stat-num">500+</div>
+                    <div class="stat-num">10 000+</div>
                     <div class="stat-label">Producteurs accompagnés</div>
                 </div>
             </div>
@@ -346,6 +346,7 @@
                     <div class="col-6">
                         <ul class="list-unstyled">
                             <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Sikasso</li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt text-success me-2"></i> Ségou (Annexe)</li>
                             <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Koulikoro</li>
                             <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Bougouni</li>
                             <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Kita</li>
