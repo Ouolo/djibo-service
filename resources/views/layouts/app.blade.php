@@ -710,6 +710,16 @@
         });
     </script>
 
+    <script>
+        // Enregistrement de visite via AJAX (contourne le cache serveur)
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var trackUrl = '{{ route("track.visit") }}' + '?url=' + encodeURIComponent(window.location.href) + '&_t=' + new Date().getTime();
+                fetch(trackUrl).catch(function(e) {});
+            }, 1500);
+        });
+    </script>
+
     @stack('scripts')
 </body>
 </html>

@@ -30,6 +30,20 @@ Route::get('/actualites/{slug}', [PageController::class, 'actualiteShow'])->name
 Route::get('/distributeurs',[PageController::class, 'distributors'])->name('distributors');
 Route::get('/contact',      [PageController::class, 'contact'])->name('contact');
 Route::post('/contact',     [ContactController::class, 'submit'])->name('contact.submit');
+
+// Route AJAX pour l'enregistrement des visites (contourne le cache)
+Route::get('/track-visit', function (\Illuminate\Http\Request $request) {
+    try {
+        \App\Models\Visit::create([
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+            'page_url' => $request->query('url', $request->fullUrl()),
+            'session_id' => session()->getId(),
+            'visited_at' => now(),
+        ]);
+    } catch (\Exception $e) {}
+    return response()->json(['status' => 'ok']);
+})->name('track.visit');
 /*
 |--------------------------------------------------------------------------
 | Routes Admin
